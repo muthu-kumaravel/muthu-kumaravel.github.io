@@ -7,7 +7,7 @@ Reference :  [Medium post](https://medium.com/swlh/how-to-deploy-an-angular-app-
 2.  Clone it and get into folder
 3.  Create the angulae application
 ```
-$ ng new myApp --directory ./ 
+$ ng new Portfolio --directory ./ 
 ```
 
 4.  Chage `"outputPath"` value to `"docs"`, in `angular.json`
