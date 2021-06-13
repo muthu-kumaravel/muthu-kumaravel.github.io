@@ -23,3 +23,11 @@ $ ng build --prod
     folder : docs
     Save the config
 8.  Visit [muthu-kumaravel.github.io](muthu-kumaravel.github.io) to visit the website
+
+9.  To build and push any release do the following steps 
+    1.  ng serve --o
+    2.  ng build --prod
+    3.  git add <ELEMENTS_TO_ADD>
+        Make sure to ass everything inside docs
+    4.  git commit -m "<COMMIT_MESSAGE>"
+    5.  git push <BRANCH_NAME>
