@@ -31,3 +31,5 @@ $ ng build --prod
         Make sure to ass everything inside docs
     4.  git commit -m "<COMMIT_MESSAGE>"
     5.  git push <BRANCH_NAME>
+
+10. To run project on different machine clone and the run `npm install` (and `npm update` optional)
