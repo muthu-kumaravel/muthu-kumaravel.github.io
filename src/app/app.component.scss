@@ -17,21 +17,21 @@ p {
 h1 {
   display: flex;
   line-height: 1;
-  color: #bfdada8c;
+  color: #a2e5ffc7;
   font-weight: lighter;
 }
 
 // H2 Default settings
 h2 {
   line-height: 1.5;
-  color: #94aaaa94;
+  color: #7edaffb6;
   font-weight: bolder;
 }
 
 // Paragrapg Default settings
 p {
   line-height: 1.5;
-  color: #728588d7;
+  color: #3ec8ff9f;
 }
 
 /////////////////////////////////////////////////////////////
@@ -42,12 +42,48 @@ p {
 // Main Div content of the first section
 .main-div
 {
-  background: #eee url(../assets/bg1.jpeg) no-repeat center;
+  background: #000613;
   background-size: cover;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.div_gradient_right_bottom {
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 40vw 15vw rgba(100, 0, 78, 0.5),
+    0 -7.5vw 45vw 20vw rgba(100, 0, 78, 0.6);
+  display: flex; 
+  position: absolute; 
+  left : 100%
+}
+
+.div_gradient_right_top {
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 45vw 20vw rgba(0, 64, 148, 0.5),
+    0 7.5vw 50vw 25vw rgba(0, 64, 148, 0.4);
+  display: flex; 
+  position: absolute; 
+  left : 100%;
+}
+
+.div_gradient_left_top {
+  width: 1px;
+  height: 1px;
+  border-radius: 15%;
+  box-shadow:
+    0 0 40vw 15vw rgba(0, 64, 148, 0.5),
+    0 0 60vw 20vw rgba(0, 64, 148, 0.4);
+  display: flex; 
+  position: absolute; 
+  left : -10%;
 }
 
 // Class for Div containing main contents of the page
@@ -69,7 +105,7 @@ p {
 
 // Class for circle social profile (OUTER CIRCLE LOGO / CLICK)
 .circle-link {
-  background-color: #859fa58e;
+  background-color: #6ce4ff8e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,11 +118,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-// LinkedIn logo transparancy
-.in {
-  opacity: 0.7;
 }
 
 // WIDTH Conditional formatting fo the Section One
@@ -174,11 +205,20 @@ p {
 @media screen and (min-height: 821px){
 
   .content {
-    top: calc(410 - #{width});
+    top: calc(424 - #{height});
   }
   .main-div
   {
     height: 848px;
+  }
+  .div_gradient_right_bottom {
+    top: 763px;
+  }
+  .div_gradient_right_top {
+    top: 85px;
+  }
+  .div_gradient_left_top {
+    top: -85px;
   }
 }
 
@@ -186,11 +226,20 @@ p {
 @media screen and (min-height: 768px) and (max-height: 821px) {
 
   .content {
-    top: calc(410 - #{width});
+    top: calc(410 - #{height});
   }
   .main-div
   {
     height: 821px;
+  }
+  .div_gradient_right_bottom {
+    top: 739px;
+  }
+  .div_gradient_right_top {
+    top: 82px;
+  }
+  .div_gradient_left_top {
+    top: -82px;
   }
 }
 
@@ -198,10 +247,19 @@ p {
 @media screen and (max-height: 768px) {
 
   .content {
-    top: calc(384 - #{width});
+    top: calc(384 - #{height});
   }
   .main-div
   {
     height: 768px;
+  }
+  .div_gradient_right_bottom {
+    top: 691px;
+  }
+  .div_gradient_right_top {
+    top: 77px;
+  }
+  .div_gradient_left_top {
+    top: -77px;
   }
 }
