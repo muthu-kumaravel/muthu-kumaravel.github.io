@@ -35,7 +35,6 @@ p {
 }
 
 /////////////////////////////////////////////////////////////
-// VARIABLE CHANGES
 // SECTION 1
 /////////////////////////////////////////////////////////////
 
@@ -55,8 +54,8 @@ p {
   height: 1px;
   border-radius: 50%;
   box-shadow:
-    0 0 40vw 15vw rgba(100, 0, 78, 0.5),
-    0 -7.5vw 45vw 20vw rgba(100, 0, 78, 0.6);
+    0 0 40vw 10vw rgba(100, 38, 87, 0.5),
+    0 -7.5vw 45vw 15vw rgba(100, 38, 87, 0.6);
   display: flex; 
   position: absolute; 
   left : 100%
@@ -67,8 +66,8 @@ p {
   height: 1px;
   border-radius: 50%;
   box-shadow:
-    0 0 45vw 20vw rgba(0, 64, 148, 0.5),
-    0 7.5vw 50vw 25vw rgba(0, 64, 148, 0.4);
+    0 0 45vw 12vw rgba(38, 64, 148, 0.5),
+    0 7.5vw 50vw 17vw rgba(38, 64, 148, 0.4);
   display: flex; 
   position: absolute; 
   left : 100%;
@@ -79,11 +78,11 @@ p {
   height: 1px;
   border-radius: 15%;
   box-shadow:
-    0 0 40vw 15vw rgba(0, 64, 148, 0.5),
-    0 0 60vw 20vw rgba(0, 64, 148, 0.4);
+    0 0 40vw 8vw rgba(38, 64, 148, 0.5),
+    0 0 60vw 12vw rgba(38, 64, 148, 0.4);
   display: flex; 
   position: absolute; 
-  left : -10%;
+  left : 0%;
 }
 
 // Class for Div containing main contents of the page
@@ -121,7 +120,7 @@ p {
 }
 
 // WIDTH Conditional formatting fo the Section One
-// If the page WIDTH is more than 600 (FIXED)
+// If the page WIDTH is more than 600 and less than 1366(FIXED)
 @media screen and (min-width: 600px) {
   h1 {
       font-size: 70px;
@@ -136,7 +135,7 @@ p {
 
   .content {
     padding: 0 0px;
-    width: 60%;
+    width: 600px;
   }
 
   .circle-link {
@@ -218,7 +217,7 @@ p {
     top: 85px;
   }
   .div_gradient_left_top {
-    top: -85px;
+    top: 30px;
   }
 }
 
@@ -239,7 +238,7 @@ p {
     top: 82px;
   }
   .div_gradient_left_top {
-    top: -82px;
+    top: 35px;
   }
 }
 
@@ -260,6 +259,67 @@ p {
     top: 77px;
   }
   .div_gradient_left_top {
-    top: -77px;
+    top: 40px;
   }
+}
+
+/////////////////////////////////////////////////////////////
+// SECTION 2 (DIVIDER)
+/////////////////////////////////////////////////////////////
+
+// Main Div content of the first section
+.s2-main-div
+{
+  background: #000613;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.s2-semi-circle {
+  display: flex; 
+  height: 300px;
+  position: absolute;
+  width: 108%;
+  background: #00060f;
+  border-radius: 50% 50% 0 0;
+  justify-content: center;
+  align-items: center;
+}
+
+// Class for Div containing main contents of the page
+.s2-h2 {
+  align-items: center;
+  position: absolute; 
+  left: 50%;
+  top: 100px;
+  transform: translate(-50%, -50%);
+}
+
+/////////////////////////////////////////////////////////////
+// SECTION 3 (NAVBAR)
+/////////////////////////////////////////////////////////////
+
+// Main Div content of the first section
+.s3-main-div
+{
+  background: #000000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+  height: 100px;
+  position: absolute;
+}
+
+// Class for Div containing main contents of the page
+.s3-h2 {
+  align-items: center;
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
