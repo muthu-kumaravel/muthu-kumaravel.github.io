@@ -7,7 +7,7 @@
 
 .h1-name
 {
-  font-family: 'Calibri Light';
+  font-family: 'Calibri';
   font-size: 52px;
   color: rgb(133, 215, 225);
   margin-bottom: 40px;
@@ -15,14 +15,14 @@
 
 .p-heading
 {
-  font-family: 'Calibri Light';
+  font-family: 'Calibri';
   font-size: 16px;
   color: rgb(118, 113, 113);
 }
 
 .a-heading-link
 {
-  font-family: 'Calibri Light';
+  font-family: 'Calibri';
   font-size: 16px;
   color: rgb(118, 113, 113);
   text-decoration: underline;
@@ -80,6 +80,14 @@
 
 @media screen and (max-width: 1000px)
 {
+  .top-box-div
+  {
+    width: 160%;
+  }
+  .full-div
+  {
+    margin-left: 60%;
+  }
   .main-div
   {
     width: 100%;
@@ -104,16 +112,5 @@
     margin-left: 20%;
     width: 60%;
     aspect-ratio: 1/1;
-  }
-
-  .photo-div-decor
-  {
-    position: absolute;
-    width: 25px;
-    aspect-ratio: 1/1;
-    left: 64.15%;
-    border: 1px solid rgb(133, 215, 225);
-    background: rgb(133, 215, 225);
-    margin-top: 43px;
   }
 }
