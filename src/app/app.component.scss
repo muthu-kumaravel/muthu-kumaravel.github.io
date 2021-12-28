@@ -26,6 +26,23 @@ i {
   color: rgb(204, 92, 113);
 }
 
+.p-about-heading-1
+{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 36px;
+  text-align: center;
+  color: rgb(18, 18, 18);
+}
+
+.p-about-heading-2
+{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 36px;
+  text-align: center;
+}
+
 .p-about-content
 {
   color: rgb(118, 113, 113);
@@ -400,14 +417,13 @@ i {
   .about-div
   {
     margin-top: 1vw;
-    position: absolute;
     width: 100%;
     background: rgb(18, 18, 18);
   }
 
   .p-about-heading
   {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 36px;
@@ -422,4 +438,112 @@ i {
     font-size: 16px;
     line-height: 27px;
   }
+
+  // MAIN CONTENT SECTION
+  .content-div
+  {
+    margin-top: 1vw;
+    width: 100%;
+  }
+
+  .p-exp-heading
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .p-exp-heading-1
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .p-exp-heading-1-1
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .p-exp-heading-1-2
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .p-exp-heading-2
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .p-exp-heading-3
+  {
+    font-size: 14px;
+  }
+
+  .p-exp-content
+  {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 28px;
+  }
+  
+  .p-edu-heading
+  {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    margin-top: 75px;
+    font-size: 36px;
+  }
+
+  .p-edu-heading-1
+  {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .p-edu-heading-2
+  {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .p-edu-heading-3
+  {
+    font-size: 14px;
+  }
+  
+  .p-tec-heading
+  {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 75px;
+    font-size: 36px;
+  }
+
 }
