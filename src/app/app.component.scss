@@ -9,6 +9,10 @@ p {
   font-family : 'Trebuchet MS';
 }
 
+i {
+  text-decoration: none;
+}
+
 .name-settings {
   color: rgb(204, 92, 113);
 }
@@ -28,13 +32,74 @@ p {
   text-align: justify;
 }
 
+.p-exp-heading
+{
+  color: rgb(194, 62, 87);
+}
+
+.p-exp-heading-1
+{
+  color: rgb(160, 50, 71);
+}
+
+.p-exp-heading-1-1
+{
+  color: rgb(137, 43, 61);
+}
+
+.p-exp-heading-1-2
+{
+  color: rgb(125, 39, 55);
+}
+
+.p-exp-heading-2
+{
+  color: rgb(175, 171, 171);
+}
+
+.p-exp-heading-3
+{
+  color: rgb(175, 171, 171);
+}
+
+.p-edu-heading
+{
+  color: rgb(135, 155, 221);
+}
+
+.p-edu-heading-1
+{
+  color: rgb(175, 171, 171);
+}
+
+.p-edu-heading-2
+{
+  color: rgb(175, 171, 171);
+}
+
+.p-edu-heading-3
+{
+  color: rgb(175, 171, 171);
+}
+
+.p-exp-content
+{
+  color: rgb(118, 113, 113);
+  text-align: justify;
+}
+
+.p-edu-heading
+{
+  color: rgb(133, 215, 225);
+}
+
 .full-div {
   width : 100%;
 }
 
 .top-div {
   width : 100%;
-  background-color : rgba(108, 34, 48, 0.79);
+  background-color : rgba(108, 34, 48);
   height : 40px;
 }
 
@@ -95,10 +160,11 @@ p {
 
   // ABOUT SECTION
   // BETWEEN 1000px - 1200px
-  @media screen and (max-width: 1200px)
+  @media screen and (max-width: 1199px)
   {
     .about-div
     {
+      height: 1850px;
       position: absolute;
       width: calc(40% - 50px - 50px - 25);
       right: 25px;
@@ -111,16 +177,25 @@ p {
   {
     .about-div
     {
+      height: 1720px;
       position: absolute;
       width: 325px;
       left: calc(75px + 50px + 60%);
       background: rgb(18, 18, 18);
     }
   }
+  @media screen and (min-width: 1800px)
+  {
+    .about-div
+    {
+      height: 1520px;
+    }
+  }
 
   .p-about-heading
   {
     margin-top: 300px;
+    margin-bottom: 40px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 36px;
@@ -134,11 +209,150 @@ p {
     font-size: 16px;
     line-height: 27px;
   }
+
+  // MAIN CONTENT SECTION
+  // between 1000 to 1200
+  @media screen and (max-width: 1199px)
+  {
+    .content-div
+    {
+      position: absolute;
+      width: calc(100px + 60%);
+      left: 25px;
+      background: rgba(18, 18, 18, 0);
+    }
+  }
+  // between 1200 to 1400
+  @media screen and (min-width : 1200px) and (max-width: 1399px)
+  {
+    .content-div
+    {
+      position: absolute;
+      width: calc(55px + 60%);
+      left: 70px;
+      background: rgba(18, 18, 18, 0);
+    }
+  }
+  // between 1400 to 1600
+  @media screen and (min-width : 1400px) and (max-width: 1599px)
+  {
+    .content-div
+    {
+      position: absolute;
+      width: calc(60%);
+      left: 125px;
+      background: rgba(18, 18, 18, 0);
+    }
+  }
+  // between 1600 to 1800
+  @media screen and (min-width : 1600px) and (max-width: 1799px)
+  {
+    .content-div
+    {
+      position: absolute;
+      width: calc(60% - 75px);
+      left: 200px;
+      background: rgba(18, 18, 18, 0);
+    }
+  }
+  // Greater than 1800
+  @media screen and (min-width : 1800px)
+  {
+    .content-div
+    {
+      position: absolute;
+      width: calc(60% + 100px);
+      left: 25px;
+      background: rgba(18, 18, 18, 0);
+    }
+  }
+  .p-exp-heading
+  {
+    margin-left: 15px;
+    margin-top: 300px;
+    font-size: 40px;
+  }
+
+  .p-exp-heading-1
+  {
+    margin-left: 15px;
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .p-exp-heading-1-1
+  {
+    margin-left: 15px;
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .p-exp-heading-1-2
+  {
+    margin-left: 15px;
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .p-exp-heading-2
+  {
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .p-exp-heading-3
+  {
+    font-size: 14px;
+  }
+
+  .p-exp-content
+  {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 28px;
+  }
+  
+  .p-edu-heading
+  {
+    margin-left: 15px;
+    margin-top: 75px;
+    font-size: 36px;
+  }
+
+  .p-edu-heading-1
+  {
+    margin-left: 15px;
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .p-edu-heading-2
+  {
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .p-edu-heading-3
+  {
+    font-size: 14px;
+  }
+  
+  .p-tec-heading
+  {
+    margin-left: 15px;
+    margin-top: 75px;
+    font-size: 36px;
+  }
+
 }
 
 
 
-@media screen and (max-width: 1000px)
+@media screen and (max-width: 999px)
 {
   // MAIN CONTENT
   .main-div
@@ -193,7 +407,7 @@ p {
 
   .p-about-heading
   {
-    margin-top: 80px;
+    margin-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 36px;
@@ -202,7 +416,7 @@ p {
 
   .p-about-content
   {
-    margin-top: 25px;
+    margin-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 16px;
