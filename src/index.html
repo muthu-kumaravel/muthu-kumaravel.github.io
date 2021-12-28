@@ -16,13 +16,13 @@
     var meta = document.createElement("meta");
     var head = document.getElementsByTagName("head")[0];
     
-    if (width < 1000) {  
+    if (width < 1100) {  
         meta.setAttribute("name", "viewport");
-        meta.setAttribute("content", "width=999");
+        meta.setAttribute("content", "width=1099");
         head.appendChild(meta);
     } else {
         meta.setAttribute("name", "viewport");
-        meta.setAttribute("content", "width=1001");
+        meta.setAttribute("content", "width=1101");
         head.appendChild(meta);
     };
     
@@ -34,13 +34,13 @@
                 head.removeChild(metas[i]);
             }
         }   
-        if (width < 1000) {
+        if (width < 1100) {
             meta.setAttribute("name", "viewport");
-            meta.setAttribute("content", "width=999");
+            meta.setAttribute("content", "width=1099");
             head.appendChild(meta);
         } else {
             meta.setAttribute("name", "viewport");
-            meta.setAttribute("content", "width=1001");
+            meta.setAttribute("content", "width=1101");
             head.appendChild(meta);
         }
     };
