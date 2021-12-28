@@ -2,50 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
   <title>Muthukumaravel Portfolio</title>
   <base href="/">
   <link rel="icon" type="image/x-icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  
-  <script type="text/javascript">
-
-    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var meta = document.createElement("meta");
-    var head = document.getElementsByTagName("head")[0];
-    
-    if (width < 1100) {  
-        meta.setAttribute("name", "viewport");
-        meta.setAttribute("content", "width=1099");
-        head.appendChild(meta);
-    } else {
-        meta.setAttribute("name", "viewport");
-        meta.setAttribute("content", "width=1101");
-        head.appendChild(meta);
-    };
-    
-    window.onresize = function(event) {
-        width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        var metas = document.getElementsByTagName("meta");
-        for (var i = 0; i < metas.length; i++) {
-            if (metas[i].getAttribute("name") == "viewport") {
-                head.removeChild(metas[i]);
-            }
-        }   
-        if (width < 1100) {
-            meta.setAttribute("name", "viewport");
-            meta.setAttribute("content", "width=1099");
-            head.appendChild(meta);
-        } else {
-            meta.setAttribute("name", "viewport");
-            meta.setAttribute("content", "width=1101");
-            head.appendChild(meta);
-        }
-    };
-    </script>
-
 </head>
 <body class="mat-typography">
   <app-root></app-root>
