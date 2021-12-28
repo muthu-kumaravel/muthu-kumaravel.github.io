@@ -94,6 +94,11 @@ i {
   color: rgb(175, 171, 171);
 }
 
+.p-tech-heading-2
+{
+  color: rgb(175, 171, 171);
+}
+
 .p-edu-heading-3
 {
   color: rgb(175, 171, 171);
@@ -105,9 +110,10 @@ i {
   text-align: justify;
 }
 
-.p-edu-heading
+.p-tec-heading
 {
   color: rgb(133, 215, 225);
+  margin-bottom: 40px;
 }
 
 .full-div {
@@ -118,6 +124,30 @@ i {
   width : 100%;
   background-color : rgba(108, 34, 48);
   height : 40px;
+}
+
+.clearfix {
+  clear: left;
+}
+
+.small-box-div
+{
+  text-align: center;
+  margin-top: 20px;
+  float:left;
+  margin-left: 20px;
+  background: rgb(108, 34, 48);
+  height: 30px;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.p-box{
+  margin-left: 15px;
+  margin-right: 20px;
+  font-size: 18px;
+  line-height: 28px; 
+  color: black;
 }
 
 @media screen and (min-width: 1000px)
@@ -181,7 +211,7 @@ i {
   {
     .about-div
     {
-      height: 1850px;
+      height: 2150px;
       position: absolute;
       width: calc(40% - 50px - 50px - 25);
       right: 25px;
@@ -194,18 +224,25 @@ i {
   {
     .about-div
     {
-      height: 1720px;
+      height: 2070px;
       position: absolute;
       width: 325px;
       left: calc(75px + 50px + 60%);
       background: rgb(18, 18, 18);
     }
   }
+  @media screen and (min-width: 1649px)
+  {
+    .about-div
+    {
+      height: 1920px;
+    }
+  }
   @media screen and (min-width: 1800px)
   {
     .about-div
     {
-      height: 1520px;
+      height: 1770px;
     }
   }
 
@@ -347,6 +384,13 @@ i {
   }
 
   .p-edu-heading-2
+  {
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .p-tech-heading-2
   {
     margin-left: 15px;
     margin-top: 15px;
@@ -524,6 +568,15 @@ i {
   }
 
   .p-edu-heading-2
+  {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .p-tech-heading-2
   {
     text-align: center;
     margin-left: 20px;
