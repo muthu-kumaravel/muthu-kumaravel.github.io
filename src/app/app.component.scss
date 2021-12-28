@@ -81,7 +81,7 @@ i {
 
 .p-edu-heading
 {
-  color: rgb(135, 155, 221);
+  color: rgb(194, 62, 87);
 }
 
 .p-edu-heading-1
@@ -112,12 +112,13 @@ i {
 
 .p-tec-heading
 {
-  color: rgb(133, 215, 225);
+  color: rgb(194, 62, 87);
   margin-bottom: 40px;
 }
 
 .full-div {
   width : 100%;
+  height: fit-content;
 }
 
 .top-div {
@@ -148,6 +149,28 @@ i {
   font-size: 18px;
   line-height: 28px; 
   color: black;
+}
+  
+// SOCIAL LINKS
+.footer-div
+{
+  background: rgba(108, 34, 48);
+}
+
+.p-footer
+{
+  color: black;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.p-about-heading-footer
+{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 36px;
+  text-align: center;
+  color: rgba(108, 34, 48);;
 }
 
 @media screen and (min-width: 1000px)
@@ -218,6 +241,14 @@ i {
       left: calc(75px + 50px + 60%);
       background: rgb(18, 18, 18);
     }
+
+    .footer-div
+    {
+      position: absolute;
+      top: 2150px;
+      height: 250px;
+      width: 100%;
+    }
   }
   // BETWEEN 1200px - INFINITY
   @media screen and (min-width: 1200px)
@@ -230,6 +261,14 @@ i {
       left: calc(75px + 50px + 60%);
       background: rgb(18, 18, 18);
     }
+
+    .footer-div
+    {
+      position: absolute;
+      top: 2070px;
+      height: 250px;
+      width: 100%;
+    }
   }
   @media screen and (min-width: 1649px)
   {
@@ -237,12 +276,43 @@ i {
     {
       height: 1920px;
     }
+    
+    .footer-div
+    {
+      position: absolute;
+      top: 1920px;
+      height: 250px;
+      width: 100%;
+    }
   }
   @media screen and (min-width: 1800px)
   {
     .about-div
     {
       height: 1770px;
+    }
+    
+    .footer-div
+    {
+      top: 0px;
+      position: fixed;
+      height: 100%;
+      width: calc(40% - 450px);
+      left: calc(400px + 50px + 60%);
+      background-color: rgb(0, 0, 0);
+      z-index:-1;
+      justify-content: center;
+    }
+
+    .p-footer
+    {
+      margin-top: 100%;
+      color: rgb(175, 171, 171);
+    }
+
+    .p-about-heading-footer
+    {
+      color: rgb(0, 0, 0);
     }
   }
 
@@ -599,4 +669,40 @@ i {
     font-size: 36px;
   }
 
+  .footer-div
+  {
+    height: 250px;
+    width: 100%;
+  }
+
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.circle-link {
+  background-color: #859fa58e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 1s ease-out;
+  height: 50px;
+  width: 50px;
+  margin: 15px;
+  margin-bottom: 50px;
+  border: 0px;
+  border-radius: 50px;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.507), 0 3px 5px rgba(0, 0, 0, 0.603);
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
 }
