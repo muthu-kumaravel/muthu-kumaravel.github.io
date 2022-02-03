@@ -1,6 +1,9 @@
-<div>
-  <div class="name-header">
+<div  (window:resize)="onResize()">
+  <div class="name-header" *ngIf="innerWidth >= 700">
     <p class="heading">MUTHUKUMARAVEL</p>
+  </div>
+  <div class="name-header" *ngIf="innerWidth < 700">
+    <p class="heading">MUTHU</p>
   </div>
   <div class="nav-header">
     <div class="nav-align">
@@ -50,9 +53,11 @@
 </div>
 
 <div class="footer">
-  <div class="footer-info">
-    <p class="footer-contact">mkumaravel07@gmail.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321
-    </p>
+  <div class="footer-info" *ngIf="innerWidth >= 700">
+    <p class="footer-contact">mkumaravel07@gmail.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321</p>
+  </div>
+  <div class="footer-info" *ngIf="innerWidth < 700">
+    <p class="footer-contact">mkumaravel07@gmail.com <br>&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321</p>
   </div>
   <div class="footer-logo">
     <img src="../../assets/github.png" class="logo" alt="GitHub">

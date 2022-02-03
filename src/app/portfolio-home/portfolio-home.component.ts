@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,7 +7,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./portfolio-home.component.scss'],
   providers: [NgbCarouselConfig],
   encapsulation: ViewEncapsulation.Emulated,
-  styles:[`
+  styles: [`
     .carousel-item
     {
       display:block;
@@ -28,8 +28,16 @@ export class PortfolioHomeComponent implements OnInit {
 
   title = 'Muthukumaravel-Portfolio';
 
+  public innerWidth: any;
+
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
   }
+
+  @HostListener('window:resize', ['$event'])
+onResize() {
+  this.innerWidth = window.innerWidth;
+}
 
   images = [
     "../assets/1.jpg",
@@ -39,7 +47,7 @@ export class PortfolioHomeComponent implements OnInit {
     "../assets/5.jpg"];
 
   showMyContainer: boolean = false;
-  
+
   showNavigationArrows = false;
   showNavigationIndicators = true;
 
