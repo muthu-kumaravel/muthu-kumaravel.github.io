@@ -40,11 +40,13 @@ onResize() {
 }
 
   images = [
-    "../assets/1.jpg",
-    "../assets/2.jpg",
-    "../assets/3.jpg",
-    "../assets/4.jpg",
-    "../assets/5.jpg"];
+    "../assets/curosal_pics/1.jpg",
+    "../assets/curosal_pics/2.jpg",
+    "../assets/curosal_pics/3.jpg",
+    "../assets/curosal_pics/4.jpg",
+    "../assets/curosal_pics/5.jpg",
+    "../assets/curosal_pics/6.jpg",
+    "../assets/curosal_pics/7.jpg"];
 
   showMyContainer: boolean = false;
 
