@@ -59,6 +59,8 @@ onResize() {
   github_logo = "../../assets/GitHub-Mark-120px-plus.png";
   linkedin_logo = "../../assets/new_linedin.png";
 
+  resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing"
+
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = false;
     config.showNavigationIndicators = true;

@@ -25,21 +25,21 @@
 
 .title-header-1 {
     background-color: rgb(255, 255, 255);
-    height: 40px;
+    height: 55px;
     width: 100%;
     margin-top: 100px;
     position: absolute;
 }
 
 .curosal {
-    margin-top: 140px;
+    margin-top: 155px;
     height: 700px;
     width: 100%;
     position: absolute;
 }
 
 .footer {
-    margin-top: 840px;
+    margin-top: 855px;
     background-color: rgb(255, 255, 255);
     height: 200px;
     width: 100%;
@@ -87,7 +87,7 @@
     position: absolute;
 }
 
-.list-div{
+.list-div {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -193,17 +193,28 @@ img {
 }
 
 ::ng-deep {
-    .carousel-item
-    {
-      display:block;
-      opacity:0;
-      transition: opacity 2s;
+    .carousel-item {
+        display: block;
+        opacity: 0;
+        transition: opacity 2s;
     }
-    .carousel-item.active
-    {
-      display:block;
-      opacity:1;
-      transition: opacity 2s;
-      
+
+    .carousel-item.active {
+        display: block;
+        opacity: 1;
+        transition: opacity 2s;
+
+    }
+}
+
+// CONDITIONAL FORMATTING
+
+@media screen and (max-width: 600px) {
+    .heading {
+        margin-left: 20px;
+    }
+
+    .title {
+        margin-left: 20px;
     }
 }
