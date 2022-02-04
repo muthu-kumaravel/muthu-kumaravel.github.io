@@ -5,13 +5,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PortfolioHomeComponent } from './portfolio-home/portfolio-home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from '@angular/common/http';
-import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ResumeComponent } from './resume/resume.component';
 @NgModule({
   declarations: [
-    PortfolioHomeComponent
+    PortfolioHomeComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,5 +31,5 @@ import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 export class AppModule {
   constructor(ngbConfig: NgbConfig) {
     ngbConfig.animation = false;
-  } 
+  }
 }
