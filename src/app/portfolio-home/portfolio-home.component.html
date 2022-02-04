@@ -1,4 +1,4 @@
-<div  (window:resize)="onResize()">
+<div (window:resize)="onResize()">
   <div class="name-header" *ngIf="innerWidth >= 700">
     <p class="heading">MUTHUKUMARAVEL</p>
   </div>
@@ -7,7 +7,8 @@
   </div>
   <div class="nav-header">
     <div class="nav-align">
-      <button mat-icon-button class="example-icon" (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators"
+      <button mat-icon-button class="example-icon"
+        (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators"
         aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
@@ -54,17 +55,18 @@
 
 <div class="footer">
   <div class="footer-info" *ngIf="innerWidth >= 700">
-    <p class="footer-contact">mkumaravel07@gmail.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321</p>
+    <p class="footer-contact">mkumaravel07@gmail.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321
+    </p>
   </div>
   <div class="footer-info" *ngIf="innerWidth < 700">
     <p class="footer-contact">mkumaravel07@gmail.com <br>&nbsp;&nbsp;&nbsp; TEL: +91 - 9876 54321</p>
   </div>
   <div class="footer-logo">
-    <img src="../../assets/github.png" class="logo" alt="GitHub">
+    <a [href]="github_link"><img [src]="github_logo" class="logo" alt="GitHub"></a>
     <span class="space"></span>
-    <img src="../../assets/insta.png" class="logo" alt="GitHub">
+    <a [href]="insta_link"><img [src]="insta_logo" class="logo" alt="Instagram"></a>
     <span class="space"></span>
-    <img src="../../assets/linkedin.png" class="logo" alt="GitHub">
+    <a [href]="in_link"><img [src]="linkedin_logo" class="logo" alt="LinkedIn"></a>
   </div>
   <div class="footer-copy">
     <p class="footer-copy-content">© 2022 By Muthukumaravel Muthuraman</p>
@@ -75,23 +77,40 @@
 
 <div class="side-nav-menu" *ngIf="showMyContainer">
   <div class="close-nav-menu">
-    <button type="button" class="close" (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators" aria-label="Close">
+    <button type="button" class="close"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators"
+      aria-label="Close">
       <span aria-hidden="true" class="x-close">×</span>
     </button>
   </div>
   <div class="list-div div-home">
-    <span class="list-content">HOME</span>
+    <button class="btn bg-transparent"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+      <span class="list-content">HOME</span>
+    </button>
   </div>
   <div class="list-div div-resume">
-    <span class="list-content">RESUME</span>
+    <button class="btn bg-transparent"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+      <span class="list-content">RESUME</span>
+    </button>
   </div>
   <div class="list-div div-photo">
-    <span class="list-content">PHOTOGRAPHY</span>
+    <button class="btn bg-transparent"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+      <span class="list-content">PHOTOGRAPHY</span>
+    </button>
   </div>
   <div class="list-div div-about">
-    <span class="list-content">ABOUT</span>
+    <button class="btn bg-transparent"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+      <span class="list-content">ABOUT</span>
+    </button>
   </div>
   <div class="list-div div-contact">
-    <span class="list-content">CONTACT</span>
+    <button class="btn bg-transparent"
+      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+      <span class="list-content">CONTACT</span>
+    </button>
   </div>
 </div>

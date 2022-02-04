@@ -51,6 +51,14 @@ onResize() {
   showNavigationArrows = false;
   showNavigationIndicators = true;
 
+  insta_link = "https://www.instagram.com/muthu_kumaravel/";
+  in_link = "https://www.linkedin.com/in/muthukumaravel/";
+  github_link = "https://github.com/muthu-kumaravel";
+
+  insta_logo = "../../assets/insta.png";
+  github_logo = "../../assets/GitHub-Mark-120px-plus.png";
+  linkedin_logo = "../../assets/new_linedin.png";
+
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = false;
     config.showNavigationIndicators = true;
