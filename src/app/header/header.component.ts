@@ -1,35 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { GlobalConstants } from '../common/global-constants';
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 @Component({
-  selector: 'app-navigation-page',
-  templateUrl: './navigation-page.component.html',
-  styleUrls: ['./navigation-page.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class NavigationPageComponent implements OnInit {
-  
+export class HeaderComponent implements OnInit {
+
   // Variable declaration
-  public showMyContainer: any;
+  public innerWidth: any;
   public showNavigationIndicators: any;
-  resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing";
+  public showMyContainer: any;
 
   // Constructor
   constructor(private global: GlobalConstants) { }
 
+  // Listeners for resize
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+  }
+
   // Continuous updation fucntions & general init
   ngOnInit(): void {
-
-    this.global.getShowMyContainer().subscribe((value) => {
-      this.showMyContainer = value;
-    });
+    this.innerWidth = window.innerWidth;
 
     this.global.getShowNavigationIndicators().subscribe((value) => {
       this.showNavigationIndicators = value;
+    });
+
+    this.global.getShowMyContainer().subscribe((value) => {
+      this.showMyContainer = value;
     });
 
   }

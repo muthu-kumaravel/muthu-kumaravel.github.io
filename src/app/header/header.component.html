@@ -1,0 +1,19 @@
+<div (window:resize)="onResize()">
+    <div class="name-header" *ngIf="innerWidth >= 700">
+        <p class="heading">MUTHUKUMARAVEL</p>
+    </div>
+    <div class="name-header" *ngIf="innerWidth < 700">
+        <p class="heading">MUTHU</p>
+    </div>
+    <div class="nav-header">
+        <div class="nav-align">
+            <button mat-icon-button class="example-icon" (click)="updateFunc()"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="title-header-1">
+        <p class="title">AI / DL ENTHUSIAST & PHOTOGRAPHER</p>
+    </div>
+</div>

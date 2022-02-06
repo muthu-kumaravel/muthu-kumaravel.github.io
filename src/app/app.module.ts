@@ -13,13 +13,15 @@ import { ResumeComponent } from './resume/resume.component';
 import { CurosalComponent } from './curosal/curosal.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavigationPageComponent } from './navigation-page/navigation-page.component';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     PortfolioHomeComponent,
     ResumeComponent,
     CurosalComponent,
     FooterComponent,
-    NavigationPageComponent
+    NavigationPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
