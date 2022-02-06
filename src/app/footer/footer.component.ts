@@ -47,4 +47,17 @@ export class FooterComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  // Go to link
+  goToLink(url: any) {
+    if (url == 0) {
+      window.open(this.github_link, "_blank");
+    }
+    else if (url == 1) {
+      window.open(this.insta_link, "_blank");
+    }
+    else {
+      window.open(this.in_link, "_blank");
+    }
+  }
+
 }
