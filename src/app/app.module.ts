@@ -14,6 +14,9 @@ import { CurosalComponent } from './curosal/curosal.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavigationPageComponent } from './navigation-page/navigation-page.component';
 import { HeaderComponent } from './header/header.component';
+import { PhotographyComponent } from './photography/photography.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     PortfolioHomeComponent,
@@ -21,7 +24,10 @@ import { HeaderComponent } from './header/header.component';
     CurosalComponent,
     FooterComponent,
     NavigationPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    PhotographyComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 })
 
 @Component({
-  selector: 'app-resume',
-  templateUrl: './resume.component.html',
-  styleUrls: ['./resume.component.scss']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss']
 })
-export class ResumeComponent implements OnInit {
+export class ContactComponent implements OnInit {
 
   constructor() { }
 
