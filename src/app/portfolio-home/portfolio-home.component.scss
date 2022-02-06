@@ -31,35 +31,6 @@
     position: absolute;
 }
 
-.footer {
-    margin-top: 855px;
-    background-color: rgb(255, 255, 255);
-    height: 200px;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
-
-.footer-info {
-    margin-top: 50px;
-    position: absolute;
-}
-
-.footer-logo {
-    margin-top: 100px;
-    position: absolute;
-}
-
-.space {
-    margin-left: 20px;
-}
-
-.footer-copy {
-    margin-top: 150px;
-    position: absolute;
-}
-
 .side-nav-menu {
     width: 100%;
     height: 1040px;
@@ -131,18 +102,6 @@
     // margin-bottom: 75px;
 }
 
-.footer-contact {
-    color: rgba(0, 0, 0);
-    font-size: 16px;
-    font-family: 'Trebuchet MS';
-}
-
-.footer-copy-content {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    font-family: 'Trebuchet MS';
-}
-
 .x-close {
     color: black;
     font-size: 25px;
@@ -165,12 +124,6 @@ mat-icon {
     color: black;
     position: absolute;
     // transform: scale(2);
-}
-
-.logo {
-    width: 21px;
-    height: 21px;
-    opacity: 1.0;
 }
 
 .close {

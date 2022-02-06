@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { GlobalConstants } from '../common/global-constants'
+import { GlobalConstants } from '../common/global-constants';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -50,7 +50,7 @@ export class CurosalComponent implements OnInit {
     "qutub sahi tombs",
     "landscape",
     "church"
-  ]
+  ];
   public showNavigationIndicators: any;
 
   // Constructor

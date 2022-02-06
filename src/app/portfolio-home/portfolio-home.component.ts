@@ -1,23 +1,18 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { GlobalConstants } from '../common/global-constants'
-import { CurosalComponent } from '../curosal/curosal.component'
+import { GlobalConstants } from '../common/global-constants';
+import { CurosalComponent } from '../curosal/curosal.component';
 @Component({
   selector: 'app-portfolio-home',
   templateUrl: './portfolio-home.component.html',
   styleUrls: ['./portfolio-home.component.scss']
 })
+
 export class PortfolioHomeComponent implements OnInit {
 
   // Page Title
   title = 'Muthukumaravel-Portfolio';
 
   // Variable declaration
-  insta_link = "https://www.instagram.com/muthu_kumaravel/";
-  in_link = "https://www.linkedin.com/in/muthukumaravel/";
-  github_link = "https://github.com/muthu-kumaravel";
-  insta_logo = "../../assets/insta.png";
-  github_logo = "../../assets/GitHub-Mark-120px-plus.png";
-  linkedin_logo = "../../assets/new_linedin.png";
   resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing"
   public innerWidth: any;
   public showNavigationIndicators: any;

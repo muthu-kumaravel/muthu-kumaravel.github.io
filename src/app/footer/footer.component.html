@@ -1,0 +1,16 @@
+<div class="footer" [ngStyle]="{'margin-top': margin_top}">
+    <div class="footer-info">
+        <p class="footer-contact">{{mail_id}}&nbsp;&nbsp;&nbsp;&nbsp;<br
+                *ngIf="innerWidth < width_threshold">&nbsp;&nbsp;&nbsp;{{phone_no}}</p>
+    </div>
+    <div class="footer-logo">
+        <a [href]="github_link"><img [src]="github_logo" class="logo" alt="GitHub"></a>
+        <span class="space"></span>
+        <a [href]="insta_link"><img [src]="insta_logo" class="logo" alt="Instagram"></a>
+        <span class="space"></span>
+        <a [href]="in_link"><img [src]="linkedin_logo" class="logo" alt="LinkedIn"></a>
+    </div>
+    <div class="footer-copy">
+        <p class="footer-copy-content">{{copyright_info}}</p>
+    </div>
+</div>

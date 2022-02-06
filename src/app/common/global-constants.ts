@@ -17,6 +17,8 @@ export class GlobalConstants {
         this.showMyContainer = new BehaviorSubject<boolean>(false);
     }
 
+    // Getter & Setter Methods
+
     // showNavigationIndicators
     getShowNavigationIndicators(): Observable<boolean> {
         return this.showNavigationIndicators.asObservable();
