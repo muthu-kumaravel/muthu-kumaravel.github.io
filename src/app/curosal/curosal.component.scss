@@ -10,3 +10,18 @@ img {
     height: 700px;
     object-fit: cover;
 }
+
+::ng-deep {
+    .carousel-item {
+        display: block;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .carousel-item.active {
+        display: block;
+        opacity: 1;
+        transition: opacity 2s;
+
+    }
+}

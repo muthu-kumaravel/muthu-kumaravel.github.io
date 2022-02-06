@@ -12,12 +12,14 @@ import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ResumeComponent } from './resume/resume.component';
 import { CurosalComponent } from './curosal/curosal.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavigationPageComponent } from './navigation-page/navigation-page.component';
 @NgModule({
   declarations: [
     PortfolioHomeComponent,
     ResumeComponent,
     CurosalComponent,
-    FooterComponent
+    FooterComponent,
+    NavigationPageComponent
   ],
   imports: [
     BrowserModule,

@@ -24,35 +24,5 @@
 <!-- Footer selector -->
 <app-footer></app-footer>
 
-<div class="side-nav-menu" *ngIf="showMyContainer">
-  <div class="close-nav-menu">
-    <button type="button" class="close" (click)="updateFunc()" aria-label="Close">
-      <span aria-hidden="true" class="x-close">×</span>
-    </button>
-  </div>
-  <div class="list-div div-home">
-    <button class="btn bg-transparent" (click)="updateFunc()">
-      <span class="list-content">HOME</span>
-    </button>
-  </div>
-  <div class="list-div div-resume">
-    <button class="btn bg-transparent" (click)="updateFunc()">
-      <a [href]="resume"><span class="list-content">RESUME</span></a>
-    </button>
-  </div>
-  <div class="list-div div-photo">
-    <button class="btn bg-transparent" (click)="updateFunc()">
-      <span class="list-content">PHOTOGRAPHY</span>
-    </button>
-  </div>
-  <div class="list-div div-about">
-    <button class="btn bg-transparent" (click)="updateFunc()">
-      <span class="list-content">ABOUT</span>
-    </button>
-  </div>
-  <div class="list-div div-contact">
-    <button class="btn bg-transparent" (click)="updateFunc()">
-      <span class="list-content">CONTACT</span>
-    </button>
-  </div>
-</div>
+<!-- Navigation Section selector (Section with all menu) -->
+<app-navigation-page></app-navigation-page>

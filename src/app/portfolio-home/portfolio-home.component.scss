@@ -31,55 +31,6 @@
     position: absolute;
 }
 
-.side-nav-menu {
-    width: 100%;
-    height: 1040px;
-    background-color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    position: sticky;
-    backdrop-filter: blur(10px);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
-
-.close-nav-menu {
-    width: 100%;
-    height: 100px;
-    // display: flex;
-    justify-content: right;
-    position: absolute;
-}
-
-.list-div {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    height: 150px;
-    // background-color: black;
-}
-
-.div-home {
-    margin-top: 150px;
-}
-
-.div-resume {
-    margin-top: 300px;
-}
-
-.div-photo {
-    margin-top: 450px;
-}
-
-.div-about {
-    margin-top: 600px;
-}
-
-.div-contact {
-    margin-top: 750px;
-}
-
 // TEXT
 
 .heading {
@@ -102,20 +53,6 @@
     // margin-bottom: 75px;
 }
 
-.x-close {
-    color: black;
-    font-size: 25px;
-    font-family: 'Trebuchet MS';
-}
-
-.list-content {
-    margin-top: 50px;
-    color: black;
-    font-size: 40px;
-    letter-spacing: 0.2em;
-    font-family: 'Trebuchet MS';
-}
-
 // OTHERS
 
 mat-icon {
@@ -124,27 +61,6 @@ mat-icon {
     color: black;
     position: absolute;
     // transform: scale(2);
-}
-
-.close {
-    margin-top: 50px;
-    margin-right: 66px;
-    transform: scale(3);
-}
-
-::ng-deep {
-    .carousel-item {
-        display: block;
-        opacity: 0;
-        transition: opacity 2s;
-    }
-
-    .carousel-item.active {
-        display: block;
-        opacity: 1;
-        transition: opacity 2s;
-
-    }
 }
 
 // CONDITIONAL FORMATTING

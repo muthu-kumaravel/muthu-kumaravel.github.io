@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { GlobalConstants } from '../common/global-constants';
-import { CurosalComponent } from '../curosal/curosal.component';
 @Component({
   selector: 'app-portfolio-home',
   templateUrl: './portfolio-home.component.html',
@@ -13,13 +12,12 @@ export class PortfolioHomeComponent implements OnInit {
   title = 'Muthukumaravel-Portfolio';
 
   // Variable declaration
-  resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing"
   public innerWidth: any;
   public showNavigationIndicators: any;
   public showMyContainer: any;
 
   // Constructor
-  constructor(private obj: CurosalComponent, private global: GlobalConstants) { }
+  constructor(private global: GlobalConstants) { }
 
   // Listeners for resize
   @HostListener('window:resize', ['$event'])

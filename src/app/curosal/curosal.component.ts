@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalConstants } from '../common/global-constants';
 import { Injectable } from '@angular/core';
