@@ -1,0 +1,24 @@
+<div class="curosal">
+  <ngb-carousel *ngIf="images" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template *ngFor="let image of images" ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="image" [alt]="alt[0]">
+      </div>
+
+      <!-- add the below div here if required -->
+
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+<!-- 
+<div class="carousel-caption">
+  <h3>
+    Second slide label
+  </h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </p>
+</div>
+ -->
