@@ -1,72 +1,57 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, OnInit, HostListener } from '@angular/core';
+import { GlobalConstants } from '../common/global-constants'
+import { CurosalComponent } from '../curosal/curosal.component'
 @Component({
   selector: 'app-portfolio-home',
   templateUrl: './portfolio-home.component.html',
-  styleUrls: ['./portfolio-home.component.scss'],
-  providers: [NgbCarouselConfig],
-  encapsulation: ViewEncapsulation.Emulated,
-  styles: [`
-    .carousel-item
-    {
-      display:block;
-      opacity:0;
-      transition: opacity 2s;
-    }
-    .carousel-item.active
-    {
-      display:block;
-      opacity:1;
-      transition: opacity 2s;
-      
-    }
-  `]
-
+  styleUrls: ['./portfolio-home.component.scss']
 })
 export class PortfolioHomeComponent implements OnInit {
 
+  // Page Title
   title = 'Muthukumaravel-Portfolio';
 
-  public innerWidth: any;
-
-  ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
-  }
-
-  @HostListener('window:resize', ['$event'])
-onResize() {
-  this.innerWidth = window.innerWidth;
-}
-
-  images = [
-    "../assets/curosal_pics/1.jpg",
-    "../assets/curosal_pics/2.jpg",
-    "../assets/curosal_pics/3.jpg",
-    "../assets/curosal_pics/4.jpg",
-    "../assets/curosal_pics/5.jpg",
-    "../assets/curosal_pics/6.jpg",
-    "../assets/curosal_pics/7.jpg"];
-
-  showMyContainer: boolean = false;
-
-  showNavigationArrows = false;
-  showNavigationIndicators = true;
-
+  // Variable declaration
   insta_link = "https://www.instagram.com/muthu_kumaravel/";
   in_link = "https://www.linkedin.com/in/muthukumaravel/";
   github_link = "https://github.com/muthu-kumaravel";
-
   insta_logo = "../../assets/insta.png";
   github_logo = "../../assets/GitHub-Mark-120px-plus.png";
   linkedin_logo = "../../assets/new_linedin.png";
-
   resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing"
+  public innerWidth: any;
+  public showNavigationIndicators: any;
+  public showMyContainer: any;
 
-  constructor(config: NgbCarouselConfig) {
-    config.showNavigationArrows = false;
-    config.showNavigationIndicators = true;
-    config.interval = 5000;
+  // Constructor
+  constructor(private obj: CurosalComponent, private global: GlobalConstants) { }
+
+  // Listeners for resize
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+  }
+
+  // Continuous updation fucntions & general init
+  ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+
+    this.global.getShowNavigationIndicators().subscribe((value) => {
+      this.showNavigationIndicators = value;
+    });
+
+    this.global.getShowMyContainer().subscribe((value) => {
+      this.showMyContainer = value;
+    });
+
+  }
+
+  // General Update functions
+  updateFunc(): void {
+    this.showMyContainer = !this.showMyContainer;
+    this.showNavigationIndicators = !this.showNavigationIndicators;
+    this.global.setShowNavigationIndicators(this.showNavigationIndicators);
+    this.global.setShowMyContainer(this.showMyContainer);
   }
 
 }

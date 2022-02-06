@@ -7,8 +7,7 @@
   </div>
   <div class="nav-header">
     <div class="nav-align">
-      <button mat-icon-button class="example-icon"
-        (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators"
+      <button mat-icon-button class="example-icon" (click)="updateFunc()"
         aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
@@ -19,49 +18,8 @@
   </div>
 </div>
 
-<div class="curosal">
-  <ngb-carousel *ngIf="images" [showNavigationIndicators]="showNavigationIndicators">
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[0]" alt="Bird">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[1]" alt="Tiger">
-      </div>
-      <!-- <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div> -->
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[2]" alt="Fire">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[3]" alt="Niagara Falls">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[4]" alt="Qutub shai tombs">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[5]" alt="Landscape">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img [src]="images[6]" alt="Chruch">
-      </div>
-    </ng-template>
-  </ngb-carousel>
-</div>
+<!-- Curosal selector -->
+<app-curosal></app-curosal>
 
 <div class="footer">
   <div class="footer-info" *ngIf="innerWidth >= 700">
@@ -82,44 +40,35 @@
     <p class="footer-copy-content">© 2022 By Muthukumaravel Muthuraman</p>
   </div>
 </div>
-<!-- 
-<button (click)="showMyContainer=!showMyContainer">Show/Hide</button> -->
 
 <div class="side-nav-menu" *ngIf="showMyContainer">
   <div class="close-nav-menu">
-    <button type="button" class="close"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators"
-      aria-label="Close">
+    <button type="button" class="close" (click)="updateFunc()" aria-label="Close">
       <span aria-hidden="true" class="x-close">×</span>
     </button>
   </div>
   <div class="list-div div-home">
-    <button class="btn bg-transparent"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+    <button class="btn bg-transparent" (click)="updateFunc()">
       <span class="list-content">HOME</span>
     </button>
   </div>
   <div class="list-div div-resume">
-    <button class="btn bg-transparent"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+    <button class="btn bg-transparent" (click)="updateFunc()">
       <a [href]="resume"><span class="list-content">RESUME</span></a>
     </button>
   </div>
   <div class="list-div div-photo">
-    <button class="btn bg-transparent"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+    <button class="btn bg-transparent" (click)="updateFunc()">
       <span class="list-content">PHOTOGRAPHY</span>
     </button>
   </div>
   <div class="list-div div-about">
-    <button class="btn bg-transparent"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+    <button class="btn bg-transparent" (click)="updateFunc()">
       <span class="list-content">ABOUT</span>
     </button>
   </div>
   <div class="list-div div-contact">
-    <button class="btn bg-transparent"
-      (click)="showMyContainer=!showMyContainer; showNavigationIndicators = !showNavigationIndicators">
+    <button class="btn bg-transparent" (click)="updateFunc()">
       <span class="list-content">CONTACT</span>
     </button>
   </div>

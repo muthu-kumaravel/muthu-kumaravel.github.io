@@ -10,10 +10,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ResumeComponent } from './resume/resume.component';
+import { CurosalComponent } from './curosal/curosal.component';
 @NgModule({
   declarations: [
     PortfolioHomeComponent,
-    ResumeComponent
+    ResumeComponent,
+    CurosalComponent
   ],
   imports: [
     BrowserModule,
