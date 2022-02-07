@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,19 @@ import { Injectable } from '@angular/core';
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.scss']
 })
-export class ResumeComponent implements OnInit {
+export class ResumeComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private global: GlobalConstants) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.setHeight(this.targetHeight.nativeElement.offsetHeight);
   }
+
+  setHeight(value: number){
+    console.log(value)
+    this.global.setResumeHeight(value);
+  }
+
+  @ViewChild('targetHeight') targetHeight: any;
 
 }

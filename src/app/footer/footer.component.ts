@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { GlobalConstants } from '../common/global-constants';
 
@@ -11,7 +11,7 @@ import { GlobalConstants } from '../common/global-constants';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements AfterViewInit {
 
   // Variable declaration
   public innerWidth: any;
@@ -26,18 +26,22 @@ export class FooterComponent implements OnInit {
   github_logo = "../../assets/GitHub-Mark-120px-plus.png";
   linkedin_logo = "../../assets/new_linedin.png";
   public margin_top: any;
-  public mainContentHeight: any;
+  public homeHeight: any;
   // Constructor
-  constructor(private global: GlobalConstants) { }
+  constructor(private global: GlobalConstants) {
+    this.innerWidth = window.innerWidth;
+    this.margin_top = "855px";
+   }
 
   // Continuous updation fucntions & general init
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.innerWidth = window.innerWidth;
 
-    this.global.getMainContentHeight().subscribe((value) => {
-      this.mainContentHeight = value;
+    this.global.getActualHeight().subscribe((value) => {
+      this.homeHeight = value;
       var tempMarginHeight = value + this.global.headerHeight;
       this.margin_top = tempMarginHeight.toString() + "px";
+      console.log(this.margin_top)
     });
   }
 

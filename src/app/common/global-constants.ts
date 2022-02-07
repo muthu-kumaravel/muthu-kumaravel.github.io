@@ -10,8 +10,15 @@ export class GlobalConstants {
     // Variable declaration
     private showNavigationIndicators: BehaviorSubject<boolean>;
     private showMyContainer: BehaviorSubject<boolean>;
-    private mainContentHeight: BehaviorSubject<any>;
+    
+    // Footer height adjustment
     public headerHeight: any = 155;
+    private homeHeight: BehaviorSubject<any>;
+    private resumeHeight: BehaviorSubject<any>;
+    private photographyHeight: BehaviorSubject<any>;
+    private aboutHeight: BehaviorSubject<any>;
+    private contactHeight: BehaviorSubject<any>;
+    private actualHeight: BehaviorSubject<any>;
 
     // Navigation Boolean
     private home: BehaviorSubject<boolean>;
@@ -31,7 +38,12 @@ export class GlobalConstants {
         this.about = new BehaviorSubject<boolean>(false);
         this.contact = new BehaviorSubject<boolean>(false);
         
-        this.mainContentHeight = new BehaviorSubject<any>(700);
+        this.homeHeight = new BehaviorSubject<any>(700);
+        this.resumeHeight = new BehaviorSubject<any>(700);
+        this.photographyHeight = new BehaviorSubject<any>(600);
+        this.aboutHeight = new BehaviorSubject<any>(400);
+        this.contactHeight = new BehaviorSubject<any>(500);
+        this.actualHeight = new BehaviorSubject<any>(855);
     }
 
     // Getter & Setter Methods
@@ -92,12 +104,52 @@ export class GlobalConstants {
         this.contact.next(newValue);
     }
 
-    // mainContentHeight
-    getMainContentHeight(): Observable<any> {
-        return this.mainContentHeight.asObservable();
+    // homeHeight
+    getHomeHeight(): Observable<any> {
+        return this.homeHeight.asObservable();
     }
-    setMainContentHeight(newValue: any): void {
-        this.mainContentHeight.next(newValue);
+    setHomeHeight(newValue: any): void {
+        this.homeHeight.next(newValue);
+    }
+
+    // resumeHeight
+    getResumeHeight(): Observable<any> {
+        return this.resumeHeight.asObservable();
+    }
+    setResumeHeight(newValue: any): void {
+        this.resumeHeight.next(newValue);
+    }
+
+    // photographyHeight
+    getPhotographyHeight(): Observable<any> {
+        return this.photographyHeight.asObservable();
+    }
+    setPhotographyHeight(newValue: any): void {
+        this.photographyHeight.next(newValue);
+    }
+
+    // aboutHeight
+    getAboutHeight(): Observable<any> {
+        return this.aboutHeight.asObservable();
+    }
+    setAboutHeight(newValue: any): void {
+        this.aboutHeight.next(newValue);
+    }
+
+    // contactHeight
+    getContactHeight(): Observable<any> {
+        return this.contactHeight.asObservable();
+    }
+    setContactHeight(newValue: any): void {
+        this.contactHeight.next(newValue);
+    }
+
+    // actualHeight
+    getActualHeight(): Observable<any> {
+        return this.actualHeight.asObservable();
+    }
+    setActualHeight(newValue: any): void {
+        this.actualHeight.next(newValue);
     }
 
 
