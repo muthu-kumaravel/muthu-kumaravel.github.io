@@ -10,6 +10,8 @@ export class GlobalConstants {
     // Variable declaration
     private showNavigationIndicators: BehaviorSubject<boolean>;
     private showMyContainer: BehaviorSubject<boolean>;
+    private mainContentHeight: BehaviorSubject<any>;
+    public headerHeight: any = 155;
 
     // Navigation Boolean
     private home: BehaviorSubject<boolean>;
@@ -28,6 +30,8 @@ export class GlobalConstants {
         this.photography = new BehaviorSubject<boolean>(false);
         this.about = new BehaviorSubject<boolean>(false);
         this.contact = new BehaviorSubject<boolean>(false);
+        
+        this.mainContentHeight = new BehaviorSubject<any>(700);
     }
 
     // Getter & Setter Methods
@@ -86,6 +90,14 @@ export class GlobalConstants {
     }
     setContact(newValue: boolean): void {
         this.contact.next(newValue);
+    }
+
+    // mainContentHeight
+    getMainContentHeight(): Observable<any> {
+        return this.mainContentHeight.asObservable();
+    }
+    setMainContentHeight(newValue: any): void {
+        this.mainContentHeight.next(newValue);
     }
 
 

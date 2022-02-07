@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -24,21 +25,20 @@ export class FooterComponent implements OnInit {
   insta_logo = "../../assets/insta.png";
   github_logo = "../../assets/GitHub-Mark-120px-plus.png";
   linkedin_logo = "../../assets/new_linedin.png";
-  public margin_top: any
-
+  public margin_top: any;
+  public mainContentHeight: any;
   // Constructor
-  constructor() {
-    this.footerPositionAdjustment()
-  }
+  constructor(private global: GlobalConstants) { }
 
   // Continuous updation fucntions & general init
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
-  }
 
-  // Function to adjust footer position depending in selected page
-  footerPositionAdjustment() {
-    this.margin_top = "855px";
+    this.global.getMainContentHeight().subscribe((value) => {
+      this.mainContentHeight = value;
+      var tempMarginHeight = value + this.global.headerHeight;
+      this.margin_top = tempMarginHeight.toString() + "px";
+    });
   }
 
   // Listeners for resize
