@@ -1,3 +1,33 @@
-<div #targetHeight class="template">
-    <p class="heading">Rediredting to Google Drive Resume<br>Resume Page Under Construction</p>
+<div #targetHeight class="template" [ngStyle]="{'height': divHeight + 'px'}">
+    <div class="line" [ngStyle]="{'height': line_height + 'px'}">
+
+        <div class="circle" [ngStyle]="{'margin-top': circle1 + 'px'}"></div>
+        <div #exp1 class="rightContent" [ngStyle]="{'margin-top': exp1_starting + 'px'}">
+            <p class="title">MACHINE LEARNING ENGINEER</p>
+            <p class="company">Quantiphi, 2021 May - Present</p>
+            <p class="content">As a part of Q’s NVIDIA Alliance, I work closely with clients on cutting edge latest tech
+                related to VSaaS using NVIDIA hardware and frameworks. The major focus is to research, innovate,
+                develop, optimize and make it the best.</p>
+        </div>
+
+        <div class="circle" [ngStyle]="{'margin-top': circle2 + 'px'}"></div>
+        <div #exp2 class="leftContent" [ngStyle]="{'margin-top': exp2_starting + 'px'}">
+            <p class="title">SOFTWARE ENGINEER (CV / DL)</p>
+            <p class="company">MulticoreWare, June 2019 - May 2021</p>
+            <p class="content">Computer Vision / Cloud (AWS) / Deep Learning. A leading provider of high-performance
+                video, vision & machine learning libraries, advanced compilers and parallel computing tools. I am
+                working as a Cloud, Computer Vision and Deep Learning Software Engineer, with multiple products and
+                open-source coding and deployment experiences.</p>
+        </div>
+
+        <div class="circle" [ngStyle]="{'margin-top': circle3 + 'px'}"></div>
+        <div #exp3 class="rightContent" [ngStyle]="{'margin-top': exp3_starting + 'px'}">
+            <p class="title">SOFTWARE DEVELOPMENT INTERN</p>
+            <p class="company">ValueLabs, Jan 2019 - Apr 2019</p>
+            <p class="content">Worked as a Full Stack Development Intern on an internal product by creating a fully
+                functional and reactive web app for project task management and issue tracking similar to Jira.</p>
+        </div>
+
+    </div>
+    <!-- <p class="heading">Rediredting to Google Drive Resume<br>Resume Page Under Construction</p> -->
 </div>

@@ -1,6 +1,6 @@
 .template {
     margin-top: 155px;
-    background-color: black;
+    background-color: rgb(211, 211, 211);
     height: 650px;
     width: 100%;
     position: absolute;
@@ -8,11 +8,56 @@
     justify-content: center;
 }
 
-.heading {
-    margin-top: 200px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
+.line {
+    margin-top: 20px;
+    background-color: rgb(65, 65, 65);
+    width: 4px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.circle {
+    margin-left: -8px;
+    background-color: rgb(65, 65, 65);
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.rightContent {
+    margin-left: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 350px;
+    position: absolute;
+}
+
+.leftContent {
+    margin-left: -378px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 350px;
+    position: absolute;
+    text-align: right;
+}
+
+.title {
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0.2em;
     font-family: 'Trebuchet MS';
-    line-height: 60px;
+    font-weight: bold;
+}
+
+.company {
+    line-height: 14px;
+    color: black;
+    font-size: 14px;
+    font-family: 'Trebuchet MS';
+}
+
+.content {
+    line-height: 20px;
+    color: black;
+    font-size: 12px;
+    font-family: 'Trebuchet MS';
 }
