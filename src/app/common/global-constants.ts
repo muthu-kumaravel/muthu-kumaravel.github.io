@@ -39,7 +39,7 @@ export class GlobalConstants {
         this.contact = new BehaviorSubject<boolean>(false);
         
         this.homeHeight = new BehaviorSubject<any>(700);
-        this.resumeHeight = new BehaviorSubject<any>(700);
+        this.resumeHeight = new BehaviorSubject<any>(705);
         this.photographyHeight = new BehaviorSubject<any>(600);
         this.aboutHeight = new BehaviorSubject<any>(400);
         this.contactHeight = new BehaviorSubject<any>(500);

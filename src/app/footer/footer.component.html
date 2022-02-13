@@ -1,7 +1,7 @@
 <div class="footer" [ngStyle]="{'margin-top': margin_top}">
     <div class="footer-info">
-        <p class="footer-contact">{{mail_id}}&nbsp;&nbsp;&nbsp;&nbsp;<br
-                *ngIf="innerWidth < width_threshold">&nbsp;&nbsp;&nbsp;{{phone_no}}</p>
+        <p class="footer-contact">{{mail_id}}</p>
+        <!-- &nbsp;&nbsp;&nbsp;&nbsp;<br *ngIf="innerWidth < width_threshold">&nbsp;&nbsp;&nbsp;{{phone_no}}</p> -->
     </div>
     <div class="footer-logo">
         <a (click)="goToLink(0)"><img [src]="github_logo" class="logo" alt="GitHub"></a>

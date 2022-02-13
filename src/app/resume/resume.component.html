@@ -1,8 +1,18 @@
-<div #targetHeight class="template" [ngStyle]="{'height': divHeight + 'px'}">
-    <div class="line" [ngStyle]="{'height': line_height + 'px'}">
+<div #targetHeight class="template" [ngStyle]="{'height': resume_section_height + 'px'}" (window:resize)="onResize()"
+    [style.justify-content]="innerWidth <= threshold_mobile ? 'left' : 'center'">
+    <div class="temp_div">
+        <p class="company" [ngStyle]="{'font-weight': 'bold'}">Page Under Construction,<button
+                class="btn bg-transparent"><a (click)="goToLink('resume_link')">
+                    <spam class="company link" [ngStyle]="{'color': 'rgb(0, 31, 168)'}">VIEW DETAILED RESUME</spam>
+                </a></button></p>
+    </div>
+    <div class="line" [ngStyle]="{'height': line_height + 'px'}"
+        [style.margin-left]="innerWidth <= threshold_mobile ? '30px' : ''">
 
         <div class="circle" [ngStyle]="{'margin-top': circle1 + 'px'}"></div>
-        <div #exp1 class="rightContent" [ngStyle]="{'margin-top': exp1_starting + 'px'}">
+        <div #exp1 class="rightContent" [ngStyle]="{'margin-top': exp1_starting + 'px'}"
+            [style.width]="innerWidth <= threshold_mobile ? '285px' : innerWidth >= 765 ? '350px' : '200px'">
+            <p class="title">2021 - Present</p>
             <p class="title">MACHINE LEARNING ENGINEER</p>
             <p class="company">Quantiphi, 2021 May - Present</p>
             <p class="content">As a part of Q’s NVIDIA Alliance, I work closely with clients on cutting edge latest tech
@@ -11,7 +21,12 @@
         </div>
 
         <div class="circle" [ngStyle]="{'margin-top': circle2 + 'px'}"></div>
-        <div #exp2 class="leftContent" [ngStyle]="{'margin-top': exp2_starting + 'px'}">
+        <div #exp2 class="leftContent" [ngStyle]="{'margin-top': exp2_starting + 'px'}"
+            [style.width]="innerWidth <= threshold_mobile ? '285px' : innerWidth >= 765 ? '350px' : '200px'"
+            [style.margin-left]="innerWidth >= 765 ? '-378px' : '-228px'"
+            [style.margin-left]="innerWidth <= threshold_mobile ? '30px' : innerWidth >= 765 ? '-378px' : '-228px'"
+            [style.text-align]="innerWidth <= threshold_mobile ? 'left' : 'right'">
+            <p class="title">2019 - 2021</p>
             <p class="title">SOFTWARE ENGINEER (CV / DL)</p>
             <p class="company">MulticoreWare, June 2019 - May 2021</p>
             <p class="content">Computer Vision / Cloud (AWS) / Deep Learning. A leading provider of high-performance
@@ -21,7 +36,9 @@
         </div>
 
         <div class="circle" [ngStyle]="{'margin-top': circle3 + 'px'}"></div>
-        <div #exp3 class="rightContent" [ngStyle]="{'margin-top': exp3_starting + 'px'}">
+        <div #exp3 class="rightContent" [ngStyle]="{'margin-top': exp3_starting + 'px'}"
+            [style.width]="innerWidth <= threshold_mobile ? '285px' : innerWidth >= 765 ? '350px' : '200px'">
+            <p class="title">2019</p>
             <p class="title">SOFTWARE DEVELOPMENT INTERN</p>
             <p class="company">ValueLabs, Jan 2019 - Apr 2019</p>
             <p class="content">Worked as a Full Stack Development Intern on an internal product by creating a fully

@@ -1,4 +1,5 @@
 .template {
+    height: 704px;
     margin-top: 155px;
     background-color: rgb(211, 211, 211);
     height: 650px;
@@ -9,7 +10,7 @@
 }
 
 .line {
-    margin-top: 20px;
+    margin-top: 60px;
     background-color: rgb(65, 65, 65);
     width: 4px;
     position: absolute;
@@ -28,14 +29,14 @@
 .rightContent {
     margin-left: 30px;
     background-color: rgba(255, 255, 255, 0);
-    width: 350px;
+    // width: 350px;
     position: absolute;
 }
 
 .leftContent {
     margin-left: -378px;
     background-color: rgba(255, 255, 255, 0);
-    width: 350px;
+    // width: 350px;
     position: absolute;
     text-align: right;
 }
@@ -60,4 +61,17 @@
     color: black;
     font-size: 12px;
     font-family: 'Trebuchet MS';
+}
+
+.temp_div {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: absolute;
+}
+
+.link {
+    font-weight: bold;
+    text-decoration: underline;
 }
