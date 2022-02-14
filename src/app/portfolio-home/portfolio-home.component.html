@@ -2,22 +2,22 @@
 <app-header></app-header>
 
 <!-- Curosal selector -->
-<app-curosal *ngIf="home"></app-curosal>
+<app-curosal *ngIf="home || showMyContainer"></app-curosal>
 
 <!-- Resume selector -->
-<app-resume *ngIf="resume"></app-resume>
+<app-resume *ngIf="resume && !showMyContainer"></app-resume>
 
 <!-- Photography selector -->
-<app-photography *ngIf="photography"></app-photography>
+<app-photography *ngIf="photography && !showMyContainer"></app-photography>
 
 <!-- About selector -->
-<app-about *ngIf="about"></app-about>
+<app-about *ngIf="about && !showMyContainer"></app-about>
 
 <!-- contact selector -->
-<app-contact *ngIf="contact"></app-contact>
+<app-contact *ngIf="contact && !showMyContainer"></app-contact>
 
 <!-- Footer selector -->
 <app-footer></app-footer>
 
 <!-- Navigation Section selector (Section with all menu) -->
-<app-navigation-page></app-navigation-page>
+<app-navigation-page *ngIf="showMyContainer"></app-navigation-page>

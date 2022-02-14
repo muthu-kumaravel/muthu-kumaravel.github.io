@@ -42,6 +42,11 @@ export class HeaderComponent implements OnInit {
     this.showNavigationIndicators = !this.showNavigationIndicators;
     this.global.setShowNavigationIndicators(this.showNavigationIndicators);
     this.global.setShowMyContainer(this.showMyContainer);
+    this.global.setHome(true);
+    this.global.setResume(false);
+    this.global.setPhotography(false);
+    this.global.setAbout(false);
+    this.global.setContact(false);
   }
 
 }

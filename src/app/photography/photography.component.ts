@@ -19,7 +19,7 @@ export class PhotographyComponent implements AfterViewInit {
     this.setHeight(this.targetHeight.nativeElement.offsetHeight);
   }
 
-  setHeight(value: number){
+  setHeight(value: number) {
     console.log(value)
     this.global.setPhotographyHeight(value);
   }

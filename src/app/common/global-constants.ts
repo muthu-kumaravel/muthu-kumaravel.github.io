@@ -10,7 +10,7 @@ export class GlobalConstants {
     // Variable declaration
     private showNavigationIndicators: BehaviorSubject<boolean>;
     private showMyContainer: BehaviorSubject<boolean>;
-    
+
     // Footer height adjustment
     public headerHeight: any = 155;
     private homeHeight: BehaviorSubject<any>;
@@ -37,7 +37,7 @@ export class GlobalConstants {
         this.photography = new BehaviorSubject<boolean>(false);
         this.about = new BehaviorSubject<boolean>(false);
         this.contact = new BehaviorSubject<boolean>(false);
-        
+
         this.homeHeight = new BehaviorSubject<any>(700);
         this.resumeHeight = new BehaviorSubject<any>(705);
         this.photographyHeight = new BehaviorSubject<any>(600);

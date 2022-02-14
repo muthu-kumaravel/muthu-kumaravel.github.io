@@ -15,7 +15,7 @@ export class FooterComponent implements AfterViewInit {
 
   // Variable declaration
   public innerWidth: any;
-  mail_id = "mkumaravel07@gmail.com";
+  mail_id = "muthukumaravel.muthuraman@gmail.com";
   phone_no = "TEL: +91 - 9876 54321";
   width_threshold = 700;
   copyright_info = "© 2022 By Muthukumaravel Muthuraman";
@@ -31,7 +31,7 @@ export class FooterComponent implements AfterViewInit {
   constructor(private global: GlobalConstants) {
     this.innerWidth = window.innerWidth;
     this.margin_top = "855px";
-   }
+  }
 
   // Continuous updation fucntions & general init
   ngAfterViewInit(): void {
