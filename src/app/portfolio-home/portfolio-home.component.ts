@@ -1,57 +1,125 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { GlobalConstants } from '../common/global-constants'
-import { CurosalComponent } from '../curosal/curosal.component'
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { GlobalConstants } from '../common/global-constants';
+
 @Component({
   selector: 'app-portfolio-home',
   templateUrl: './portfolio-home.component.html',
   styleUrls: ['./portfolio-home.component.scss']
 })
-export class PortfolioHomeComponent implements OnInit {
+
+export class PortfolioHomeComponent implements AfterViewInit {
 
   // Page Title
   title = 'Muthukumaravel-Portfolio';
 
-  // Variable declaration
-  insta_link = "https://www.instagram.com/muthu_kumaravel/";
-  in_link = "https://www.linkedin.com/in/muthukumaravel/";
-  github_link = "https://github.com/muthu-kumaravel";
-  insta_logo = "../../assets/insta.png";
-  github_logo = "../../assets/GitHub-Mark-120px-plus.png";
-  linkedin_logo = "../../assets/new_linedin.png";
-  resume = "https://drive.google.com/file/d/1KeyFXt1ChDnakZRocEtWeskL9jWt_Eef/view?usp=sharing"
-  public innerWidth: any;
-  public showNavigationIndicators: any;
-  public showMyContainer: any;
+  // Variable
+  public showMyContainer: any = false;
+
+  public home: any;
+  public resume: any;
+  public photography: any;
+  public about: any;
+  public contact: any;
+
+  private homeHeight: number;
+  private resumeHeight: number;
+  private photographyHeight: number;
+  private aboutHeight: number;
+  private contactHeight: number;
 
   // Constructor
-  constructor(private obj: CurosalComponent, private global: GlobalConstants) { }
-
-  // Listeners for resize
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.innerWidth = window.innerWidth;
+  constructor(private global: GlobalConstants) {
+    this.home = true;
+    this.resume = false;
+    this.photography = false;
+    this.about = false;
+    this.contact = false;
+    this.homeHeight = 700;
+    this.resumeHeight = 700;
+    this.photographyHeight = 600;
+    this.aboutHeight = 400;
+    this.contactHeight = 500;
   }
 
   // Continuous updation fucntions & general init
-  ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
-
-    this.global.getShowNavigationIndicators().subscribe((value) => {
-      this.showNavigationIndicators = value;
-    });
+  ngAfterViewInit(): void {
 
     this.global.getShowMyContainer().subscribe((value) => {
       this.showMyContainer = value;
     });
 
+    this.global.getHomeHeight().subscribe((value) => {
+      this.homeHeight = value;
+      if (this.home == true) {
+        this.updateMainHeight(this.homeHeight);
+      }
+    });
+    this.global.getResumeHeight().subscribe((value) => {
+      this.resumeHeight = value;
+      if (this.resume == true) {
+        this.updateMainHeight(this.resumeHeight);
+      }
+    });
+    this.global.getPhotographyHeight().subscribe((value) => {
+      this.photographyHeight = value;
+      if (this.home == true) {
+        this.updateMainHeight(this.photographyHeight);
+      }
+    });
+    this.global.getAboutHeight().subscribe((value) => {
+      this.aboutHeight = value;
+      if (this.home == true) {
+        this.updateMainHeight(this.aboutHeight);
+      }
+    });
+    this.global.getContactHeight().subscribe((value) => {
+      this.contactHeight = value;
+      if (this.home == true) {
+        this.updateMainHeight(this.contactHeight);
+      }
+    });
+
+    this.global.getHome().subscribe((value) => {
+      this.home = value;
+      console.log("VISIBLE COMPONENT");
+      console.log("home: ", this.home);
+      if (this.home == true) {
+        this.updateMainHeight(this.homeHeight);
+      }
+    });
+    this.global.getResume().subscribe((value) => {
+      this.resume = value;
+      console.log("Resume: ", this.resume);
+      if (this.resume == true) {
+        this.updateMainHeight(this.resumeHeight);
+      }
+    });
+    this.global.getPhotography().subscribe((value) => {
+      this.photography = value;
+      console.log("Photography: ", this.photography);
+      if (this.photography == true) {
+        this.updateMainHeight(this.photographyHeight);
+      }
+    });
+    this.global.getAbout().subscribe((value) => {
+      this.about = value;
+      console.log("About: ", this.about);
+      if (this.about == true) {
+        this.updateMainHeight(this.aboutHeight);
+      }
+    });
+    this.global.getContact().subscribe((value) => {
+      this.contact = value;
+      console.log("Contact: ", this.contact);
+      if (this.contact == true) {
+        this.updateMainHeight(this.contactHeight);
+      }
+    });
   }
 
-  // General Update functions
-  updateFunc(): void {
-    this.showMyContainer = !this.showMyContainer;
-    this.showNavigationIndicators = !this.showNavigationIndicators;
-    this.global.setShowNavigationIndicators(this.showNavigationIndicators);
-    this.global.setShowMyContainer(this.showMyContainer);
+  updateMainHeight(value: number) {
+    var finalHeight = value;
+    this.global.setActualHeight(finalHeight);
   }
 
 }

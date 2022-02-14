@@ -11,11 +11,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ResumeComponent } from './resume/resume.component';
 import { CurosalComponent } from './curosal/curosal.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavigationPageComponent } from './navigation-page/navigation-page.component';
+import { HeaderComponent } from './header/header.component';
+import { PhotographyComponent } from './photography/photography.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     PortfolioHomeComponent,
     ResumeComponent,
-    CurosalComponent
+    CurosalComponent,
+    FooterComponent,
+    NavigationPageComponent,
+    HeaderComponent,
+    PhotographyComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

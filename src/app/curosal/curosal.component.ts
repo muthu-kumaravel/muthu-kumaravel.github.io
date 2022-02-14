@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { GlobalConstants } from '../common/global-constants'
+import { GlobalConstants } from '../common/global-constants';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -30,7 +30,7 @@ import { Injectable } from '@angular/core';
   `]
 })
 
-export class CurosalComponent implements OnInit {
+export class CurosalComponent implements AfterViewInit {
 
   // Variable Declaration
   images = [
@@ -50,7 +50,7 @@ export class CurosalComponent implements OnInit {
     "qutub sahi tombs",
     "landscape",
     "church"
-  ]
+  ];
   public showNavigationIndicators: any;
 
   // Constructor
@@ -58,13 +58,25 @@ export class CurosalComponent implements OnInit {
     config.showNavigationArrows = false;
     config.showNavigationIndicators = true;
     config.interval = 5000;
-  }
-
-  // Continuous updation fucntions & general init
-  ngOnInit(): void {
     this.global.getShowNavigationIndicators().subscribe((value) => {
       this.showNavigationIndicators = value;
     });
   }
+
+  // Continuous updation fucntions & general init
+  ngAfterViewInit(): void {
+    this.global.getShowNavigationIndicators().subscribe((value) => {
+      this.showNavigationIndicators = value;
+    });
+
+    this.setHeight(this.targetHeight.nativeElement.offsetHeight);
+  }
+
+  setHeight(value: number) {
+    console.log(value)
+    this.global.setHomeHeight(value);
+  }
+
+  @ViewChild('targetHeight') targetHeight: any;
 
 }

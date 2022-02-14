@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResumeComponent } from './resume.component';
+import { NavigationPageComponent } from './navigation-page.component';
 
-describe('ResumeComponent', () => {
-  let component: ResumeComponent;
-  let fixture: ComponentFixture<ResumeComponent>;
+describe('NavigationPageComponent', () => {
+  let component: NavigationPageComponent;
+  let fixture: ComponentFixture<NavigationPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ResumeComponent]
+      declarations: [NavigationPageComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResumeComponent);
+    fixture = TestBed.createComponent(NavigationPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
