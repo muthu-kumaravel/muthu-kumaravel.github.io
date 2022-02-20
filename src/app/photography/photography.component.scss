@@ -1,11 +1,19 @@
 .template {
     margin-top: 155px;
-    background-color: black;
-    height: 600px;
+    background-color: rgb(255, 255, 255);
+    // height: 600px;
     width: 100%;
     position: absolute;
     display: flex;
     justify-content: center;
+}
+
+.width_class {
+    width: 300px;
+}
+
+.img_width_class {
+    width: 300px;
 }
 
 .heading {
@@ -15,4 +23,12 @@
     font-weight: bold;
     font-family: 'Trebuchet MS';
     line-height: 60px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    width: 950px;
+    margin-left: 25px;
+    margin-right: 25px;
 }

@@ -36,7 +36,7 @@ export class PortfolioHomeComponent implements AfterViewInit {
     this.contact = false;
     this.homeHeight = 700;
     this.resumeHeight = 700;
-    this.photographyHeight = 600;
+    this.photographyHeight = 1118;
     this.aboutHeight = 400;
     this.contactHeight = 500;
   }
@@ -62,19 +62,19 @@ export class PortfolioHomeComponent implements AfterViewInit {
     });
     this.global.getPhotographyHeight().subscribe((value) => {
       this.photographyHeight = value;
-      if (this.home == true) {
+      if (this.photography == true) {
         this.updateMainHeight(this.photographyHeight);
       }
     });
     this.global.getAboutHeight().subscribe((value) => {
       this.aboutHeight = value;
-      if (this.home == true) {
+      if (this.about == true) {
         this.updateMainHeight(this.aboutHeight);
       }
     });
     this.global.getContactHeight().subscribe((value) => {
       this.contactHeight = value;
-      if (this.home == true) {
+      if (this.contact == true) {
         this.updateMainHeight(this.contactHeight);
       }
     });
