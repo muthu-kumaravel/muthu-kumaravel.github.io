@@ -1,0 +1,54 @@
+{
+  "personal": {
+    "name": "Muthu Kumaravel",
+    "role": "Full Stack Engineer",
+    "tagline": "Architecting Digital Perfection",
+    "location": "Chennai, India",
+    "email": "contact@muthukumaravel.com"
+  },
+  "socials": [
+    { "platform": "Github", "url": "https://github.com/muthu-kumaravel" },
+    { "platform": "Linkedin", "url": "https://linkedin.com/in/muthukumaravel" },
+    { "platform": "Instagram", "url": "https://instagram.com/muthu" }
+  ],
+  "home": {
+    "hero": {
+      "badge": "SYSTEM READY // V2.0",
+      "titlePrimary": "Engineering the",
+      "titleGradient": "Future of Web",
+      "description": "I build pixel-perfect, performant web applications with a focus on intuitive user experience and scalable architecture.",
+      "primaryCta": "Review Architecture",
+      "secondaryCta": "Read Documentation"
+    },
+    "bentoGrid": [
+      {
+        "title": "Full Stack Core",
+        "subtitle": "End-to-end development capabilities",
+        "type": "tech-stack",
+        "tags": ["React", "Node.js", "Python", "AWS", "Docker", "PostgreSQL"],
+        "colSpan": 2
+      },
+      {
+        "title": "Global Scale",
+        "subtitle": "Experience with high-traffic distributed systems.",
+        "type": "stat",
+        "icon": "globe"
+      },
+      {
+        "title": "UI/UX Precision",
+        "subtitle": "Obsessive attention to micro-interactions.",
+        "type": "design",
+        "icon": "layout"
+      }
+    ],
+    "carousel": {
+      "title": "VISUAL_FEED",
+      "images": [
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
+      ]
+    }
+  }
+}
