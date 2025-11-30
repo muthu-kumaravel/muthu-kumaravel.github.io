@@ -19,7 +19,9 @@ const content = {
     "role": "AI Infrastructure & ML Architect",
     "tagline": "Scaling Intelligence at the Edge & Cloud",
     "location": "Chennai, India",
-    "email": "muthukumaravel.muthuraman@gmail.com"
+    "email": "muthukumaravel.muthuraman@gmail.com",
+    // Using GitHub avatar as a stable source for the profile picture
+    "avatar": "https://github.com/muthu-kumaravel.png" 
   },
   "socials": [
     { "platform": "Github", "url": "https://github.com/muthu-kumaravel" },
@@ -62,10 +64,10 @@ const content = {
     "carousel": {
       "title": "VISUAL_FEED",
       "images": [
-        "https://images.unsplash.com/photo-1558494949-efc02570fbc9?auto=format&fit=crop&w=1200&q=80", // Server Rack
-        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80", // Code/Terminal
-        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80", // AI Chip/Abstract
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80"  // Tech Workspace
+        "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=1200&q=80", // Data Center / Server Rack (AI Infra)
+        "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80", // Abstract Neural Network (GenAI)
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80", // Hardware / Chip (NVIDIA/TPU)
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"  // Coding / Terminal (Engineering)
       ]
     }
   },
@@ -546,9 +548,16 @@ const AboutPage = () => (
             </div>
             <div className="relative">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-800 border border-white/5">
-                     <div className="w-full h-full flex flex-col items-center justify-center text-gray-600 bg-gradient-to-b from-zinc-800 to-black">
-                        <User size={64} className="mb-4 opacity-50"/>
-                        <span className="font-mono text-xs">IMG_PROFILE_01</span>
+                     <div className="w-full h-full flex flex-col items-center justify-center text-gray-600 bg-gradient-to-b from-zinc-800 to-black relative">
+                        {/* Profile Image using GitHub Avatar */}
+                         <img 
+                            src={content.personal.avatar} 
+                            alt={content.personal.name}
+                            className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
+                        />
+                         <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                            <span className="font-mono text-xs text-white">IMG_PROFILE_MK</span>
+                         </div>
                      </div>
                 </div>
             </div>
