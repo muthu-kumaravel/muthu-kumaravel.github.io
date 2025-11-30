@@ -45,7 +45,7 @@ If you want to recreate this architecture in a fresh folder, follow this exact s
 
 **A. Initialize Project**
 
-```
+```bash
 # Create Vite project with React template
 npm create vite@latest my-portfolio -- --template react
 cd my-portfolio
@@ -62,13 +62,13 @@ npm install framer-motion lucide-react gh-pages
 
 1. Initialize Tailwind: 
 
-```
+```bash
 npx tailwindcss init -p
 ```
 
 2. Update `tailwind.config.js` (Please create one if the init command did not create the file):
 
-```
+```javascript
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -89,7 +89,7 @@ export default {
 
 3. Update `src/index.css`:
 
-```
+```css
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @tailwind base;
@@ -128,31 +128,41 @@ This project uses the `gh-pages` package to deploy the `dist` folder to a `gh-pa
 
 1. In `package.json`, add:
 
-```
+```json
 "homepage": "https://<your-username>.github.io",
 ```
 
 2. Update `scripts` in `package.json`:
 
-```
+```json
 "predeploy": "npm run build",
 "deploy": "gh-pages -d dist"
 ```
 
 3. In `vite.config.js`, set the base path:
 
-```
+```javascript
 export default defineConfig({
   plugins: [react()],
   base: '/', 
 })
 ```
 
-**To Deploy**
+### Continuous Update Workflow
 
-Run this command whenever you want to publish changes:
+Whenever you make changes to the code or content, follow this two-step process to update your live site:
+
+1. **Save Source Code (Git):** It is best practice to commit your changes to your source branch first.
 
 ```
+git add .
+git commit -m "Description of changes"
+git push origin portfolio-v2  # or main
+```
+
+2. **Publish to Live Site:** Run the deploy script. This rebuilds the application and pushes the new build to the `gh-pages` branch.
+
+```bash
 npm run deploy
 ```
 
