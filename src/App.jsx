@@ -3,7 +3,8 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { 
   Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, 
   Camera, Code, User, BookOpen, Layers, Terminal, Globe, Layout, Cpu,
-  Brain, Server, Network, Database, Bot, Zap, Briefcase, Award, Monitor, Building2
+  Brain, Server, Network, Database, Bot, Zap, Briefcase, Award, Monitor, Building2,
+  LineChart, Workflow, Microchip, Cloud, Shield
 } from 'lucide-react';
 
 // --- CONTENT DATA (Centralized CMS) ---
@@ -11,16 +12,15 @@ const content = {
   "metadata": {
     "title": "MK's Portfolio",
     "lastUpdated": new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-    "commitId": "8f2a9d4" 
+    "commitId": "9b3c1e2" 
   },
   "personal": {
     "name": "Muthukumaravel Muthuraman",
     "initials": "MK",
-    "role": "AI Infrastructure & ML Architect",
-    "tagline": "Scaling Intelligence at the Edge & Cloud",
+    "role": "Associate Architect - Machine Learning",
+    "tagline": "LLM | GenAI | CV | NVIDIA | Pre-Sales",
     "location": "Chennai, India",
     "email": "muthukumaravel.muthuraman@gmail.com",
-    // Using GitHub avatar as a stable source for the profile picture
     "avatar": "https://github.com/muthu-kumaravel.png" 
   },
   "socials": [
@@ -30,7 +30,7 @@ const content = {
   ],
   "home": {
     "hero": {
-      "badge": "SYSTEM ONLINE // AI-INFRA",
+      "badge": "SYSTEM ONLINE // AI-ARCHITECT",
       "titlePrimary": "Architecting the",
       "titleGradient": "Era of Generative AI",
       "description": "Specialized in massive-scale LLM training & inference workloads across NVIDIA GPUs & Google TPUs. Bridging deep technical execution with GTM strategy.",
@@ -40,25 +40,43 @@ const content = {
     "bentoGrid": [
       {
         "title": "AI Infrastructure",
-        "subtitle": "Orchestrating 1024+ GPU/TPU clusters for massive scale.",
+        "subtitle": "Orchestrating massive-scale LLM training & inference across 1024+ GB200s & 3000+ TPUs.",
         "type": "tech-stack",
-        "tags": ["JAX/Pallas", "Kubernetes", "NVIDIA GB200", "Google TPU v6e", "Slurm", "Luster"],
+        "tags": ["JAX/Pallas", "Kubernetes", "NVIDIA GB200", "Google TPU v6e/v7", "Slurm", "Luster"],
         "colSpan": 2,
         "icon": "server"
       },
       {
-        "title": "GenAI Agents",
-        "subtitle": "Deploying production-grade RAG & Agents.",
+        "title": "GenAI & Agents",
+        "subtitle": "Building billing agents, healthcare avatars, and specialized RAG pipelines.",
         "type": "tech-stack",
-        "tags": ["RAG", "LangChain", "Fine Tuning", "(Q)LoRA", "NeMo Guardrails", "vLLM"],
+        "tags": ["RAG", "LangGraph", "vLLM", "(Q)LoRA", "NeMo Guardrails", "Agentic Workflows"],
+        "colSpan": 1,
         "icon": "brain"
       },
       {
         "title": "Computer Vision",
-        "subtitle": "Low-level kernel optimization & Edge AI.",
+        "subtitle": "Real-time analytics, anomaly detection, and human behavior analysis.",
         "type": "tech-stack",
-        "tags": ["DeepStream", "Triton", "TensorRT", "OpenCV", "YOLO", "Jetson"],
+        "tags": ["DeepStream", "Triton", "YOLO", "OpenCV", "Jetson", "Fusion Models"],
+        "colSpan": 1,
         "icon": "camera"
+      },
+      {
+        "title": "HPC & Kernel Opt",
+        "subtitle": "Low-level kernel engineering for max throughput on custom silicon.",
+        "type": "tech-stack",
+        "tags": ["CUDA", "OpenCL", "TensorRT", "OpenVINO", "AMD RPP", "Model Porting"],
+        "colSpan": 1,
+        "icon": "cpu"
+      },
+      {
+        "title": "Pre-Sales Strategy",
+        "subtitle": "Driving adoption via technical roadshows, cost modeling & capacity planning.",
+        "type": "tech-stack",
+        "tags": ["GTM Strategy", "POC Conversion", "Cost Modeling", "Capacity Planning", "Tech Roadshows"],
+        "colSpan": 1,
+        "icon": "linechart"
       }
     ],
     "carousel": {
@@ -80,7 +98,7 @@ const content = {
         "role": "Customer Engineer AI Infra",
         "period": "June 2025 - Present",
         "location": "Bangalore",
-        "description": "Bridging deep technical execution with GTM strategy to drive AI Infra revenue. Architecting massive-scale LLM training/inference workloads across 1024+ NVIDIA GB200 GPUs & 3000+ Google TPUs (v6e/v7). Engineer custom JAX/Pallas kernels for MoE optimizations and built automated benchmarking suites for vLLM, MaxText, and NeMo. Guide strategic enterprises through capacity planning and cost modeling."
+        "description": "Bridging deep technical execution with GTM strategy to drive AI Infra revenue, I architecture massive-scale LLM training and inference workloads across 1024+ NVIDIA GB200 GPUs and 3,000+ Google TPUs(v6e/v7). I engineer custom JAX/Pallas kernels for low-level MoE optimizations and built an automated benchmarking suite to tune performance for vLLM, MaxText and NeMo on GCP. My expertise spans deploying disaggregated LLM model serving and orchestrating high-performance training and inference clusters with Luster. Balancing execution with strategy, I drive regional AI infra revenue and consumption by guiding strategic enterprises through capacity planning and cost modelling. Accelerate adoption through technical roadshows, influencing product roadmaps and guiding enterprises to extract maximum value from next generation silicon for production-grade Gen AI."
       },
       {
         "company": "Quantiphi",
@@ -88,7 +106,7 @@ const content = {
         "role": "Associate Architect ML",
         "period": "May 2021 - June 2025",
         "location": "Bangalore",
-        "description": "Designed end-to-end ML pipelines for Cloud/Edge/Hybrid. Specialized in fine-tuning LLMs, Multimodal models, and CV. Key member of CV & GenAI pre-sales team, driving proposal conversions. Led teams of 5-10 members in architecture design and implementation."
+        "description": "Designed and built end-to-end optimized ML pipelines and applications across Cloud, Edge, and Hybrid environments. Specialized in architecting, fine-tuning, optimizing, and evaluating ML models, including various types of LLMs, Computer Vision models, multimodal models, and recommendation systems. Also worked on discrete event simulation and other advanced AI/ML applications. A key member of the Computer Vision, Optimization, and GenAI pre-sales team, actively engaging with customers to solve real-world use cases at production scale with improved cost optimization and reduced turnaround time. Led teams of 5–10 members, driving end-to-end architecture design, implementation, and rigorous code validation."
       },
       {
         "company": "MulticoreWare",
@@ -96,7 +114,7 @@ const content = {
         "role": "Software Engineer ML",
         "period": "June 2019 - May 2021",
         "location": "Chennai",
-        "description": "Developed low-level image processing kernels for AMD's RPP (Open Source). Optimized latency for Human Behavior Analysis products in healthcare/automotive sectors involving real-time analysis of eye, lip, and facial movements."
+        "description": "Developed low-level image processing kernels for AMD’s open-source RPP codebase, optimizing latency and throughput to outperform state-of-the-art GPUs. Also contributed to MCW’s internal product, Human Behaviour Analysis product, analyzing eye, lip, facial, and body movements in real-time for applications in healthcare and automotive industries."
       },
       {
         "company": "ValueLabs",
@@ -104,42 +122,66 @@ const content = {
         "role": "SD Intern",
         "period": "Jan 2019 - March 2019",
         "location": "Hyderabad",
-        "description": "Developed Angular-based frontend for bug tracking and agile project management applications."
+        "description": "Worked as a Software Development Intern, developing an Angular-based frontend for an application focused on bug tracking, issue tracking, and agile project management."
       }
     ],
     "projects": [
       {
-        "category": "Generative AI",
+        "category": "GenAI & Agents",
         "items": [
           { "name": "Billing SLM Agent", "desc": "Agent to rectify billing queries using advanced RAG & NL2SQL. Deployed on-prem." },
-          { "name": "Healthcare Digital Avatar", "desc": "Medical co-pilot for nurse triaging. Fine-tuned LLM agent deployed on OCI." },
-          { "name": "Phone Repair Assistant", "desc": "Mobile app plugin chatbot for device assessment using LLMs & VLMs on AWS." },
-          { "name": "Medical Entity Extraction", "desc": "Fine-tuned models for extracting diagnosis with 100% recall. Leveraged vLLM with LoRA adapters." },
-          { "name": "Suspect Re-Identification", "desc": "Multi-camera tracking using Clip, Blip & Moondream models on streaming platform." }
+          { "name": "Healthcare Digital Avatar", "desc": "Medical co-pilot on OCI using fine-tuned LLMs for patient triaging." },
+          { "name": "Phone Repair Assistant", "desc": "Mobile chatbot plugin for device diagnostics using VLMs & LLMs on AWS." },
+          { "name": "Medical Entity Extraction", "desc": "100% recall diagnosis extraction using vLLM & LoRA adapters." },
+          { "name": "Suspect Re-Identification", "desc": "Multi-camera tracking with Clip/Blip/Moondream models on streaming platform." }
         ]
       },
       {
         "category": "Computer Vision",
         "items": [
           { "name": "QSR Takeaway Validation", "desc": "Order accuracy analytics using hybrid on-prem + cloud system." },
-          { "name": "Hotspot Identification", "desc": "Hazard detection using IR & RGB camera fusion." },
-          { "name": "Driver Awareness", "desc": "Facial and body key point analysis for stability monitoring." },
-          { "name": "Traffic Behaviour Analysis", "desc": "Intersection monitoring across 150+ streams using DeepStream." }
+          { "name": "Hotspot & Keypoints", "desc": "Hazard detection using IR & RGB camera Fusion." },
+          { "name": "Driver Awareness", "desc": "Facial and body analysis for stability monitoring." },
+          { "name": "Traffic Behaviour Analysis", "desc": "City-wide intersection monitoring using DeepStream (150+ streams)." },
+          { "name": "Anomaly Detection", "desc": "Train monitoring using Line Scan Camera & TIS." }
+        ]
+      },
+      {
+        "category": "Cloud & Deployments",
+        "items": [
+          { "name": "Digital Avatar (OCI)", "desc": "Scalable deployment on quad L40s with auto-scaling & secure microservices." },
+          { "name": "Chatbot API (AWS)", "desc": "EKS deployment handling 100k+ daily users." },
+          { "name": "Bio Risk Monitoring", "desc": "Jetson Nano-based Edge & AWS streaming platform." }
         ]
       },
       {
         "category": "HPC & Kernel Coding",
         "items": [
-          { "name": "AMD RPP", "desc": "Optimized Neural Network kernels for Image processing and transformer architecture." },
-          { "name": "Model Porting", "desc": "Conversion of PyTorch/TF models to TensorRT, OpenVINO, SNPE DLC." }
+          { "name": "AMD RPP", "desc": "Optimized NN kernels for image processing & transformers (Open Source)." },
+          { "name": "Model Porting", "desc": "Native to TensorRT/OpenVINO/SNPE conversion for hardware optimization." },
+          { "name": "Model Ensembling", "desc": "Stitching RecSys components to bypass CPU-GPU transfers." }
+        ]
+      },
+      {
+        "category": "RecSys & Simulation",
+        "items": [
+          { "name": "Telco Recommendation", "desc": "Wide & Deep + MoE model for device/plan upselling & cross-selling." }
+        ]
+      },
+      {
+        "category": "Pre-Sales & Strategy",
+        "items": [
+          { "name": "Agentic Workflows", "desc": "Designed architectures for on-prem/hybrid chatbots & LLM backends." },
+          { "name": "Proposal Conversion", "desc": "Led 30+ proposals with 60-65% conversion to PoC/MVP." }
         ]
       }
     ],
     "skills": {
-      "Languages": ["Python", "C++", "C", "CUDA", "SQL"],
-      "CSP Experience": ["GCP", "AWS", "OCI"],
-      "Frameworks": ["NVIDIA NIM", "TensorRT LLM", "Triton Inference Server", "vLLM", "PyTorch", "DeepStream", "OpenCV", "CUDA", "LangChain", "Flask"],
-      "Core Competencies": ["GenAI & LLMs", "Vision Language Models", "Digital Avatars", "Model Fine Tuning", "Recommendation Systems", "ETL Pipelines", "Docker", "Microservices"]
+      "Languages & Core": ["Python", "C++", "C", "CUDA", "SQL", "OpenCL"],
+      "AI Frameworks": ["PyTorch", "JAX", "vLLM", "TensorRT-LLM", "Triton Server", "NVIDIA NIM", "LangChain", "LangGraph", "DeepStream", "OpenCV"],
+      "GenAI Stack": ["NVIDIA ACE", "NeMo Guardrails", "Bedrock", "Vertex AI", "SageMaker", "PydanticAI", "ChromaDB", "Milvus", "FAISS"],
+      "Cloud & DevOps": ["GCP (TPU/Compute)", "AWS (EKS/Lambda)", "OCI (BM Servers)", "Docker", "Kubernetes", "Microservices", "Flask/FastAPI"],
+      "HPC & Vision": ["OpenVINO", "ARMNN", "HIP", "OpenVX", "FFMPEG", "G-Streamer", "YOLO", "DeepSORT"]
     },
     "certifications": [
       "NVIDIA Certified Associate - AI in Data Centre",
@@ -166,11 +208,12 @@ const content = {
     ]
   },
   "about": {
-    "bio": "I am an Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments. Specializing in LLMs, GenAI, and Computer Vision, I bridge the gap between deep technical execution and strategic business value. Currently at Google, I enable enterprises to extract maximum value from next-generation silicon for production-grade Gen AI.",
+    "bio": "I am an Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments. Specializing in LLMs, GenAI, and Computer Vision, I bridge the gap between deep technical execution and strategic business value. Currently at Google, I enable enterprises to extract maximum value from next-generation silicon for production-grade Gen AI.\n\nOutside of work, I love staying active—whether it’s cricket, badminton, or trying not to fall off a surfboard 🏄. I’m also into photography, and I’ve got a bit of a habit of traveling just to try new food and meet new people. It’s my favourite way to explore stories beyond screens.\n\nI’ve been told I bring a calm vibe and an easy smile—and I usually find the best conversations happen over lunch, so don’t be surprised if I tag along when you’re headed out for a good meal.",
     "stats": [
       { "label": "Proposals Led", "value": "30+" },
       { "label": "Conversion Rate", "value": "65%" },
-      { "label": "GPU Scale", "value": "1024+" }
+      { "label": "GPU Scale", "value": "1024+" },
+      { "label": "TPU Scale", "value": "3000+" }
     ]
   }
 };
@@ -178,7 +221,8 @@ const content = {
 // --- Icon Mapping Helper ---
 const IconMap = {
   Github, Linkedin, Instagram, globe: Globe, layout: Layout, terminal: Terminal, cpu: Cpu,
-  brain: Brain, server: Server, camera: Camera, network: Network, database: Database, bot: Bot
+  brain: Brain, server: Server, camera: Camera, network: Network, database: Database, bot: Bot,
+  linechart: LineChart
 };
 
 // --- Animation Config ---
@@ -447,7 +491,7 @@ const ResumePage = () => {
                                     </div>
                                     <span className="font-mono text-gray-500 text-sm mt-2 md:mt-0 bg-white/5 px-2 py-1 rounded">{job.period}</span>
                                 </div>
-                                <p className="text-gray-400 leading-relaxed text-sm max-w-3xl mt-4">{job.description}</p>
+                                <p className="text-gray-400 leading-relaxed text-sm max-w-3xl mt-4 whitespace-pre-line">{job.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -456,17 +500,17 @@ const ResumePage = () => {
                 {/* Projects Grid */}
                 <div>
                      <h3 className="text-2xl font-bold text-white flex items-center gap-3 mb-6">
-                        <Zap className="text-yellow-500" /> Key Projects & Use Cases
+                        <Zap className="text-yellow-500" /> Key Use Cases & Projects
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {projects.map((cat, i) => (
-                            <div key={i} className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6">
+                            <div key={i} className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/50 transition-colors">
                                 <h4 className="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">{cat.category}</h4>
-                                <ul className="space-y-3">
+                                <ul className="space-y-4">
                                     {cat.items.map((project, j) => (
-                                        <li key={j}>
-                                            <div className="text-blue-300 font-medium text-sm">{project.name}</div>
-                                            <div className="text-gray-500 text-xs">{project.desc}</div>
+                                        <li key={j} className="group">
+                                            <div className="text-blue-300 font-medium text-sm group-hover:text-blue-200 transition-colors">{project.name}</div>
+                                            <div className="text-gray-500 text-xs leading-relaxed">{project.desc}</div>
                                         </li>
                                     ))}
                                 </ul>
@@ -534,7 +578,7 @@ const AboutPage = () => (
     <PageLayout title="Profile" subtitle="About Muthukumaravel">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="md:col-span-2 space-y-6">
-                <p className="text-xl text-gray-300 leading-relaxed font-light">
+                <p className="text-xl text-gray-300 leading-relaxed font-light whitespace-pre-line">
                     {content.about.bio}
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-6">
