@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { 
-  Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, 
+  Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, ChevronLeft,
   Camera, Code, User, BookOpen, Layers, Terminal, Globe, Layout, Cpu,
   Brain, Server, Network, Database, Bot, Zap, Briefcase, Award, Monitor, Building2,
-  LineChart, Workflow, Microchip, Cloud, Shield, FileText, XCircle
+  LineChart, Workflow, Microchip, Cloud, Shield, FileText, XCircle, Image as ImageIcon
 } from 'lucide-react';
 
 // --- CONTENT DATA (Centralized CMS) ---
@@ -12,7 +12,7 @@ const content = {
   "metadata": {
     "title": "MK's Portfolio",
     "lastUpdated": new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-    "commitId": "e4f5g6h" 
+    "commitId": "f7g8h9i" 
   },
   "personal": {
     "name": "Muthukumaravel Muthuraman",
@@ -99,8 +99,8 @@ const content = {
         "summary": "AI Infrastructure Specialist for massive-scale open-weight LLM training (1024+ GB200s, 3000+ TPUs). Bridges technical execution with GTM strategy to accelerate regional AI revenue.",
         "description": `Bridging deep technical execution with GTM strategy to drive AI Infra revenue, I architecture massive-scale LLM training and inference workloads across 1024+ NVIDIA GB200 GPUs and 3,000+ Google TPUs(v6e/v7). I engineer custom JAX/Pallas kernels for low-level MoE optimizations and built an automated benchmarking suite to tune performance for vLLM, MaxText and NeMo on GCP. My expertise spans deploying disaggregated LLM model serving and orchestrating high-performance training and inference clusters with Luster. Balancing execution with strategy, I drive regional AI infra revenue and consumption by guiding strategic enterprises through capacity planning and cost modelling. Accelrate adoption through technical roadshows, influencing product roadmaps and guiding enterprises to extract maxume value from next generation silicon for production-grade Gen AI.
 
-        <h4 class="text-white font-bold mt-4 mb-2">Key Responsibilities:</h4>
-        <ul class="list-disc pl-5 space-y-2">
+        <h4 class="text-white font-bold mt-6 mb-3">Key Responsibilities & Achievements:</h4>
+        <ul class="list-disc pl-5 space-y-3 text-gray-300">
             <li><strong>GenAI & Model Architecture:</strong> Architected large-scale pre-training/fine-tuning runs utilizing 1,024+ NVIDIA GB200 GPUs and 3,000+ TPUs, achieving 0.45+ MFU with Lustre storage. Developed optimized model recipes for DeepSeek, Mistral, Llama, Gemma, and Qwen, and contributed to Torch TPU (PyTorch XLA) to achieve 79% of H100 performance on v6e TPUs.</li>
             <li><strong>HPC & Kernel Engineering:</strong> Engineered custom JAX and Pallas kernels to unlock native support for MoE models and built automated benchmarking suites for VLLM/MaxText to identify optimal hardware sizing. Developed deep-dive profiling tools to minimize step-time overheads and optimize communication collectives across large cluster topologies.</li>
             <li><strong>Cloud-Native & Orchestration:</strong> Orchestrated AI workloads using RayServe and GKE, using Dynamic Workload Scheduling (DWS) to secure spot capacity and enable elastic scaling. Deployed resilient inference backends using VLLM and SGLang, optimizing token throughput and reducing partner costs by 10-70%.</li>
@@ -117,8 +117,8 @@ const content = {
         "summary": "End-to-end ML Architect driving GenAI & CV solutions. Led technical teams of 5-10 in solution design, pre-sales engagements (30+ proposals), and production implementation.",
         "description": `Designed and built end-to-end optimized ML pipelines and applications across Cloud, Edge, and Hybrid environments. Specialized in architecting, fine-tuning, optimizing, and evaluating ML models, including various types of LLMs, Computer Vision models, multimodal models, and recommendation systems. Also worked on discrete event simulation and other advanced AI/ML applications. A key member of the Computer Vision, Optimization, and GenAI pre-sales team, actively engaging with customers to solve real-world use cases at production scale with improved cost optimization and reduced turnaround time. Led teams of 5–10 members, driving end-to-end architecture design, implementation, and rigorous code validation.
 
-        <h4 class="text-white font-bold mt-4 mb-2">Key Responsibilities:</h4>
-        <ul class="list-disc pl-5 space-y-2">
+        <h4 class="text-white font-bold mt-6 mb-3">Key Responsibilities & Achievements:</h4>
+        <ul class="list-disc pl-5 space-y-3 text-gray-300">
             <li><strong>GenAI & Model Architecture:</strong> Designed fine-tuned LLMs for medical entity extraction (100% recall) and billing SLM agents using advanced RAG/NL2SQL, serving specialized agents with multi-adapter routing. Built cloud-based digital avatars for patient triaging and mobile plugin chatbots using fine-tuned VLM/CV models for device assessment.</li>
             <li><strong>Computer Vision:</strong> Engineered end-to-end streaming platforms for city-wide traffic analysis processing 150+ concurrent streams via DeepStream and suspect re-identification using CLIP/BLIP/Moondream models. Engineered hybrid on-prem/cloud QSR order accuracy analytics using multiple camera streams. Developed hybrid edge-cloud anomaly detection systems for rail infrastructure using Line Scan Cameras and Thermal Imaging fusion.</li>
             <li><strong>Cloud-Native & Hybrid Systems:</strong> Architected high-volume FastAPI/Flask Gateways on AWS EKS handling 100,000+ daily users and deployed auto-scaling Digital Avatars on OCI (Quad L40s). Managed hybrid lift-and-shift deployments for security systems compatible with various POD configurations (Docker/On-Prem H100).</li>
@@ -135,8 +135,8 @@ const content = {
         "summary": "Developed low-level image processing kernels for AMD's RPP. Optimized latency for Human Behavior Analysis products in healthcare/automotive sectors.",
         "description": `Developed low-level image processing kernels for AMD’s open-source RPP codebase, optimizing latency and throughput to outperform state-of-the-art GPUs. Also contributed to MCW’s internal product, Human Behaviour Analysis product, analyzing eye, lip, facial, and body movements in real-time for applications in healthcare and automotive industries.
 
-        <h4 class="text-white font-bold mt-4 mb-2">Key Responsibilities:</h4>
-        <ul class="list-disc pl-5 space-y-2">
+        <h4 class="text-white font-bold mt-6 mb-3">Key Responsibilities & Achievements:</h4>
+        <ul class="list-disc pl-5 space-y-3 text-gray-300">
             <li><strong>HPC & Kernel Coding:</strong> Developed low-level image processing kernels for AMD's open-source RPP codebase (equivalent to NVIDIA NPP), optimizing latency and throughput to outperform standard kernels. Ported native PyTorch/TF models to hardware-optimized formats (TensorRT, OpenVINO) for specific silicon targets.</li>
             <li><strong>Computer Vision:</strong> Engineered real-time Human Behavior Analysis solutions analyzing facial and body kinematics for driver awareness monitoring, optimized specifically for low-power edge hardware.</li>
         </ul>`
@@ -360,6 +360,28 @@ const content = {
       `
     }
   ],
+  "photography": [
+    { id: 1, src: "/images/IMG_0009.heic", alt: "" },
+    { id: 2, src: "/images/IMG_2934.JPG", alt: "" },
+    { id: 3, src: "/images/IMG_3406.HEIC", alt: "" },
+    { id: 4, src: "/images/IMG_3425.HEIC", alt: "" },
+    { id: 5, src: "/images/IMG_3497.HEIC", alt: "" },
+    { id: 6, src: "/images/IMG_5044.jpg", alt: "" },
+    { id: 7, src: "/images/IMG_5045.jpg", alt: "" },
+    { id: 8, src: "/images/IMG_5046.jpg", alt: "" },
+    { id: 9, src: "/images/IMG_5047.jpg", alt: "" },
+    { id: 10, src: "/images/IMG_5048.jpg", alt: "" },
+    { id: 11, src: "/images/IMG_5049.jpg", alt: "" },
+    { id: 12, src: "/images/IMG_5050.jpg", alt: "" },
+    { id: 13, src: "/images/IMG_5051.jpg", alt: "" },
+    { id: 14, src: "/images/IMG_5052.jpg", alt: "" },
+    { id: 15, src: "/images/IMG_5053.jpg", alt: "" },
+    { id: 16, src: "/images/IMG_5054.jpg", alt: "" },
+    { id: 17, src: "/images/IMG_5055.jpg", alt: "" },
+    { id: 18, src: "/images/IMG_5056.jpg", alt: "" },
+    { id: 19, src: "/images/IMG_5057.jpg", alt: "" },
+    { id: 20, src: "/images/IMG_5058.jpg", alt: "" },
+  ],
   "about": {
     "bio": "I am an Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments. Specializing in LLMs, GenAI, and Computer Vision, I bridge the gap between deep technical execution and strategic business value. Currently at Google, I enable enterprises to extract maximum value from next-generation silicon for production-grade Gen AI.\n\nOutside of work, I love staying active—whether it’s cricket, badminton, or trying not to fall off a surfboard 🏄. I’m also into photography, and I’ve got a bit of a habit of traveling just to try new food and meet new people. It’s my favourite way to explore stories beyond screens.\n\nI’ve been told I bring a calm vibe and an easy smile—and I usually find the best conversations happen over lunch, so don’t be surprised if I tag along when you’re headed out for a good meal.",
     "stats": [
@@ -551,6 +573,63 @@ const LogModal = ({ log, onClose }) => {
                 dangerouslySetInnerHTML={{ __html: log.details }}
             />
         </ModalWrapper>
+    );
+};
+
+// --- Lightbox Component ---
+const Lightbox = ({ images, initialIndex, onClose }) => {
+    const [index, setIndex] = useState(initialIndex);
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') onClose();
+            if (e.key === 'ArrowRight') setIndex((prev) => (prev + 1) % images.length);
+            if (e.key === 'ArrowLeft') setIndex((prev) => (prev - 1 + images.length) % images.length);
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.body.style.overflow = 'unset';
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [images.length, onClose]);
+
+    return (
+        <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center"
+        >
+            <button onClick={onClose} className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50">
+                <X size={32} />
+            </button>
+            <button 
+                onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
+                className="absolute left-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
+            >
+                <ChevronLeft size={32} />
+            </button>
+            
+            <motion.img 
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                src={images[index].src} 
+                alt={images[index].alt}
+                className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl rounded-lg" 
+            />
+
+            <button 
+                onClick={() => setIndex((prev) => (prev + 1) % images.length)}
+                className="absolute right-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
+            >
+                <ChevronRight size={32} />
+            </button>
+            
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 font-mono text-sm">
+                {index + 1} / {images.length}
+            </div>
+        </motion.div>
     );
 };
 
@@ -839,6 +918,34 @@ const EngineeringLogsPage = ({ openLog }) => {
     );
 };
 
+// --- Photography Page ---
+const PhotographyPage = ({ openLightbox }) => {
+    return (
+        <PageLayout title="Visual Gallery" subtitle="Moments Captured in High Fidelity">
+            {/* Masonry Layout using CSS Columns */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                {content.photography.map((photo, index) => (
+                    <motion.div 
+                        key={photo.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in"
+                        onClick={() => openLightbox(index)}
+                    >
+                        <img 
+                            src={photo.src} 
+                            alt={photo.alt} 
+                            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                    </motion.div>
+                ))}
+            </div>
+        </PageLayout>
+    );
+};
+
 const AboutPage = () => (
     <PageLayout title="Profile" subtitle="About Muthukumaravel">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -896,6 +1003,10 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLog, setSelectedLog] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
+  
+  // Lightbox State
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Sync state with URL hash
   useEffect(() => {
@@ -905,34 +1016,32 @@ export default function App() {
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else {
-        // If no hash or invalid, default to landing but don't force hash unless empty
         if (!hash) setCurrentPage('landing');
       }
     };
 
-    // Initial check
     handleHashChange();
-
-    // Listen for back/forward button
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Update Page Title
   useEffect(() => {
     document.title = content.metadata.title;
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  // Navigation helper
   const navigateTo = (page) => {
     window.location.hash = page;
   };
 
-  // Handler to open specific log
   const openLog = (logId) => {
     const log = content.logs.find(l => l.id === logId);
     if (log) setSelectedLog(log);
+  };
+
+  const openLightbox = (index) => {
+      setLightboxIndex(index);
+      setLightboxOpen(true);
   };
 
   return (
@@ -945,6 +1054,13 @@ export default function App() {
                 <AnimatePresence>
                     {selectedLog && <LogModal log={selectedLog} onClose={() => setSelectedLog(null)} />}
                     {selectedJob && <ExperienceModal job={selectedJob} onClose={() => setSelectedJob(null)} />}
+                    {lightboxOpen && (
+                        <Lightbox 
+                            images={content.photography} 
+                            initialIndex={lightboxIndex} 
+                            onClose={() => setLightboxOpen(false)} 
+                        />
+                    )}
                 </AnimatePresence>
 
                 <AnimatePresence mode="wait">
@@ -957,8 +1073,8 @@ export default function App() {
                     >
                         {currentPage === 'landing' && <LandingPage setPage={navigateTo} openLog={openLog} />}
                         {currentPage === 'resume' && <ResumePage openJob={setSelectedJob} />}
-                        {/* Photography and Blog point to same Engineering Logs Component for now */}
-                        {(currentPage === 'photography' || currentPage === 'blog') && <EngineeringLogsPage openLog={openLog} />}
+                        {currentPage === 'photography' && <PhotographyPage openLightbox={openLightbox} />}
+                        {currentPage === 'blog' && <EngineeringLogsPage openLog={openLog} />}
                         {currentPage === 'about' && <AboutPage />}
                     </motion.div>
                 </AnimatePresence>
