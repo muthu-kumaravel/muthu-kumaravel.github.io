@@ -382,26 +382,27 @@ const content = {
     }
   ],
   "photography": [
-    { id: 1, src: "/images/IMG_0009.heic", alt: "", iso: "100", aperture: "f/1.4", shutter: "1/2000s", camera: "Sony A7IV", lens: "35mm GM" },
-    { id: 2, src: "/images/IMG_2934.JPG", alt: "", iso: "400", aperture: "f/2.8", shutter: "1/500s", camera: "Canon R5", lens: "85mm f/1.2" },
-    { id: 3, src: "/images/IMG_3406.HEIC", alt: "", iso: "64", aperture: "f/8.0", shutter: "1/250s", camera: "Nikon Z8", lens: "14-24mm" },
-    { id: 4, src: "/images/IMG_3425.HEIC", alt: "", iso: "800", aperture: "f/1.8", shutter: "1/125s", camera: "Sony A7IV", lens: "50mm GM" },
-    { id: 5, src: "/images/IMG_3497.HEIC", alt: "", iso: "1600", aperture: "f/2.0", shutter: "1/60s", camera: "Fuji XT-5", lens: "23mm f/1.4" },
-    { id: 6, src: "/images/IMG_5044.jpg", alt: "", iso: "200", aperture: "f/4.0", shutter: "1/1000s", camera: "Sony A7IV", lens: "24-70mm GM" },
-    { id: 7, src: "/images/IMG_5045.jpg", alt: "", iso: "100", aperture: "f/11", shutter: "1/50s", camera: "Canon R6", lens: "16-35mm" },
-    { id: 8, src: "/images/IMG_5046.jpg", alt: "", iso: "3200", aperture: "f/2.8", shutter: "1/200s", camera: "Sony A7IV", lens: "70-200mm GM" },
-    { id: 9, src: "/images/IMG_5047.jpg", alt: "", iso: "100", aperture: "f/1.8", shutter: "1/4000s", camera: "Nikon Zf", lens: "40mm f/2" },
-    { id: 10, src: "/images/IMG_5048.jpg", alt: "", iso: "640", aperture: "f/2.8", shutter: "1/160s", camera: "Sony A7IV", lens: "24-70mm GM" },
-    { id: 11, src: "/images/IMG_5049.jpg", alt: "", iso: "1250", aperture: "f/1.4", shutter: "1/100s", camera: "Sony A7IV", lens: "35mm GM" },
-    { id: 12, src: "/images/IMG_5050.jpg", alt: "", iso: "100", aperture: "f/5.6", shutter: "1/500s", camera: "Canon R5", lens: "24-105mm" },
-    { id: 13, src: "/images/IMG_5051.jpg", alt: "", iso: "200", aperture: "f/4.0", shutter: "1/250s", camera: "Fuji X-T5", lens: "56mm f/1.2" },
-    { id: 14, src: "/images/IMG_5052.jpg", alt: "", iso: "800", aperture: "f/2.8", shutter: "1/60s", camera: "Sony A7IV", lens: "16-35mm PZ" },
-    { id: 15, src: "/images/IMG_5053.jpg", alt: "", iso: "100", aperture: "f/1.2", shutter: "1/8000s", camera: "Canon R6", lens: "50mm f/1.2" },
-    { id: 16, src: "/images/IMG_5054.jpg", alt: "", iso: "400", aperture: "f/8.0", shutter: "1/200s", camera: "Sony A7IV", lens: "24-70mm GM" },
-    { id: 17, src: "/images/IMG_5055.jpg", alt: "", iso: "1600", aperture: "f/2.8", shutter: "1/100s", camera: "Nikon Z8", lens: "24-120mm" },
-    { id: 18, src: "/images/IMG_5056.jpg", alt: "", iso: "100", aperture: "f/1.8", shutter: "1/2000s", camera: "Sony A7IV", lens: "85mm f/1.8" },
-    { id: 19, src: "/images/IMG_5057.jpg", alt: "", iso: "200", aperture: "f/2.8", shutter: "1/1000s", camera: "DJI Mavic 3", lens: "24mm" },
-    { id: 20, src: "/images/IMG_5058.jpg", alt: "", iso: "3200", aperture: "f/1.4", shutter: "1/60s", camera: "Sony A7IV", lens: "24mm GM" },
+    { id: 0, src: "/images/IMG_8086.JPG", alt: "Street Portrait" },
+    { id: 1, src: "/images/JAI_3161.JPG", alt: "Street Portrait" },
+    { id: 2, src: "/images/IMG_2934.JPG", alt: "Urban Architecture" },
+    { id: 3, src: "/images/IMG_3406.HEIC", alt: "Landscape" },
+    { id: 4, src: "/images/IMG_3425.HEIC", alt: "Night Cityscape" },
+    { id: 5, src: "/images/IMG_3497.HEIC", alt: "Coffee Shop Vibe" },
+    { id: 6, src: "/images/IMG_5044.jpg", alt: "Neon Lights" },
+    { id: 7, src: "/images/IMG_5045.jpg", alt: "Minimalist Geometry" },
+    { id: 8, src: "/images/IMG_5046.jpg", alt: "Action Shot" },
+    { id: 9, src: "/images/IMG_5047.jpg", alt: "Detail Macro" },
+    { id: 10, src: "/images/IMG_5048.jpg", alt: "Golden Hour" },
+    { id: 11, src: "/images/IMG_5049.jpg", alt: "Rainy Mood" },
+    { id: 12, src: "/images/IMG_5050.jpg", alt: "Studio Portrait" },
+    { id: 13, src: "/images/IMG_5051.jpg", alt: "Concert Lights" },
+    { id: 14, src: "/images/IMG_5052.jpg", alt: "Drone Aerial" },
+    { id: 15, src: "/images/IMG_5053.jpg", alt: "Street Candid" },
+    { id: 16, src: "/images/IMG_5054.jpg", alt: "Abstract Texture" },
+    { id: 17, src: "/images/IMG_5055.jpg", alt: "Blue Hour" },
+    { id: 18, src: "/images/IMG_5056.jpg", alt: "Cinematic Frame" },
+    { id: 19, src: "/images/IMG_5057.jpg", alt: "Surfing Action" },
+    { id: 20, src: "/images/IMG_5058.jpg", alt: "Travel Lifestyle" },
   ],
   "about": {
     "bio": "I am an Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments. Specializing in LLMs, GenAI, and Computer Vision, I bridge the gap between deep technical execution and strategic business value. Currently at Google, I enable enterprises to extract maximum value from next-generation silicon for production-grade Gen AI.\n\nOutside of work, I love staying active—whether it’s cricket, badminton, or trying not to fall off a surfboard 🏄. I’m also into photography, and I’ve got a bit of a habit of traveling just to try new food and meet new people. It’s my favourite way to explore stories beyond screens.\n\nI’ve been told I bring a calm vibe and an easy smile—and I usually find the best conversations happen over lunch, so don’t be surprised if I tag along when you’re headed out for a good meal.",
@@ -704,13 +705,13 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                 {/* Metadata Overlay Panel */}
                 <div className="absolute bottom-10 left-0 right-0 flex justify-center z-50">
                     <div className="bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 flex items-center gap-6 text-xs font-mono text-gray-300">
-                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {photo.camera} + {photo.lens}</span>
+                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {photo.camera || '---'} + {photo.lens || '---'}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {photo.aperture}</span>
+                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {photo.aperture || '--'}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {photo.shutter}</span>
+                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {photo.shutter || '--'}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2">ISO {photo.iso}</span>
+                        <span className="flex items-center gap-2">ISO {photo.iso || '---'}</span>
                     </div>
                 </div>
             </div>
@@ -985,49 +986,138 @@ const ResumePage = ({ openJob }) => {
 };
 
 // --- Photography Page with Skeleton Loading & Metadata ---
-const ImageCard = ({ photo, onClick, index }) => {
+const ImageCard = React.memo(({ photo, onClick, index }) => {
+    // Initialize state based on whether the image is already cached
     const [loaded, setLoaded] = useState(false);
+    // Add state for EXIF metadata
+    const [exifData, setExifData] = useState({
+        iso: '---',
+        aperture: '--',
+        shutter: '--',
+        camera: '---',
+        lens: '---'
+    });
+    
+    const imgRef = React.useRef(null);
+
+    // Extract EXIF data using the loaded library
+    const extractExif = () => {
+        if (window.EXIF && imgRef.current) {
+             try {
+                window.EXIF.getData(imgRef.current, function() {
+                    const make = window.EXIF.getTag(this, "Make");
+                    const model = window.EXIF.getTag(this, "Model");
+                    const iso = window.EXIF.getTag(this, "ISOSpeedRatings");
+                    const fNumber = window.EXIF.getTag(this, "FNumber");
+                    const exposureTime = window.EXIF.getTag(this, "ExposureTime");
+                    // LensModel isn't always available in basic EXIF, often in MakerNote, but we try standard tag
+                    // Note: 'undefined' string check is due to library behavior on missing tags
+                    const lens = window.EXIF.getTag(this, "LensModel") || "---";
+
+                    let shutter = "--";
+                    if (exposureTime) {
+                         shutter = exposureTime >= 1 ? `${exposureTime}s` : `1/${Math.round(1/exposureTime)}s`;
+                    }
+                    
+                    let aperture = "--";
+                    if (fNumber) {
+                        aperture = `f/${fNumber}`;
+                    }
+
+                    let camera = "---";
+                    if(model) {
+                         camera = model;
+                         // Simple cleanup if Make is in Model name
+                         if(make && model.includes(make)) {
+                             camera = model;
+                         } else if (make) {
+                             camera = `${make} ${model}`;
+                         }
+                    }
+
+                    setExifData({
+                        iso: iso || '---',
+                        aperture: aperture,
+                        shutter: shutter,
+                        camera: camera,
+                        lens: lens
+                    });
+                });
+             } catch (e) {
+                 console.log("EXIF extraction failed", e);
+             }
+        }
+    };
+
+    useEffect(() => {
+        const img = imgRef.current;
+        if (img && img.complete) {
+            setLoaded(true);
+            // Attempt to extract even if cached
+            if (window.EXIF) extractExif(); 
+        }
+    }, []);
+
+    const handleLoad = () => {
+        setLoaded(true);
+        // Extract on load
+        extractExif();
+    };
 
     return (
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} 
-            transition={{ delay: index * 0.05 }}
+            viewport={{ once: true, margin: "-50px" }} 
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in mb-4"
             onClick={onClick}
         >
-            {/* Skeleton Loader */}
-            <div className={`absolute inset-0 bg-zinc-800 animate-pulse ${loaded ? 'hidden' : 'block'}`} style={{ aspectRatio: '3/4' }} />
+            {/* Skeleton Loader - Only show if NOT loaded */}
+            {!loaded && (
+                <div 
+                    className="absolute inset-0 bg-zinc-800 animate-pulse transition-opacity duration-500" 
+                    style={{ aspectRatio: '3/4' }} 
+                />
+            )}
             
             <img 
+                ref={imgRef}
                 src={photo.src} 
                 alt={photo.alt} 
-                onLoad={() => setLoaded(true)}
-                className={`w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={handleLoad}
+                // Logic: If loaded is true, we force 'opacity-100 blur-0 scale-100' immediately.
+                className={`w-full h-auto object-cover transform group-hover:scale-105 transition-all duration-700 ease-out ${
+                    loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105'
+                }`}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             
             {/* Exif Overlay Grid View */}
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="flex items-center gap-3 text-white/90 font-mono text-[10px]">
-                    <span className="bg-white/10 px-1.5 py-0.5 rounded">{photo.camera}</span>
-                    <span>{photo.lens}</span>
+                    <span className="bg-white/10 px-1.5 py-0.5 rounded">{exifData.camera}</span>
+                    <span>{exifData.lens}</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60 font-mono text-[10px] mt-1">
-                    <span>{photo.iso} ISO</span>
-                    <span>{photo.aperture}</span>
+                    <span>{exifData.iso !== '---' ? `ISO ${exifData.iso}` : 'ISO ---'}</span>
+                    <span>{exifData.aperture}</span>
+                    <span>{exifData.shutter}</span>
                 </div>
             </div>
         </motion.div>
     );
-};
+});
 
 const PhotographyPage = ({ openLightbox }) => {
+    // State for Load More functionality
+    const [visibleCount, setVisibleCount] = useState(9);
+    const visiblePhotos = content.photography.slice(0, visibleCount);
+
     return (
         <PageLayout title="Visual Gallery" subtitle="Moments Captured in High Fidelity">
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-                {content.photography.map((photo, index) => (
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                {visiblePhotos.map((photo, index) => (
                     <ImageCard 
                         key={photo.id} 
                         photo={photo} 
@@ -1036,6 +1126,18 @@ const PhotographyPage = ({ openLightbox }) => {
                     />
                 ))}
             </div>
+            
+            {/* Load More Button */}
+            {visibleCount < content.photography.length && (
+                 <div className="mt-16 flex justify-center">
+                    <button 
+                        onClick={() => setVisibleCount(prev => prev + 9)}
+                        className="group flex items-center gap-3 px-8 py-3 rounded-full bg-zinc-900 border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 font-mono text-sm tracking-widest"
+                    >
+                        LOAD_MORE_ASSETS <span className="text-blue-500 group-hover:text-black">[+]</span>
+                    </button>
+                 </div>
+            )}
         </PageLayout>
     );
 };
@@ -1136,6 +1238,12 @@ export default function App() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
+    // Inject EXIF.js library for metadata extraction
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/exif-js";
+    script.async = true;
+    document.body.appendChild(script);
+
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       const validPages = ['landing', 'resume', 'photography', 'blog', 'about'];
@@ -1147,7 +1255,10 @@ export default function App() {
     };
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => {
+        window.removeEventListener('hashchange', handleHashChange);
+        document.body.removeChild(script);
+    };
   }, []);
 
   const navigateTo = (page) => {
