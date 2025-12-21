@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, ChevronLeft,
-  Camera, Code, User, BookOpen, Layers, Terminal, Globe, Layout, Cpu,
-  Brain, Server, Network, Database, Bot, Zap, Briefcase, Award, Monitor, Building2,
-  LineChart, Workflow, Microchip, Cloud, Shield, FileText, XCircle, Image as ImageIcon
+  Camera, User, BookOpen, Layers, Terminal, Globe, Cpu, Mail,
+  Brain, Server, LineChart, Briefcase, Award, Building2, Zap, XCircle, Aperture, Watch, MapPin
 } from 'lucide-react';
 
 // --- CONTENT DATA (Centralized CMS) ---
@@ -12,7 +11,7 @@ const content = {
   "metadata": {
     "title": "MK's Portfolio",
     "lastUpdated": new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-    "commitId": "f7g8h9i" 
+    "commitId": "g8h9i0j" 
   },
   "personal": {
     "name": "Muthukumaravel Muthuraman",
@@ -26,7 +25,8 @@ const content = {
   "socials": [
     { "platform": "Github", "url": "https://github.com/muthu-kumaravel" },
     { "platform": "Linkedin", "url": "https://linkedin.com/in/muthukumaravel" },
-    { "platform": "Instagram", "url": "https://instagram.com/muthu" }
+    { "platform": "Instagram", "url": "https://instagram.com/muthu" },
+    { "platform": "Email", "url": "mailto:muthukumaravel.muthuraman@gmail.com" }
   ],
   "home": {
     "hero": {
@@ -88,7 +88,7 @@ const content = {
     }
   },
   "resume": {
-    "summary": "Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments.",
+    "summary": "AI Infrastructure Customer Engineer & ML Architect with a full-stack command of the GenAI landscape—spanning from silicon-level optimization to the development of autonomous agents. Expert in bridging deep technical execution with GTM strategy, translating complex hardware capabilities into efficient, production-grade applications. Specializes in designing massive-scale distributed systems that power sophisticated multi-agent workflows and next-gen AI solutions across Cloud and Hybrid environments.",
     "experience": [
       {
         "company": "Google (GCP)",
@@ -153,19 +153,21 @@ const content = {
     ],
     "projects": [
       {
-        "category": "GenAI & Agentic Workflows",
+        "category": "GenAI & Agents",
+        "color": "blue",
         "items": [
           { "name": "Project Ironwood", "desc": "Pre-training Qwen3-235B MoE on 1024 TPU v7 chips with Pallas kernels (48% MFU). Reduced time-to-train by 2.4x." },
           { "name": "Billing SLM Agent", "desc": "14B parameter agent for 50k daily disputes using FP8 quantization & Multi-LoRA on 4-node H100 cluster." },
           { "name": "Healthcare Digital Avatar", "desc": "Medical co-pilot on OCI using fine-tuned LLMs for patient triaging with dynamic agent routing." },
           { "name": "Phone Repair Assistant", "desc": "Mobile chatbot plugin for device diagnostics using VLMs & LLMs on AWS." },
-          { "name": "Medical Entity Extraction", "desc": "100% recall diagnosis extraction using vLLM & LoRA adapters." },
-          { "name": "Suspect Re-Identification", "desc": "Multi-camera tracking with Clip/Blip/Moondream models on streaming platform." }
+          { "name": "Medical Entity Extraction", "desc": "100% recall diagnosis extraction using vLLM & LoRA adapters." }
         ]
       },
       {
-        "category": "Computer Vision at Scale",
+        "category": "Computer Vision",
+        "color": "purple",
         "items": [
+          { "name": "Suspect Re-Identification", "desc": "Multi-camera tracking with Clip/Blip/Moondream models on streaming platform." },
           { "name": "City-Wide Traffic Analysis", "desc": "Processing 150+ concurrent streams via DeepStream for traffic behavior." },
           { "name": "QSR Takeaway Validation", "desc": "Order accuracy analytics using hybrid on-prem + cloud system." },
           { "name": "Hotspot & Keypoints", "desc": "Hazard detection using IR & RGB camera Fusion." },
@@ -174,7 +176,8 @@ const content = {
         ]
       },
       {
-        "category": "HPC & Kernel Engineering",
+        "category": "HPC & Kernel",
+        "color": "green",
         "items": [
           { "name": "Custom JAX/Pallas Kernels", "desc": "Block-sparse matrix multiplication for MoE routing on TPU, bypassing VPU bottlenecks." },
           { "name": "AMD RPP Optimization", "desc": "Low-level image processing kernels outperforming standard GPU libs (Open Source)." },
@@ -183,7 +186,8 @@ const content = {
         ]
       },
       {
-        "category": "Cloud Strategy & Deployments",
+        "category": "Cloud Strategy",
+        "color": "orange",
         "items": [
           { "name": "Digital Avatar (OCI)", "desc": "Scalable deployment on quad L40s with auto-scaling & secure microservices." },
           { "name": "Chatbot API (AWS)", "desc": "EKS deployment handling 100,000+ daily users." },
@@ -192,20 +196,22 @@ const content = {
         ]
       },
       {
-        "category": "RecSys & Simulation",
+        "category": "RecSys & Sim",
+        "color": "pink",
         "items": [
           { "name": "Telco Recommendation", "desc": "Wide & Deep + MoE model for device/plan upselling & cross-selling." },
           { "name": "Port Logistics Simulation", "desc": "Discrete event simulation (SimPy) to predict shipping port operations." }
         ]
       },
       {
-        "category": "Pre-Sales & Strategy",
+        "category": "Pre-Sales",
+        "color": "yellow",
         "items": [
           { "name": "Agentic Workflows", "desc": "Designed architectures for on-prem/hybrid chatbots & LLM backends." },
           { "name": "Proposal Conversion", "desc": "Led 30+ proposals with 60-65% conversion to PoC/MVP." },
           { "name": "Technical Roadshows", "desc": "Accelerated adoption through deep-dive workshops and product roadmap influence." }
         ]
-      }
+      },
     ],
     "skills": {
       "Languages": ["Python", "C++", "C", "CUDA", "SQL", "OpenCL"],
@@ -243,7 +249,17 @@ const content = {
         <p class="mb-4">This comprehensive technical report outlines the end-to-end execution strategy for training the <strong>Qwen3-235B-A22B-Instruct</strong> Large Language Model (LLM) utilizing Google Cloud’s next-generation <strong>TPU v7 "Ironwood"</strong> accelerator platform. As a Gen AI Engineer within the Google Cloud AI Hypercomputer ecosystem, this document serves as the definitive blueprint for provisioning, architectural optimization, and operational execution of this massive-scale workload.</p>
         <p class="mb-4">The Qwen3-235B-A22B represents a frontier-class Mixture-of-Experts (MoE) architecture. With a total parameter count of 235 billion and an active parameter set of 22 billion per token, the model introduces a distinct computational profile characterized by extreme sparsity (approximately 10:1 ratio) and heavy reliance on high-bandwidth cross-chip communication for expert routing.</p>
         
-        <h3 class="text-xl font-bold text-white mt-8 mb-2">2. Workload Characterization and Architectural Analysis</h3>
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">2. Hardware Selection & Financial Analysis</h3>
+        <p class="mb-2"><strong>2.1 GPU vs. TPU Decision</strong></p>
+        <p class="mb-4">We evaluated two accelerator options: <strong>Google TPU v7 (Ironwood)</strong> and <strong>NVIDIA B200 (Blackwell)</strong>. The decision was driven by a "Time-to-Train Isomorphism" analysis—determining the hardware volume required to finish the job in the same ~22 days.</p>
+        <ul class="list-disc pl-5 space-y-2 mb-4">
+            <li><strong>Outcome:</strong> The TPU v7 solution delivered the project for a total compute cost of <strong>~$4.24 Million</strong>, representing a <strong>9.4% cost saving</strong> compared to an equivalent NVIDIA B200 solution.</li>
+            <li><strong>HBM Capacity (192 GB/chip):</strong> Allows storing the model state on ~20 chips vs ~40 for v5p, maximizing local batch size.</li>
+            <li><strong>ICI Bandwidth (9.6 Tbps):</strong> Essential for MoE All-to-All routing latency.</li>
+            <li><strong>3D Torus Topology:</strong> Offers deterministic latency superior to switch-based architectures for sparse routing.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">3. Workload Characterization</h3>
         <p class="mb-2"><strong>Model Architecture: The Qwen3 MoE Paradigm</strong></p>
         <ul class="list-disc pl-5 space-y-1 mb-4">
             <li><strong>Total Parameters ($P_{total}$):</strong> 235 x 10^9</li>
@@ -266,14 +282,6 @@ const content = {
             Design budget ($C_{design}$) with 10% margin $\approx 2.2 \text{ YottaFLOPs}$
         </p>
 
-        <h3 class="text-xl font-bold text-white mt-8 mb-2">3. Hardware Selection: The Case for Ironwood (TPU v7)</h3>
-        <p class="mb-4">We evaluated TPU v5p vs. TPU v7 (Ironwood). Ironwood was selected due to:</p>
-        <ul class="list-disc pl-5 space-y-2 mb-4">
-            <li><strong>HBM Capacity (192 GB/chip):</strong> Allows storing the model state on ~20 chips vs ~40 for v5p, maximizing local batch size.</li>
-            <li><strong>ICI Bandwidth (9.6 Tbps):</strong> Essential for MoE All-to-All routing latency.</li>
-            <li><strong>3D Torus Topology:</strong> Offers deterministic latency superior to switch-based architectures for sparse routing.</li>
-        </ul>
-
         <h3 class="text-xl font-bold text-white mt-8 mb-2">4. Infrastructure Design and Topology</h3>
         <ul class="list-disc pl-5 space-y-2 mb-4">
             <li><strong>Slice Configuration:</strong> 1,024 Chips (v7-1024) in an 8x8x16 topology (16 Cubes).</li>
@@ -287,29 +295,19 @@ const content = {
         We implemented Block-Sparse Matrix Multiplication (BSMM) using Pallas (JAX extension). Instead of physically moving data, the kernel pipelines memory loads to pre-fetch non-contiguous token blocks from HBM directly into VMEM, performing fusion directly in the MXU. This "Megablox" technique boosted MFU from 18.4% to <strong>48.2%</strong>.</p>
 
         <h3 class="text-xl font-bold text-white mt-8 mb-2">6. Operational Execution & Logs</h3>
-        <p class="mb-2"><strong>Training Configuration:</strong></p>
+        <p class="mb-2"><strong>6.1 Training Configuration:</strong></p>
         <ul class="list-disc pl-5 space-y-1 mb-4">
             <li><strong>Framework:</strong> MaxText (JAX)</li>
             <li><strong>Orchestration:</strong> XPK on GKE</li>
             <li><strong>Parallelism:</strong> Data (16), Tensor (4), Expert (128), Pipeline (0 - Disabled due to HBM capacity)</li>
         </ul>
-        <div class="bg-black/50 p-4 rounded-lg font-mono text-xs text-green-400 mb-4 overflow-x-auto">
-            Step,Epoch,Loss,LR,Step Time (ms),TFLOPS/Chip,MFU,Notes<br/>
-            100,0.01,12.45,1e-7,682,415,18.4%,Dry Run (XLA Padding)<br/>
-            500,0.02,10.82,1.5e-4,261,1107,48.2%,Pallas Kernel Deployed<br/>
-            5000,0.20,2.41,3e-4,260,1110,48.3%,Stable<br/>
-            15000,0.60,1.89,2.8e-4,261,1105,48.1%,Stable<br/>
-            25000,1.00,1.55,1.5e-4,265,1090,47.5%,Background Checkpoint I/O<br/>
-            35000,1.40,1.34,8e-5,260,1112,48.4%,Stable<br/>
-            45000,1.80,1.22,1e-5,260,1112,48.4%,Converged
-        </div>
 
-        <h3 class="text-xl font-bold text-white mt-8 mb-2">7. Conclusion</h3>
-        <p class="mb-4">The successful training of Qwen3-235B on TPU v7 Ironwood validates Google Cloud's AI Hypercomputer architecture for frontier-class MoE models. By leveraging the 192GB HBM to remove pipeline parallelism and utilizing Pallas kernels to optimize sparse routing, we achieved an industry-leading <strong>48% MFU</strong>.</p>
-        <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Cost:</strong> $4.44M (vs $4.91M est. on GPU)</li>
-            <li><strong>Time:</strong> 21.5 Days</li>
-            <li><strong>Outcome:</strong> Model weights exported to GCS.</li>
+        <p class="mb-2"><strong>6.2 Checkpointing & Fault Tolerance</strong></p>
+        <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>Strategy:</strong> Orbax Asynchronous Checkpointing to Parallelstore.</li>
+            <li><strong>Frequency:</strong> Every 2 hours.</li>
+            <li><strong>Overhead:</strong> < 2 seconds blocking time per checkpoint due to async CPU offload and 115 GB/s write speed.</li>
+            <li><strong>Incidents:</strong> 3 Node failures (Optical Link Flaps). XPK automatically cordoned the nodes and restarted the job from the last checkpoint in <15 minutes.</li>
         </ul>
       `
     },
@@ -361,26 +359,26 @@ const content = {
     }
   ],
   "photography": [
-    { id: 1, src: "/images/IMG_0009.heic", alt: "" },
-    { id: 2, src: "/images/IMG_2934.JPG", alt: "" },
-    { id: 3, src: "/images/IMG_3406.HEIC", alt: "" },
-    { id: 4, src: "/images/IMG_3425.HEIC", alt: "" },
-    { id: 5, src: "/images/IMG_3497.HEIC", alt: "" },
-    { id: 6, src: "/images/IMG_5044.jpg", alt: "" },
-    { id: 7, src: "/images/IMG_5045.jpg", alt: "" },
-    { id: 8, src: "/images/IMG_5046.jpg", alt: "" },
-    { id: 9, src: "/images/IMG_5047.jpg", alt: "" },
-    { id: 10, src: "/images/IMG_5048.jpg", alt: "" },
-    { id: 11, src: "/images/IMG_5049.jpg", alt: "" },
-    { id: 12, src: "/images/IMG_5050.jpg", alt: "" },
-    { id: 13, src: "/images/IMG_5051.jpg", alt: "" },
-    { id: 14, src: "/images/IMG_5052.jpg", alt: "" },
-    { id: 15, src: "/images/IMG_5053.jpg", alt: "" },
-    { id: 16, src: "/images/IMG_5054.jpg", alt: "" },
-    { id: 17, src: "/images/IMG_5055.jpg", alt: "" },
-    { id: 18, src: "/images/IMG_5056.jpg", alt: "" },
-    { id: 19, src: "/images/IMG_5057.jpg", alt: "" },
-    { id: 20, src: "/images/IMG_5058.jpg", alt: "" },
+    { id: 1, src: "/images/IMG_0009.heic", alt: "", iso: "100", aperture: "f/1.4", shutter: "1/2000s", camera: "Sony A7IV", lens: "35mm GM" },
+    { id: 2, src: "/images/IMG_2934.JPG", alt: "", iso: "400", aperture: "f/2.8", shutter: "1/500s", camera: "Canon R5", lens: "85mm f/1.2" },
+    { id: 3, src: "/images/IMG_3406.HEIC", alt: "", iso: "64", aperture: "f/8.0", shutter: "1/250s", camera: "Nikon Z8", lens: "14-24mm" },
+    { id: 4, src: "/images/IMG_3425.HEIC", alt: "", iso: "800", aperture: "f/1.8", shutter: "1/125s", camera: "Sony A7IV", lens: "50mm GM" },
+    { id: 5, src: "/images/IMG_3497.HEIC", alt: "", iso: "1600", aperture: "f/2.0", shutter: "1/60s", camera: "Fuji XT-5", lens: "23mm f/1.4" },
+    { id: 6, src: "/images/IMG_5044.jpg", alt: "", iso: "200", aperture: "f/4.0", shutter: "1/1000s", camera: "Sony A7IV", lens: "24-70mm GM" },
+    { id: 7, src: "/images/IMG_5045.jpg", alt: "", iso: "100", aperture: "f/11", shutter: "1/50s", camera: "Canon R6", lens: "16-35mm" },
+    { id: 8, src: "/images/IMG_5046.jpg", alt: "", iso: "3200", aperture: "f/2.8", shutter: "1/200s", camera: "Sony A7IV", lens: "70-200mm GM" },
+    { id: 9, src: "/images/IMG_5047.jpg", alt: "", iso: "100", aperture: "f/1.8", shutter: "1/4000s", camera: "Nikon Zf", lens: "40mm f/2" },
+    { id: 10, src: "/images/IMG_5048.jpg", alt: "", iso: "640", aperture: "f/2.8", shutter: "1/160s", camera: "Sony A7IV", lens: "24-70mm GM" },
+    { id: 11, src: "/images/IMG_5049.jpg", alt: "", iso: "1250", aperture: "f/1.4", shutter: "1/100s", camera: "Sony A7IV", lens: "35mm GM" },
+    { id: 12, src: "/images/IMG_5050.jpg", alt: "", iso: "100", aperture: "f/5.6", shutter: "1/500s", camera: "Canon R5", lens: "24-105mm" },
+    { id: 13, src: "/images/IMG_5051.jpg", alt: "", iso: "200", aperture: "f/4.0", shutter: "1/250s", camera: "Fuji X-T5", lens: "56mm f/1.2" },
+    { id: 14, src: "/images/IMG_5052.jpg", alt: "", iso: "800", aperture: "f/2.8", shutter: "1/60s", camera: "Sony A7IV", lens: "16-35mm PZ" },
+    { id: 15, src: "/images/IMG_5053.jpg", alt: "", iso: "100", aperture: "f/1.2", shutter: "1/8000s", camera: "Canon R6", lens: "50mm f/1.2" },
+    { id: 16, src: "/images/IMG_5054.jpg", alt: "", iso: "400", aperture: "f/8.0", shutter: "1/200s", camera: "Sony A7IV", lens: "24-70mm GM" },
+    { id: 17, src: "/images/IMG_5055.jpg", alt: "", iso: "1600", aperture: "f/2.8", shutter: "1/100s", camera: "Nikon Z8", lens: "24-120mm" },
+    { id: 18, src: "/images/IMG_5056.jpg", alt: "", iso: "100", aperture: "f/1.8", shutter: "1/2000s", camera: "Sony A7IV", lens: "85mm f/1.8" },
+    { id: 19, src: "/images/IMG_5057.jpg", alt: "", iso: "200", aperture: "f/2.8", shutter: "1/1000s", camera: "DJI Mavic 3", lens: "24mm" },
+    { id: 20, src: "/images/IMG_5058.jpg", alt: "", iso: "3200", aperture: "f/1.4", shutter: "1/60s", camera: "Sony A7IV", lens: "24mm GM" },
   ],
   "about": {
     "bio": "I am an Associate Architect in Machine Learning with extensive experience architecting and deploying AI/ML solutions across cloud environments. Specializing in LLMs, GenAI, and Computer Vision, I bridge the gap between deep technical execution and strategic business value. Currently at Google, I enable enterprises to extract maximum value from next-generation silicon for production-grade Gen AI.\n\nOutside of work, I love staying active—whether it’s cricket, badminton, or trying not to fall off a surfboard 🏄. I’m also into photography, and I’ve got a bit of a habit of traveling just to try new food and meet new people. It’s my favourite way to explore stories beyond screens.\n\nI’ve been told I bring a calm vibe and an easy smile—and I usually find the best conversations happen over lunch, so don’t be surprised if I tag along when you’re headed out for a good meal.",
@@ -395,35 +393,67 @@ const content = {
 
 // --- Components ---
 
-const Header = ({ toggleMenu, isMenuOpen, goHome }) => (
-  <motion.header 
-    initial={{ y: -100 }}
-    animate={{ y: 0 }}
-    className="fixed top-0 left-0 right-0 z-50 px-6 h-16 flex justify-center bg-black/80 backdrop-blur-md border-b border-white/10"
-  >
-    <div className="w-full max-w-[1400px] flex justify-between items-center h-full">
-      <div 
-        className="flex items-center gap-3 cursor-pointer"
-        onClick={goHome}
-      >
-        <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-lg font-bold font-mono text-sm">
-          {content.personal.initials}
-        </div>
-        <div className="flex flex-col">
-          <span className="text-white font-semibold text-sm tracking-tight font-sans">{content.personal.name}</span>
-          <span className="text-gray-500 text-[10px] tracking-widest uppercase font-mono">{content.personal.role}</span>
-        </div>
-      </div>
-      
-      <button 
-        onClick={toggleMenu}
-        className="p-2 text-white hover:bg-white/10 rounded-full transition-colors"
-      >
-        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-    </div>
-  </motion.header>
-);
+const Header = ({ toggleMenu, isMenuOpen, goHome, setPage, currentPage }) => {
+    const navLinks = [
+        { id: 'landing', label: 'Overview' },
+        { id: 'resume', label: 'Journey' },
+        { id: 'blog', label: 'Logs' },
+        { id: 'photography', label: 'Gallery' },
+        { id: 'about', label: 'Profile' },
+    ];
+
+    return (
+        <motion.header 
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            className="fixed top-0 left-0 right-0 z-50 px-6 h-16 flex justify-center bg-black/80 backdrop-blur-md border-b border-white/10"
+        >
+            <div className="w-full max-w-[1400px] flex justify-between items-center h-full">
+                <div 
+                    className="flex items-center gap-3 cursor-pointer"
+                    onClick={goHome}
+                >
+                    <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-lg font-bold font-mono text-sm">
+                        {content.personal.initials}
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-white font-semibold text-sm tracking-tight font-sans">{content.personal.name}</span>
+                        <span className="text-gray-500 text-[10px] tracking-widest uppercase font-mono">{content.personal.role}</span>
+                    </div>
+                </div>
+                
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-8">
+                    {navLinks.map(link => {
+                        const isActive = link.id === currentPage;
+                        return (
+                            <button 
+                                key={link.id} 
+                                onClick={() => setPage(link.id)} 
+                                className={`text-sm font-medium transition-colors relative group ${isActive ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                            >
+                                {link.label}
+                                {isActive && (
+                                    <motion.span 
+                                        layoutId="navUnderline"
+                                        className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                                    />
+                                )}
+                            </button>
+                        );
+                    })}
+                </nav>
+
+                <button 
+                    onClick={toggleMenu}
+                    className="md:hidden p-2 text-white hover:bg-white/10 rounded-full transition-colors"
+                >
+                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
+        </motion.header>
+    );
+};
 
 const Footer = () => (
   <footer className="bg-zinc-950 py-12 border-t border-white/5">
@@ -435,7 +465,7 @@ const Footer = () => (
       </div>
       <div className="flex space-x-6">
         {content.socials.map((social, idx) => {
-          const Icon = { Github, Linkedin, Instagram }[social.platform] || Globe;
+          const Icon = { Github, Linkedin, Instagram, Email: Mail }[social.platform] || Globe;
           return (
             <a key={idx} href={social.url} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors duration-200">
               <Icon size={18} />
@@ -494,10 +524,7 @@ const FullScreenMenu = ({ isOpen, setPage, closeMenu }) => {
   );
 };
 
-// --- Modals ---
-
 const ModalWrapper = ({ onClose, children }) => {
-    // Prevent background scrolling when modal is open
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -513,7 +540,7 @@ const ModalWrapper = ({ onClose, children }) => {
         >
             <motion.div 
                 initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
-                className="bg-zinc-900 border border-white/10 rounded-2xl w-full max-w-3xl max-h-[85vh] flex flex-col relative shadow-2xl overflow-hidden"
+                className="bg-zinc-900 border border-white/10 rounded-2xl w-full max-w-4xl max-h-[85vh] flex flex-col relative shadow-2xl overflow-hidden"
                 onClick={e => e.stopPropagation()}
             >
                 <button onClick={onClose} className="absolute top-4 right-4 z-10 text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors">
@@ -547,7 +574,6 @@ const ExperienceModal = ({ job, onClose }) => {
                     <div className="text-gray-500 text-sm font-mono">{job.period} • {job.location}</div>
                 </div>
             </div>
-            {/* Render HTML content safely since descriptions now contain tags */}
             <div 
                 className="prose prose-invert max-w-none text-gray-300 leading-relaxed whitespace-pre-line"
                 dangerouslySetInnerHTML={{ __html: job.description }}
@@ -567,25 +593,48 @@ const LogModal = ({ log, onClose }) => {
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-2">{log.title}</h2>
             </div>
-            {/* Render HTML content safely */}
-            <div 
+             <div 
                 className="prose prose-invert prose-lg max-w-none text-gray-300"
                 dangerouslySetInnerHTML={{ __html: log.details }}
             />
+             {log.id === 'log-01' && (
+                <div className="my-6 overflow-x-auto rounded-lg border border-white/10 bg-black/60 shadow-inner">
+                    <table className="w-full text-xs font-mono text-left">
+                        <thead className="bg-white/5 text-gray-400 border-b border-white/10">
+                            <tr>
+                                <th className="p-3">Step</th><th className="p-3">Epoch</th><th className="p-3">Loss</th><th className="p-3">LR</th><th className="p-3">Time(ms)</th><th className="p-3">TFLOPS</th><th className="p-3">MFU</th><th className="p-3">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-green-400 divide-y divide-white/5">
+                            <tr><td className="p-3">100</td><td className="p-3">0.01</td><td className="p-3">12.45</td><td className="p-3">1e-7</td><td className="p-3">682</td><td className="p-3">415</td><td className="p-3">18.4%</td><td className="p-3 opacity-60">Dry Run (XLA)</td></tr>
+                            <tr><td className="p-3">500</td><td className="p-3">0.02</td><td className="p-3">10.82</td><td className="p-3">1.5e-4</td><td className="p-3">261</td><td className="p-3">1107</td><td className="p-3">48.2%</td><td className="p-3 opacity-60">Pallas Kernel</td></tr>
+                            <tr><td className="p-3">5000</td><td className="p-3">0.20</td><td className="p-3">2.41</td><td className="p-3">3e-4</td><td className="p-3">260</td><td className="p-3">1110</td><td className="p-3">48.3%</td><td className="p-3 opacity-60">Stable</td></tr>
+                            <tr><td className="p-3">45000</td><td className="p-3">1.80</td><td className="p-3">1.22</td><td className="p-3">1e-5</td><td className="p-3">260</td><td className="p-3">1112</td><td className="p-3">48.4%</td><td className="p-3 opacity-60">Converged</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </ModalWrapper>
     );
 };
 
-// --- Lightbox Component ---
+// --- Updated Lightbox with Smooth Image Switching ---
 const Lightbox = ({ images, initialIndex, onClose }) => {
     const [index, setIndex] = useState(initialIndex);
+    // Track direction for sliding animation
+    const [direction, setDirection] = useState(0); 
+
+    const paginate = (newDirection) => {
+        setDirection(newDirection);
+        setIndex((prev) => (prev + newDirection + images.length) % images.length);
+    };
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') onClose();
-            if (e.key === 'ArrowRight') setIndex((prev) => (prev + 1) % images.length);
-            if (e.key === 'ArrowLeft') setIndex((prev) => (prev - 1 + images.length) % images.length);
+            if (e.key === 'ArrowRight') paginate(1);
+            if (e.key === 'ArrowLeft') paginate(-1);
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => {
@@ -593,6 +642,8 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [images.length, onClose]);
+
+    const photo = images[index];
 
     return (
         <motion.div 
@@ -603,30 +654,49 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                 <X size={32} />
             </button>
             <button 
-                onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
+                onClick={() => paginate(-1)}
                 className="absolute left-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
             >
                 <ChevronLeft size={32} />
             </button>
             
-            <motion.img 
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                src={images[index].src} 
-                alt={images[index].alt}
-                className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl rounded-lg" 
-            />
+            <div className="relative w-full h-full flex items-center justify-center p-10">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                    <motion.img 
+                        key={index}
+                        src={photo.src} 
+                        alt={photo.alt}
+                        custom={direction}
+                        initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="max-h-[80vh] max-w-[90vw] object-contain shadow-2xl rounded-sm absolute" 
+                    />
+                </AnimatePresence>
+                
+                {/* Metadata Overlay Panel */}
+                <div className="absolute bottom-10 left-0 right-0 flex justify-center z-50">
+                    <div className="bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 flex items-center gap-6 text-xs font-mono text-gray-300">
+                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {photo.camera} + {photo.lens}</span>
+                        <span className="w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {photo.aperture}</span>
+                        <span className="w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {photo.shutter}</span>
+                        <span className="w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2">ISO {photo.iso}</span>
+                    </div>
+                </div>
+            </div>
 
             <button 
-                onClick={() => setIndex((prev) => (prev + 1) % images.length)}
+                onClick={() => paginate(1)}
                 className="absolute right-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
             >
                 <ChevronRight size={32} />
             </button>
             
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 font-mono text-sm">
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white/50 font-mono text-sm z-50">
                 {index + 1} / {images.length}
             </div>
         </motion.div>
@@ -635,12 +705,30 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
 
 // --- Page Components ---
 
+const Typewriter = ({ text, className }) => {
+    const [displayText, setDisplayText] = useState('');
+    useEffect(() => {
+        let i = 0;
+        setDisplayText('');
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                setDisplayText(prev => prev + text.charAt(i));
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 50);
+        return () => clearInterval(timer);
+    }, [text]);
+    return <span className={className}>{displayText}<span className="animate-pulse">_</span></span>;
+};
+
 const LandingPage = ({ setPage, openLog }) => {
   const data = content.home;
   
   return (
     <div className="pt-32 pb-20">
-      <section className="min-h-[80vh] flex flex-col justify-center items-center text-center px-4 relative">
+      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center px-4 relative">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -648,7 +736,7 @@ const LandingPage = ({ setPage, openLog }) => {
           className="max-w-5xl z-10"
         >
           <div className="inline-block mb-6 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 font-mono text-xs tracking-wider">
-            {data.hero.badge}
+            <Typewriter text={data.hero.badge} />
           </div>
           <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight text-white mb-8 leading-[1.1]">
             {data.hero.titlePrimary} <br/>
@@ -704,12 +792,13 @@ const LandingPage = ({ setPage, openLog }) => {
         </div>
       </section>
       
+      {/* Updated Carousel Height: 250px on desktop */}
       <section className="max-w-[1400px] mx-auto px-6 mb-20">
          <h3 className="text-xl font-mono text-gray-500 mb-6 flex items-center gap-2">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             {data.carousel.title}
          </h3>
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px] md:h-[300px]">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[300px] md:h-[250px]">
             {data.carousel.images.map((img, i) => (
                 <motion.div 
                     key={i} 
@@ -731,55 +820,67 @@ const LandingPage = ({ setPage, openLog }) => {
 
 const ResumePage = ({ openJob }) => {
     const { experience, skills, education, certifications, projects } = content.resume;
+    const [activeTab, setActiveTab] = useState("GenAI & Agents");
+    
+    // Tabbed Logic
+    const tabs = projects.map(p => p.category);
+    const activeProjects = projects.find(p => p.category === activeTab)?.items || [];
+    const activeColor = projects.find(p => p.category === activeTab)?.color || "blue";
 
-    // Manual split for visual balance: Left (heavier tech) vs Right (Strategy/Ops)
-    // Left: GenAI (0), CV (1), HPC (2)
-    // Right: Cloud (3), RecSys (4), Pre-Sales (5)
-    const leftProjects = [projects[0], projects[1], projects[2]];
-    const rightProjects = [projects[3], projects[4], projects[5]];
+    const getCategoryColor = (color) => {
+        const colors = {
+            blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+            purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+            green: "bg-green-500/10 text-green-400 border-green-500/20",
+            orange: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+            pink: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+            yellow: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+        };
+        return colors[color] || colors.blue;
+    };
 
     return (
         <PageLayout title="Professional Journey" subtitle="Experience, Projects & Proficiency">
-            <div className="grid gap-16">
-                <div className="space-y-6">
+            <div className="grid gap-24">
+                {/* Experience Section */}
+                <div className="space-y-10">
                     <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                         <Briefcase className="text-blue-500" /> Professional Experience
                     </h3>
-                    <div className="relative border-l border-white/10 ml-3 pl-8 space-y-8">
+                    <div className="relative border-l-2 border-white/10 ml-4 space-y-12 pb-4">
                         {experience.map((job, idx) => (
                             <motion.div 
                                 key={idx}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="relative group cursor-pointer"
+                                className="relative pl-10 group cursor-pointer"
                                 onClick={() => openJob(job)}
                             >
-                                <span className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-zinc-900 border border-blue-500/50 group-hover:bg-blue-500/20 transition-colors" />
-                                <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/60 transition-all border-l-4 border-l-transparent hover:border-l-blue-500">
-                                    <div className="flex flex-col md:flex-row justify-between mb-2 items-start">
+                                <div className="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-black border-2 border-blue-500 group-hover:bg-blue-500 transition-colors z-10" />
+                                <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-8 hover:bg-zinc-900/60 transition-all hover:border-blue-500/30">
+                                    <div className="flex flex-col md:flex-row justify-between mb-4 items-start gap-4">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-lg bg-white p-1 overflow-hidden shrink-0 flex items-center justify-center">
+                                            {/* Logo Fallback Logic */}
+                                            <div className="w-12 h-12 rounded-xl bg-white p-2 overflow-hidden shrink-0 flex items-center justify-center relative">
                                                 <img 
                                                     src={`https://logo.clearbit.com/${job.domain}`} 
                                                     alt={job.company} 
-                                                    className="w-full h-full object-contain"
-                                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+                                                    className="w-full h-full object-contain relative z-10"
+                                                    onError={(e) => { e.target.style.opacity = 0; }}
                                                 />
-                                                <Building2 className="text-gray-400 hidden w-5 h-5" />
+                                                <Building2 className="absolute text-black w-6 h-6 z-0" />
                                             </div>
                                             <div>
-                                                <h4 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">{job.role}</h4>
-                                                <div className="flex items-center gap-2">
-                                                     <span className="text-blue-400 font-medium text-sm">{job.company}</span>
-                                                </div>
+                                                <h4 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{job.role}</h4>
+                                                <div className="text-blue-400 font-medium">{job.company}</div>
                                             </div>
                                         </div>
-                                        <span className="font-mono text-gray-500 text-xs mt-2 md:mt-0 bg-white/5 px-2 py-1 rounded">{job.period}</span>
+                                        <span className="font-mono text-gray-400 text-xs bg-white/5 px-3 py-1.5 rounded-full whitespace-nowrap">{job.period}</span>
                                     </div>
-                                    <p className="text-gray-400 leading-relaxed text-sm mt-3 line-clamp-2">{job.summary}</p>
-                                    <div className="mt-3 flex items-center text-blue-500 text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                                        READ FULL DETAILS <ArrowRight size={12} className="ml-1" />
+                                    <p className="text-gray-400 leading-relaxed line-clamp-2">{job.summary}</p>
+                                    <div className="mt-4 flex items-center text-blue-500 text-xs font-mono font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                        VIEW DETAILS <ArrowRight size={14} className="ml-2" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -787,59 +888,63 @@ const ResumePage = ({ openJob }) => {
                     </div>
                 </div>
 
+                {/* Tabbed Projects Section */}
                 <div>
                      <h3 className="text-2xl font-bold text-white flex items-center gap-3 mb-6">
-                        <Zap className="text-yellow-500" /> Key Use Cases & Projects
+                        <Zap className="text-yellow-500" /> Key Use Cases
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"> 
-                        <div className="space-y-6">
-                            {leftProjects.map((cat, i) => (
-                                <div key={i} className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/50 transition-colors">
-                                    <h4 className="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2 flex items-center gap-2">
-                                        {cat.category}
+                    
+                    {/* Tabs */}
+                    <div className="flex flex-wrap gap-2 mb-8 border-b border-white/10 pb-4">
+                        {tabs.map(tab => (
+                            <button 
+                                key={tab}
+                                onClick={() => setActiveTab(tab)}
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeTab === tab ? 'bg-white text-black' : 'bg-white/5 text-gray-400 hover:text-white'}`}
+                            >
+                                {tab}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[300px]"> 
+                        <AnimatePresence mode="wait">
+                            {activeProjects.map((project, i) => (
+                                 <motion.div 
+                                    key={project.name}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/50 transition-all flex flex-col group h-full"
+                                 >
+                                    <div className={`self-start px-2 py-1 rounded text-[10px] font-mono border mb-4 uppercase tracking-wider ${getCategoryColor(activeColor)}`}>
+                                        {activeTab}
+                                    </div>
+                                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                                        {project.name}
                                     </h4>
-                                    <ul className="space-y-4">
-                                        {cat.items.map((project, j) => (
-                                            <li key={j} className="group">
-                                                <div className="text-blue-300 font-medium text-sm group-hover:text-blue-200 transition-colors">{project.name}</div>
-                                                <div className="text-gray-500 text-xs leading-relaxed">{project.desc}</div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                                        {project.desc}
+                                    </p>
+                                 </motion.div>
                             ))}
-                        </div>
-                        <div className="space-y-6">
-                            {rightProjects.map((cat, i) => (
-                                <div key={i} className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/50 transition-colors">
-                                    <h4 className="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2 flex items-center gap-2">
-                                        {cat.category}
-                                    </h4>
-                                    <ul className="space-y-4">
-                                        {cat.items.map((project, j) => (
-                                            <li key={j} className="group">
-                                                <div className="text-blue-300 font-medium text-sm group-hover:text-blue-200 transition-colors">{project.name}</div>
-                                                <div className="text-gray-500 text-xs leading-relaxed">{project.desc}</div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
+                        </AnimatePresence>
                     </div>
                 </div>
 
-                <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-8">
+                {/* Skills & Footer sections remain same */}
+                <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-10">
                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                         <Cpu className="text-green-500" /> Technical Arsenal
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         {Object.entries(skills).map(([category, items], idx) => (
                             <div key={idx}>
                                 <h5 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-4 border-b border-white/10 pb-2">{category}</h5>
                                 <div className="flex flex-wrap gap-2">
                                     {items.map(skill => (
-                                        <span key={skill} className="px-3 py-1.5 bg-white/5 text-gray-300 rounded-md text-sm border border-white/5 hover:border-white/20 transition-colors cursor-default">
+                                        <span key={skill} className="px-3 py-1.5 bg-white/5 text-gray-300 rounded-md text-sm border border-white/5 hover:border-white/20 hover:text-white transition-colors cursor-default">
                                             {skill}
                                         </span>
                                     ))}
@@ -848,35 +953,62 @@ const ResumePage = ({ openJob }) => {
                         ))}
                     </div>
                 </div>
+            </div>
+        </PageLayout>
+    );
+};
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="space-y-6">
-                        <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                            <Award className="text-orange-500" /> Certifications
-                        </h3>
-                         <ul className="space-y-4">
-                            {certifications.map((cert, idx) => (
-                                <li key={idx} className="flex items-start gap-3 text-gray-400 text-sm">
-                                    <div className="mt-1.5 w-1.5 h-1.5 bg-orange-500 rounded-full shrink-0" />
-                                    {cert}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+// --- Photography Page with Skeleton Loading & Metadata ---
+const ImageCard = ({ photo, onClick, index }) => {
+    const [loaded, setLoaded] = useState(false);
 
-                     <div className="space-y-6">
-                        <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                            <BookOpen className="text-purple-500" /> Education
-                        </h3>
-                         {education.map((edu, idx) => (
-                            <div key={idx} className="border-l-2 border-zinc-800 pl-4">
-                                <h4 className="text-white font-medium">{edu.institution}</h4>
-                                <div className="text-gray-400 text-sm">{edu.degree}</div>
-                                <div className="font-mono text-gray-600 text-xs">{edu.period}</div>
-                            </div>
-                        ))}
-                    </div>
+    return (
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} 
+            transition={{ delay: index * 0.05 }}
+            className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in mb-4"
+            onClick={onClick}
+        >
+            {/* Skeleton Loader */}
+            <div className={`absolute inset-0 bg-zinc-800 animate-pulse ${loaded ? 'hidden' : 'block'}`} style={{ aspectRatio: '3/4' }} />
+            
+            <img 
+                src={photo.src} 
+                alt={photo.alt} 
+                onLoad={() => setLoaded(true)}
+                className={`w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            
+            {/* Exif Overlay Grid View */}
+             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center gap-3 text-white/90 font-mono text-[10px]">
+                    <span className="bg-white/10 px-1.5 py-0.5 rounded">{photo.camera}</span>
+                    <span>{photo.lens}</span>
                 </div>
+                <div className="flex items-center gap-3 text-white/60 font-mono text-[10px] mt-1">
+                    <span>{photo.iso} ISO</span>
+                    <span>{photo.aperture}</span>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+const PhotographyPage = ({ openLightbox }) => {
+    return (
+        <PageLayout title="Visual Gallery" subtitle="Moments Captured in High Fidelity">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+                {content.photography.map((photo, index) => (
+                    <ImageCard 
+                        key={photo.id} 
+                        photo={photo} 
+                        index={index} 
+                        onClick={() => openLightbox(index)} 
+                    />
+                ))}
             </div>
         </PageLayout>
     );
@@ -893,53 +1025,23 @@ const EngineeringLogsPage = ({ openLog }) => {
                         className="bg-zinc-900/30 border border-white/5 rounded-2xl p-6 cursor-pointer hover:bg-zinc-900/50 transition-colors group"
                         onClick={() => openLog(log.id)}
                     >
-                        <div className="flex flex-col md:flex-row gap-6 items-start">
-                            <div className="w-full md:w-48 h-32 bg-zinc-800 rounded-lg shrink-0 overflow-hidden relative">
+                        <div className="flex flex-col md:flex-row gap-8 items-start">
+                            <div className="w-full md:w-64 h-40 bg-zinc-800 rounded-xl shrink-0 overflow-hidden relative border border-white/10">
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 mix-blend-overlay" />
                                 <img src={log.image} alt={log.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                             </div>
-                            <div>
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-blue-400 font-mono text-xs">{log.id.toUpperCase()}</span>
-                                    <span className="text-gray-600 text-xs">•</span>
+                            <div className="flex-grow">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="text-blue-400 font-mono text-xs border border-blue-500/30 px-2 py-0.5 rounded bg-blue-500/10">{log.id.toUpperCase()}</span>
                                     <span className="text-gray-500 font-mono text-xs">{log.date}</span>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">{log.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-4">{log.summary}</p>
+                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">{log.title}</h3>
+                                <p className="text-gray-400 text-sm leading-relaxed mb-6">{log.summary}</p>
                                 <div className="flex items-center text-blue-500 text-xs font-mono font-bold">
-                                    READ LOG <ArrowRight size={12} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                                    SYSTEM LOG ACCESS <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
-                ))}
-            </div>
-        </PageLayout>
-    );
-};
-
-// --- Photography Page ---
-const PhotographyPage = ({ openLightbox }) => {
-    return (
-        <PageLayout title="Visual Gallery" subtitle="Moments Captured in High Fidelity">
-            {/* Masonry Layout using CSS Columns */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                {content.photography.map((photo, index) => (
-                    <motion.div 
-                        key={photo.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} 
-                        transition={{ delay: index * 0.05 }}
-                        className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in"
-                        onClick={() => openLightbox(index)}
-                    >
-                        <img 
-                            src={photo.src} 
-                            alt={photo.alt} 
-                            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                     </motion.div>
                 ))}
             </div>
@@ -1004,12 +1106,9 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedLog, setSelectedLog] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
-  
-  // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  // Sync state with URL hash
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
@@ -1020,16 +1119,10 @@ export default function App() {
         if (!hash) setCurrentPage('landing');
       }
     };
-
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
-
-  useEffect(() => {
-    document.title = content.metadata.title;
-    window.scrollTo(0, 0);
-  }, [currentPage]);
 
   const navigateTo = (page) => {
     window.location.hash = page;
@@ -1048,7 +1141,7 @@ export default function App() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-blue-500/30 selection:text-blue-100 overflow-x-hidden">
         <div className="min-w-[320px] mx-auto w-full">
-            <Header toggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} goHome={() => navigateTo('landing')} />
+            <Header toggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} goHome={() => navigateTo('landing')} setPage={navigateTo} currentPage={currentPage} />
             <FullScreenMenu isOpen={isMenuOpen} setPage={navigateTo} closeMenu={() => setIsMenuOpen(false)} />
             
             <main>
@@ -1076,7 +1169,7 @@ export default function App() {
                         {currentPage === 'resume' && <ResumePage openJob={setSelectedJob} />}
                         {currentPage === 'photography' && <PhotographyPage openLightbox={openLightbox} />}
                         {currentPage === 'blog' && <EngineeringLogsPage openLog={openLog} />}
-                        {currentPage === 'about' && <AboutPage />}
+                        {currentPage === 'about' && <AboutPage /> }
                     </motion.div>
                 </AnimatePresence>
             </main>
