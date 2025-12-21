@@ -683,9 +683,36 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
         aperture: '--',
         shutter: '--',
         camera: '---',
-        lens: '---'
     });
     
+    // --- Swipe Handling ---
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
+
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e) => {
+        touchEndX.current = e.changedTouches[0].screenX;
+        handleSwipe();
+    };
+
+    const handleSwipe = () => {
+        const threshold = 50; // Minimum swipe distance
+        const diff = touchStartX.current - touchEndX.current;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                // Swiped Left -> Next Image
+                paginate(1);
+            } else {
+                // Swiped Right -> Previous Image
+                paginate(-1);
+            }
+        }
+    };
+
     // Helper to extract EXIF from a loaded image element
     const extractExif = (img) => {
         if (window.EXIF) {
@@ -696,7 +723,6 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                     const iso = window.EXIF.getTag(this, "ISOSpeedRatings");
                     const fNumber = window.EXIF.getTag(this, "FNumber");
                     const exposureTime = window.EXIF.getTag(this, "ExposureTime");
-                    const lens = window.EXIF.getTag(this, "LensModel") || "---";
 
                     let shutter = "--";
                     if (exposureTime) {
@@ -724,7 +750,6 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                         aperture: aperture,
                         shutter: shutter,
                         camera: camera,
-                        lens: lens
                     });
                 });
             } catch (e) {
@@ -776,18 +801,20 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
         <motion.div 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
         >
             <button onClick={onClose} className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50">
                 <X size={32} />
             </button>
             <button 
                 onClick={() => paginate(-1)}
-                className="absolute left-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
+                className="absolute left-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50 hidden md:block"
             >
                 <ChevronLeft size={32} />
             </button>
             
-            <div className="relative w-full h-full flex items-center justify-center p-10">
+            <div className="relative w-full h-full flex items-center justify-center p-4 md:p-10">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.img 
                         key={index}
@@ -807,25 +834,23 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                     />
                 </AnimatePresence>
                 
-                {/* Metadata Overlay Panel */}
-                <div className="absolute bottom-10 left-0 right-0 flex justify-center z-50">
-                    <div className="bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 flex items-center gap-6 text-xs font-mono text-gray-300">
-                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {exifData.camera}</span>
-                        <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {exifData.aperture}</span>
-                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2">Lens: {exifData.lens}</span>
-                        <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {exifData.shutter}</span>
-                        <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2">ISO {exifData.iso}</span>
+                {/* Metadata Overlay Panel - Adjusted for mobile containment */}
+                <div className="absolute bottom-10 left-4 right-4 md:left-0 md:right-0 flex justify-center z-50 pointer-events-none">
+                    <div className="bg-black/80 backdrop-blur-md px-4 py-3 md:px-6 md:py-3 rounded-xl md:rounded-full border border-white/10 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-xs font-mono text-gray-300 max-w-full overflow-hidden">
+                        <span className="flex items-center gap-2 whitespace-nowrap"><Camera size={14} className="text-blue-400" /> {exifData.camera}</span>
+                        <span className="hidden md:block w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2 whitespace-nowrap"><Aperture size={14} className="text-blue-400" /> {exifData.aperture}</span>
+                        <span className="hidden md:block w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2 whitespace-nowrap"><Watch size={14} className="text-blue-400" /> {exifData.shutter}</span>
+                        <span className="hidden md:block w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2 whitespace-nowrap">ISO {exifData.iso}</span>
                     </div>
                 </div>
             </div>
 
             <button 
                 onClick={() => paginate(1)}
-                className="absolute right-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50"
+                className="absolute right-4 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors hover:bg-black/70 z-50 hidden md:block"
             >
                 <ChevronRight size={32} />
             </button>
@@ -1120,8 +1145,6 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
                     // const iso = window.EXIF.getTag(this, "ISOSpeedRatings"); // Hidden in high-level view
                     const fNumber = window.EXIF.getTag(this, "FNumber");
                     const exposureTime = window.EXIF.getTag(this, "ExposureTime");
-                    // LensModel isn't always available in basic EXIF, often in MakerNote, but we try standard tag
-                    // Note: 'undefined' string check is due to library behavior on missing tags
                     const lens = window.EXIF.getTag(this, "LensModel") || "---";
 
                     let shutter = "--";
@@ -1203,7 +1226,7 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
              <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${!loaded ? 'hidden' : ''}`}>
                 <div className="flex items-center gap-3 text-white/90 font-mono text-[10px]">
                     <span className="bg-white/10 px-1.5 py-0.5 rounded">{exifData.camera}</span>
-                    <span>{exifData.lens}</span>
+                    {/* Lens removed from preview */}
                 </div>
                 <div className="flex items-center gap-3 text-white/60 font-mono text-[10px] mt-1">
                     {/* ISO Hidden in grid view as requested */}
