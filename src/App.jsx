@@ -11,7 +11,7 @@ const content = {
   "metadata": {
     "title": "MK's Portfolio",
     "lastUpdated": new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-    "commitId": "g8h9i0j" 
+    "commitId": "h1i2j3k" 
   },
   "personal": {
     "name": "Muthukumaravel Muthuraman",
@@ -262,8 +262,8 @@ const content = {
         <h3 class="text-xl font-bold text-white mt-8 mb-2">3. Workload Characterization</h3>
         <p class="mb-2"><strong>Model Architecture: The Qwen3 MoE Paradigm</strong></p>
         <ul class="list-disc pl-5 space-y-1 mb-4">
-            <li><strong>Total Parameters ($P_{total}$):</strong> 235 x 10^9</li>
-            <li><strong>Active Parameters ($P_{active}$):</strong> 22 x 10^9</li>
+            <li><strong>Total Parameters (P<sub>total</sub>):</strong> 235 × 10<sup>9</sup></li>
+            <li><strong>Active Parameters (P<sub>active</sub>):</strong> 22 × 10<sup>9</sup></li>
             <li><strong>Sparsity Ratio:</strong> ~10.6:1</li>
             <li><strong>Routing Mechanism:</strong> Top-K gating (presumed K=4) with shared experts.</li>
         </ul>
@@ -271,18 +271,24 @@ const content = {
         <p class="mb-2"><strong>Mathematical Modeling of Compute and Memory Requirements</strong></p>
         <p class="mb-2"><em>Memory Footprint Estimation:</em></p>
         <p class="mb-4">
-            Total Static Memory Requirement ($M_{static}$):<br/>
-            $M_{static} = 470 \text{ GB (Weights)} + 470 \text{ GB (Gradients)} + 2820 \text{ GB (Optimizer)} \approx 3.76 \text{ TB}$
+            Total Static Memory Requirement (M<sub>static</sub>):<br/>
+            M<sub>static</sub> = 470 GB (Weights) + 470 GB (Gradients) + 2820 GB (Optimizer) ≈ 3.76 TB
         </p>
         <p class="mb-2"><em>Computational Intensity (FLOPs):</em></p>
         <p class="mb-4">
-            $\text{FLOPs}_{per\_token} \approx 6 \times P_{active} = 6 \times 22 \times 10^9 = 1.32 \times 10^{11} \text{ FLOPs}$<br/>
+            FLOPs<sub>per_token</sub> ≈ 6 × P<sub>active</sub> = 6 × 22 × 10<sup>9</sup> = 1.32 × 10<sup>11</sup> FLOPs<br/>
             For a target dataset of 15 Trillion tokens:<br/>
-            $C_{total} = 15 \times 10^{12} \times 1.32 \times 10^{11} \approx 1.98 \times 10^{24} \text{ FLOPs}$<br/>
-            Design budget ($C_{design}$) with 10% margin $\approx 2.2 \text{ YottaFLOPs}$
+            C<sub>total</sub> = 15 × 10<sup>12</sup> × 1.32 × 10<sup>11</sup> ≈ 1.98 × 10<sup>24</sup> FLOPs<br/>
+            Design budget (C<sub>design</sub>) with 10% margin ≈ 2.2 YottaFLOPs
         </p>
 
         <h3 class="text-xl font-bold text-white mt-8 mb-2">4. Infrastructure Design and Topology</h3>
+        <p class="mb-2"><strong>4.1 Zone Selection Strategy</strong></p>
+        <p class="mb-4">Operating under a capacity constraint of 3,000 total chips, <strong>us-central1-b</strong> was selected (utilizing 51.2% of zone capacity) as us-central1-a lacked physical capacity for the full synchronous 1,024-chip slice plus spares.</p>
+        
+        <p class="mb-2"><strong>4.2 Node Size Optimization</strong></p>
+        <p class="mb-4">We evaluated v7-256 vs v7-128. The <strong>v7-128 (4x4x8)</strong> was selected as the atomic scheduling unit. The larger v7-256 shape spanned multiple OCS domains, introducing 3-hop latency penalties. The v7-128 aligned perfectly with Expert Parallelism (EP=128), confining latency-sensitive reductions to the local copper ICI mesh.</p>
+        
         <ul class="list-disc pl-5 space-y-2 mb-4">
             <li><strong>Slice Configuration:</strong> 1,024 Chips (v7-1024) in an 8x8x16 topology (16 Cubes).</li>
             <li><strong>Storage:</strong> Google Cloud Parallelstore (115 GB/s Read/Write) to eliminate I/O bottlenecks during 3.76 TB asynchronous checkpoints.</li>
@@ -294,20 +300,37 @@ const content = {
         <p class="mb-4"><strong>The Solution: Pallas Kernels</strong><br/>
         We implemented Block-Sparse Matrix Multiplication (BSMM) using Pallas (JAX extension). Instead of physically moving data, the kernel pipelines memory loads to pre-fetch non-contiguous token blocks from HBM directly into VMEM, performing fusion directly in the MXU. This "Megablox" technique boosted MFU from 18.4% to <strong>48.2%</strong>.</p>
 
-        <h3 class="text-xl font-bold text-white mt-8 mb-2">6. Operational Execution & Logs</h3>
-        <p class="mb-2"><strong>6.1 Training Configuration:</strong></p>
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">6. Operational Execution Flow: "Crawl, Walk, Run"</h3>
+        <ul class="list-disc pl-5 space-y-2 mb-4">
+            <li><strong>Phase 1 (Architectural Validation):</strong> Verified model compilation and memory fit on a single host. Target HBM utilization &lt; 70%.</li>
+            <li><strong>Phase 2 (Kernel Tuning):</strong> Profiling Pallas BSMM kernels on a single Ironwood Cube (64 chips). Optimized capacity factors to minimize dropped tokens.</li>
+            <li><strong>Phase 3 (Weak Scaling):</strong> Validated linear scaling from 64 &rarr; 256 &rarr; 512 chips to detect mesh inefficiencies.</li>
+            <li><strong>Phase 4 (Full Scale):</strong> Execution on v7-1024 slice using XPK orchestration.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">7. Operational Execution & Logs</h3>
+        <p class="mb-2"><strong>7.1 Training Configuration:</strong></p>
         <ul class="list-disc pl-5 space-y-1 mb-4">
             <li><strong>Framework:</strong> MaxText (JAX)</li>
             <li><strong>Orchestration:</strong> XPK on GKE</li>
             <li><strong>Parallelism:</strong> Data (16), Tensor (4), Expert (128), Pipeline (0 - Disabled due to HBM capacity)</li>
         </ul>
 
-        <p class="mb-2"><strong>6.2 Checkpointing & Fault Tolerance</strong></p>
+        <p class="mb-2"><strong>7.2 Checkpointing & Fault Tolerance</strong></p>
         <ul class="list-disc pl-5 space-y-1 mb-4">
             <li><strong>Strategy:</strong> Orbax Asynchronous Checkpointing to Parallelstore.</li>
             <li><strong>Frequency:</strong> Every 2 hours.</li>
             <li><strong>Overhead:</strong> < 2 seconds blocking time per checkpoint due to async CPU offload and 115 GB/s write speed.</li>
             <li><strong>Incidents:</strong> 3 Node failures (Optical Link Flaps). XPK automatically cordoned the nodes and restarted the job from the last checkpoint in <15 minutes.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-white mt-8 mb-2">References</h3>
+        <ul class="list-disc pl-5 space-y-1 text-xs font-mono text-gray-500">
+            <li>Ironwood Specs & Performance</li>
+            <li>Qwen Architecture & Tokenization</li>
+            <li>MaxText, Pallas Kernels & Megablox</li>
+            <li>Parallelstore & Storage Strategy</li>
+            <li>Scaling Laws & Data Requirements</li>
         </ul>
       `
     },
@@ -607,9 +630,12 @@ const LogModal = ({ log, onClose }) => {
                         </thead>
                         <tbody className="text-green-400 divide-y divide-white/5">
                             <tr><td className="p-3">100</td><td className="p-3">0.01</td><td className="p-3">12.45</td><td className="p-3">1e-7</td><td className="p-3">682</td><td className="p-3">415</td><td className="p-3">18.4%</td><td className="p-3 opacity-60">Dry Run (XLA)</td></tr>
-                            <tr><td className="p-3">500</td><td className="p-3">0.02</td><td className="p-3">10.82</td><td className="p-3">1.5e-4</td><td className="p-3">261</td><td className="p-3">1107</td><td className="p-3">48.2%</td><td className="p-3 opacity-60">Pallas Kernel</td></tr>
-                            <tr><td className="p-3">5000</td><td className="p-3">0.20</td><td className="p-3">2.41</td><td className="p-3">3e-4</td><td className="p-3">260</td><td className="p-3">1110</td><td className="p-3">48.3%</td><td className="p-3 opacity-60">Stable</td></tr>
-                            <tr><td className="p-3">45000</td><td className="p-3">1.80</td><td className="p-3">1.22</td><td className="p-3">1e-5</td><td className="p-3">260</td><td className="p-3">1112</td><td className="p-3">48.4%</td><td className="p-3 opacity-60">Converged</td></tr>
+                            <tr><td className="p-3">500</td><td className="p-3">0.02</td><td className="p-3">10.82</td><td className="p-3">1.5e-4</td><td className="p-3">261</td><td className="p-3">1,107</td><td className="p-3">48.2%</td><td className="p-3 opacity-60">Pallas Kernel</td></tr>
+                            <tr><td className="p-3">5,000</td><td className="p-3">0.20</td><td className="p-3">2.41</td><td className="p-3">3e-4</td><td className="p-3">260</td><td className="p-3">1,110</td><td className="p-3">48.3%</td><td className="p-3 opacity-60">Stable</td></tr>
+                            <tr><td className="p-3">15,000</td><td className="p-3">0.60</td><td className="p-3">1.89</td><td className="p-3">2.8e-4</td><td className="p-3">261</td><td className="p-3">1,105</td><td className="p-3">48.1%</td><td className="p-3 opacity-60">Stable</td></tr>
+                            <tr><td className="p-3">25,000</td><td className="p-3">1.00</td><td className="p-3">1.55</td><td className="p-3">1.5e-4</td><td className="p-3">265</td><td className="p-3">1,090</td><td className="p-3">47.5%</td><td className="p-3 opacity-60">Checkpoint I/O</td></tr>
+                            <tr><td className="p-3">35,000</td><td className="p-3">1.40</td><td className="p-3">1.34</td><td className="p-3">8e-5</td><td className="p-3">260</td><td className="p-3">1,112</td><td className="p-3">48.4%</td><td className="p-3 opacity-60">Stable</td></tr>
+                            <tr><td className="p-3">45,000</td><td className="p-3">1.80</td><td className="p-3">1.22</td><td className="p-3">1e-5</td><td className="p-3">260</td><td className="p-3">1,112</td><td className="p-3">48.4%</td><td className="p-3 opacity-60">Converged</td></tr>
                         </tbody>
                     </table>
                 </div>
