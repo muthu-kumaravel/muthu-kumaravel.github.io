@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, ChevronLeft,
@@ -417,6 +417,43 @@ const content = {
 
 // --- Components ---
 
+const Typewriter = ({ text, className }) => {
+    const [displayText, setDisplayText] = useState('');
+    useEffect(() => {
+        let i = 0;
+        setDisplayText('');
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                setDisplayText(prev => prev + text.charAt(i));
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 50);
+        return () => clearInterval(timer);
+    }, [text]);
+    return <span className={className}>{displayText}<span className="animate-pulse">_</span></span>;
+};
+
+// Helper Component for Logos
+const CompanyLogo = ({ domain, company }) => {
+    const [error, setError] = useState(false);
+    return (
+        <div className="w-12 h-12 rounded-xl bg-white p-2 overflow-hidden shrink-0 flex items-center justify-center relative">
+            {!error ? (
+                <img 
+                    src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`} 
+                    alt={company} 
+                    className="w-full h-full object-contain relative z-10"
+                    onError={() => setError(true)}
+                />
+            ) : (
+                <Building2 className="text-black w-6 h-6" />
+            )}
+        </div>
+    );
+};
+
 const Header = ({ toggleMenu, isMenuOpen, goHome, setPage, currentPage }) => {
     const navLinks = [
         { id: 'landing', label: 'Overview' },
@@ -648,8 +685,61 @@ const LogModal = ({ log, onClose }) => {
 // --- Updated Lightbox with Smooth Image Switching ---
 const Lightbox = ({ images, initialIndex, onClose }) => {
     const [index, setIndex] = useState(initialIndex);
-    // Track direction for sliding animation
     const [direction, setDirection] = useState(0); 
+    const [exifData, setExifData] = useState({
+        iso: '---',
+        aperture: '--',
+        shutter: '--',
+        camera: '---',
+        lens: '---'
+    });
+    
+    // Helper to extract EXIF from a loaded image element
+    const extractExif = (img) => {
+        if (window.EXIF) {
+            try {
+                window.EXIF.getData(img, function() {
+                    const make = window.EXIF.getTag(this, "Make");
+                    const model = window.EXIF.getTag(this, "Model");
+                    const iso = window.EXIF.getTag(this, "ISOSpeedRatings");
+                    const fNumber = window.EXIF.getTag(this, "FNumber");
+                    const exposureTime = window.EXIF.getTag(this, "ExposureTime");
+                    const lens = window.EXIF.getTag(this, "LensModel") || "---";
+
+                    let shutter = "--";
+                    if (exposureTime) {
+                        shutter = exposureTime >= 1 ? `${exposureTime}s` : `1/${Math.round(1/exposureTime)}s`;
+                    }
+                    
+                    let aperture = "--";
+                    if (fNumber) {
+                        // Cap f-value to two decimals
+                        aperture = `f/${parseFloat(fNumber).toFixed(2).replace(/[.,]00$/, "")}`;
+                    }
+
+                    let camera = "---";
+                    if(model) {
+                         camera = model;
+                         if(make && model.includes(make)) {
+                             camera = model;
+                         } else if (make) {
+                             camera = `${make} ${model}`;
+                         }
+                    }
+
+                    setExifData({
+                        iso: iso || '---',
+                        aperture: aperture,
+                        shutter: shutter,
+                        camera: camera,
+                        lens: lens
+                    });
+                });
+            } catch (e) {
+                console.log("EXIF extraction failed", e);
+            }
+        }
+    };
 
     const paginate = (newDirection) => {
         setDirection(newDirection);
@@ -671,6 +761,24 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
     }, [images.length, onClose]);
 
     const photo = images[index];
+
+    // Variants for slide animation
+    const variants = {
+        enter: (direction) => ({
+            x: direction > 0 ? 100 : -100,
+            opacity: 0
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1
+        },
+        exit: (direction) => ({
+            zIndex: 0,
+            x: direction < 0 ? 100 : -100,
+            opacity: 0
+        })
+    };
 
     return (
         <motion.div 
@@ -694,10 +802,15 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                         src={photo.src} 
                         alt={photo.alt}
                         custom={direction}
-                        initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.2 }
+                        }}
+                        onLoad={(e) => extractExif(e.target)}
                         className="max-h-[80vh] max-w-[90vw] object-contain shadow-2xl rounded-sm absolute" 
                     />
                 </AnimatePresence>
@@ -705,13 +818,15 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
                 {/* Metadata Overlay Panel */}
                 <div className="absolute bottom-10 left-0 right-0 flex justify-center z-50">
                     <div className="bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 flex items-center gap-6 text-xs font-mono text-gray-300">
-                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {photo.camera || '---'} + {photo.lens || '---'}</span>
+                        <span className="flex items-center gap-2"><Camera size={14} className="text-blue-400" /> {exifData.camera}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {photo.aperture || '--'}</span>
+                        <span className="flex items-center gap-2"><Aperture size={14} className="text-blue-400" /> {exifData.aperture}</span>
+                         <span className="w-px h-3 bg-white/20"></span>
+                        <span className="flex items-center gap-2">Lens: {exifData.lens}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {photo.shutter || '--'}</span>
+                        <span className="flex items-center gap-2"><Watch size={14} className="text-blue-400" /> {exifData.shutter}</span>
                         <span className="w-px h-3 bg-white/20"></span>
-                        <span className="flex items-center gap-2">ISO {photo.iso || '---'}</span>
+                        <span className="flex items-center gap-2">ISO {exifData.iso}</span>
                     </div>
                 </div>
             </div>
@@ -730,31 +845,12 @@ const Lightbox = ({ images, initialIndex, onClose }) => {
     );
 };
 
-// --- Page Components ---
-
-const Typewriter = ({ text, className }) => {
-    const [displayText, setDisplayText] = useState('');
-    useEffect(() => {
-        let i = 0;
-        setDisplayText('');
-        const timer = setInterval(() => {
-            if (i < text.length) {
-                setDisplayText(prev => prev + text.charAt(i));
-                i++;
-            } else {
-                clearInterval(timer);
-            }
-        }, 50);
-        return () => clearInterval(timer);
-    }, [text]);
-    return <span className={className}>{displayText}<span className="animate-pulse">_</span></span>;
-};
-
 const LandingPage = ({ setPage, openLog }) => {
   const data = content.home;
   
   return (
     <div className="pt-32 pb-20">
+      {/* ... Hero Section ... */}
       <section className="min-h-[70vh] flex flex-col justify-center items-center text-center px-4 relative">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -795,8 +891,8 @@ const LandingPage = ({ setPage, openLog }) => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }} // Added explicit viewport margin
+                transition={{ duration: 0.5, delay: index * 0.1 }} // Staggered animation
                 className={`bg-zinc-900/50 rounded-3xl p-10 border border-white/5 relative overflow-hidden group ${item.colSpan === 2 ? 'md:col-span-2' : ''}`}
               >
                  {item.tags ? (
@@ -819,7 +915,7 @@ const LandingPage = ({ setPage, openLog }) => {
         </div>
       </section>
       
-      {/* Updated Carousel Height: 250px on desktop */}
+      {/* ... Carousel Section ... */}
       <section className="max-w-[1400px] mx-auto px-6 mb-20">
          <h3 className="text-xl font-mono text-gray-500 mb-6 flex items-center gap-2">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -846,16 +942,16 @@ const LandingPage = ({ setPage, openLog }) => {
 };
 
 const ResumePage = ({ openJob }) => {
+    // ... existing variables ...
     const { experience, skills, education, certifications, projects } = content.resume;
     const [activeTab, setActiveTab] = useState("GenAI & Agents");
     
-    // Tabbed Logic
     const tabs = projects.map(p => p.category);
     const activeProjects = projects.find(p => p.category === activeTab)?.items || [];
     const activeColor = projects.find(p => p.category === activeTab)?.color || "blue";
 
     const getCategoryColor = (color) => {
-        const colors = {
+       const colors = {
             blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
             purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
             green: "bg-green-500/10 text-green-400 border-green-500/20",
@@ -888,16 +984,8 @@ const ResumePage = ({ openJob }) => {
                                 <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-8 hover:bg-zinc-900/60 transition-all hover:border-blue-500/30">
                                     <div className="flex flex-col md:flex-row justify-between mb-4 items-start gap-4">
                                         <div className="flex items-center gap-4">
-                                            {/* Logo Fallback Logic */}
-                                            <div className="w-12 h-12 rounded-xl bg-white p-2 overflow-hidden shrink-0 flex items-center justify-center relative">
-                                                <img 
-                                                    src={`https://logo.clearbit.com/${job.domain}`} 
-                                                    alt={job.company} 
-                                                    className="w-full h-full object-contain relative z-10"
-                                                    onError={(e) => { e.target.style.opacity = 0; }}
-                                                />
-                                                <Building2 className="absolute text-black w-6 h-6 z-0" />
-                                            </div>
+                                            {/* Logo logic fixed by moving component definition up */}
+                                            <CompanyLogo domain={job.domain} company={job.company} />
                                             <div>
                                                 <h4 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{job.role}</h4>
                                                 <div className="text-blue-400 font-medium">{job.company}</div>
@@ -914,14 +1002,12 @@ const ResumePage = ({ openJob }) => {
                         ))}
                     </div>
                 </div>
-
-                {/* Tabbed Projects Section */}
+                {/* ... Tabbed Projects ... */}
                 <div>
                      <h3 className="text-2xl font-bold text-white flex items-center gap-3 mb-6">
                         <Zap className="text-yellow-500" /> Key Use Cases
                     </h3>
                     
-                    {/* Tabs */}
                     <div className="flex flex-wrap gap-2 mb-8 border-b border-white/10 pb-4">
                         {tabs.map(tab => (
                             <button 
@@ -960,7 +1046,39 @@ const ResumePage = ({ openJob }) => {
                     </div>
                 </div>
 
-                {/* Skills & Footer sections remain same */}
+                {/* Education & Certifications Added Here */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-8">
+                         <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                            <Award className="text-purple-500" /> Certifications
+                        </h3>
+                        <ul className="space-y-4">
+                            {certifications.map((cert, i) => (
+                                <li key={i} className="flex items-start gap-3 text-gray-400 text-sm">
+                                    <span className="mt-1.5 w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0" />
+                                    {cert}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-8">
+                         <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                            <BookOpen className="text-blue-500" /> Education
+                        </h3>
+                        <div className="space-y-6">
+                            {education.map((edu, i) => (
+                                <div key={i}>
+                                    <div className="text-white font-bold">{edu.institution}</div>
+                                    <div className="text-blue-400 text-sm">{edu.degree}</div>
+                                    <div className="text-gray-500 text-xs font-mono mt-1">{edu.period}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* ... Skills ... */}
                 <div className="bg-zinc-900/30 border border-white/5 rounded-2xl p-10">
                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                         <Cpu className="text-green-500" /> Technical Arsenal
@@ -1007,7 +1125,7 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
                 window.EXIF.getData(imgRef.current, function() {
                     const make = window.EXIF.getTag(this, "Make");
                     const model = window.EXIF.getTag(this, "Model");
-                    const iso = window.EXIF.getTag(this, "ISOSpeedRatings");
+                    // const iso = window.EXIF.getTag(this, "ISOSpeedRatings"); // Hidden in high-level view
                     const fNumber = window.EXIF.getTag(this, "FNumber");
                     const exposureTime = window.EXIF.getTag(this, "ExposureTime");
                     // LensModel isn't always available in basic EXIF, often in MakerNote, but we try standard tag
@@ -1021,7 +1139,8 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
                     
                     let aperture = "--";
                     if (fNumber) {
-                        aperture = `f/${fNumber}`;
+                         // Cap f-value to two decimals
+                         aperture = `f/${parseFloat(fNumber).toFixed(2).replace(/[.,]00$/, "")}`;
                     }
 
                     let camera = "---";
@@ -1036,7 +1155,7 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
                     }
 
                     setExifData({
-                        iso: iso || '---',
+                        // iso: iso || '---',
                         aperture: aperture,
                         shutter: shutter,
                         camera: camera,
@@ -1065,19 +1184,14 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
     };
 
     return (
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }} 
-            transition={{ delay: 0.1, duration: 0.4 }}
+        <div 
             className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in mb-4"
             onClick={onClick}
         >
             {/* Skeleton Loader - Only show if NOT loaded */}
             {!loaded && (
                 <div 
-                    className="absolute inset-0 bg-zinc-800 animate-pulse transition-opacity duration-500" 
-                    style={{ aspectRatio: '3/4' }} 
+                    className="bg-zinc-800 animate-pulse w-full min-h-[250px]" 
                 />
             )}
             
@@ -1088,29 +1202,29 @@ const ImageCard = React.memo(({ photo, onClick, index }) => {
                 onLoad={handleLoad}
                 // Logic: If loaded is true, we force 'opacity-100 blur-0 scale-100' immediately.
                 className={`w-full h-auto object-cover transform group-hover:scale-105 transition-all duration-700 ease-out ${
-                    loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105'
+                    loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105 h-0'
                 }`}
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            <div className={`absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 ${!loaded ? 'hidden' : ''}`} />
             
             {/* Exif Overlay Grid View */}
-             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+             <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${!loaded ? 'hidden' : ''}`}>
                 <div className="flex items-center gap-3 text-white/90 font-mono text-[10px]">
                     <span className="bg-white/10 px-1.5 py-0.5 rounded">{exifData.camera}</span>
                     <span>{exifData.lens}</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60 font-mono text-[10px] mt-1">
-                    <span>{exifData.iso !== '---' ? `ISO ${exifData.iso}` : 'ISO ---'}</span>
+                    {/* ISO Hidden in grid view as requested */}
                     <span>{exifData.aperture}</span>
                     <span>{exifData.shutter}</span>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 });
 
 const PhotographyPage = ({ openLightbox }) => {
-    // State for Load More functionality
+    // State for Load More functionality - Increased initial count
     const [visibleCount, setVisibleCount] = useState(9);
     const visiblePhotos = content.photography.slice(0, visibleCount);
 
