@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { 
   Menu, X, Github, Linkedin, Instagram, ArrowRight, ChevronRight, ChevronLeft,
@@ -929,6 +929,7 @@ const PhotographyPage = ({ openLightbox }) => {
                         key={photo.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }} 
                         transition={{ delay: index * 0.05 }}
                         className="break-inside-avoid relative group rounded-xl overflow-hidden cursor-zoom-in"
                         onClick={() => openLightbox(index)}
