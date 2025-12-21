@@ -908,7 +908,7 @@ const LandingPage = ({ setPage, openLog }) => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }} // Added explicit viewport margin
+                viewport={{ once: true, amount: 0.1 }} // Added explicit viewport amount
                 transition={{ duration: 0.5, delay: index * 0.1 }} // Staggered animation
                 className={`bg-zinc-900/50 rounded-3xl p-10 border border-white/5 relative overflow-hidden group ${item.colSpan === 2 ? 'md:col-span-2' : ''}`}
               >
