@@ -90,4 +90,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Deep Dark Vignette Mask for 3D Canvas */
+  .bg-radial-vignette {
+    background: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 75%, #000000 100%);
+  }
 }

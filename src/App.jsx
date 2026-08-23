@@ -16,9 +16,14 @@ import { ConnectModal } from './components/ConnectModal';
 import { ResumeModal } from './components/ResumeModal';
 import { Toast } from './components/ui/Toast';
 import { Footer } from './components/Footer';
+import { SpatialCanvas } from './components/3d/SpatialCanvas';
+import { HardwareWalkthroughHUD } from './components/3d/HardwareWalkthroughHUD';
+import { hardwareWalkthroughStages } from './data/hardwareWalkthroughData';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('overview');
+  const [walkthroughMode, setWalkthroughMode] = useState(false);
+  const [walkthroughStage, setWalkthroughStage] = useState('tokenization');
   const [selectedLog, setSelectedLog] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -37,37 +42,68 @@ export default function App() {
 
   const scrollToSection = useCallback((sectionId) => {
     setActiveSection(sectionId);
+    if (walkthroughMode) {
+      setWalkthroughMode(false);
+    }
     window.location.hash = sectionId;
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-  }, []);
+  }, [walkthroughMode]);
 
-  // Global Keyboard Listener for Cmd+K / Ctrl+K
+  // Global Keyboard Listener for Cmd+K, Blueprint Mode (B), and Walkthrough Stage Keys
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Don't trigger hotkeys when typing in input/textarea
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setCmdKOpen((prev) => !prev);
+        return;
+      }
+
+      if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        setWalkthroughMode((prev) => !prev);
+        return;
+      }
+
+      if (e.key === 'Escape' && walkthroughMode) {
+        e.preventDefault();
+        setWalkthroughMode(false);
+        return;
+      }
+
+      if (walkthroughMode && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+        e.preventDefault();
+        const currentIdx = hardwareWalkthroughStages.findIndex((s) => s.id === walkthroughStage);
+        if (e.key === 'ArrowRight') {
+          const nextIdx = (currentIdx + 1) % hardwareWalkthroughStages.length;
+          setWalkthroughStage(hardwareWalkthroughStages[nextIdx].id);
+        } else {
+          const prevIdx = (currentIdx - 1 + hardwareWalkthroughStages.length) % hardwareWalkthroughStages.length;
+          setWalkthroughStage(hardwareWalkthroughStages[prevIdx].id);
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [walkthroughMode, walkthroughStage]);
 
   // Enhanced Intersection Observer / Scroll Spy with bottom-of-page trigger
   useEffect(() => {
+    if (walkthroughMode) return;
     const sections = ['overview', 'experience', 'projects', 'logs', 'gallery', 'about'];
     
     const handleScroll = () => {
-      // Bottom of page detection for 'about' section on shorter screens
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 60) {
         setActiveSection('about');
         return;
       }
 
-      const scrollPos = window.scrollY + 200;
+      const scrollPos = window.scrollY + 220;
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -83,7 +119,7 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [walkthroughMode]);
 
   // Handle URL hash on initial load
   useEffect(() => {
@@ -109,22 +145,46 @@ export default function App() {
   };
 
   return (
-    <div className="bg-black text-apple-text min-h-screen font-sans selection:bg-blue-500/30 selection:text-white relative">
-      {/* Floating Apple Frosted Dock Header */}
-      <Header
-        activeSection={activeSection}
-        onNavigate={scrollToSection}
-        onOpenCmdK={() => setCmdKOpen(true)}
-        onOpenConnect={() => setConnectModalOpen(true)}
-        onOpenResume={() => setResumeModalOpen(true)}
+    <div className="bg-black text-apple-text min-h-screen font-sans selection:bg-blue-500/30 selection:text-white relative overflow-x-hidden">
+      {/* Master Atmospheric 3D WebGL Ambient Background */}
+      <SpatialCanvas 
+        walkthroughMode={walkthroughMode}
+        walkthroughStage={walkthroughStage}
       />
 
-      {/* Main Single-Page App Sections */}
-      <main id="main-content" className="relative z-10 flex flex-col">
+      {/* Floating Apple Frosted Dock Header (Hidden in Walkthrough Mode) */}
+      {!walkthroughMode && (
+        <Header
+          activeSection={activeSection}
+          onNavigate={scrollToSection}
+          onOpenCmdK={() => setCmdKOpen(true)}
+          onOpenConnect={() => setConnectModalOpen(true)}
+          onOpenResume={() => setResumeModalOpen(true)}
+          onOpenWalkthrough={() => setWalkthroughMode(true)}
+        />
+      )}
+
+      {/* Interactive 3D Hardware Walkthrough HUD */}
+      {walkthroughMode && (
+        <HardwareWalkthroughHUD
+          activeStageId={walkthroughStage}
+          onSelectStage={setWalkthroughStage}
+          onClose={() => setWalkthroughMode(false)}
+        />
+      )}
+
+      {/* Main Single-Page App Sections (Smoothly Faded Out in Walkthrough Mode) */}
+      <main 
+        id="main-content" 
+        className={`relative z-10 flex flex-col transition-all duration-700 ${
+          walkthroughMode ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100'
+        }`}
+      >
         <Hero 
           onNavigate={scrollToSection} 
           onOpenConnect={() => setConnectModalOpen(true)}
           onOpenResume={() => setResumeModalOpen(true)}
+          onOpenWalkthrough={() => setWalkthroughMode(true)}
           onCopySuccess={showToast}
         />
         <BentoGrid />
@@ -139,7 +199,7 @@ export default function App() {
       </main>
 
       {/* Apple Minimalist Footer */}
-      <Footer onOpenConnect={() => setConnectModalOpen(true)} />
+      {!walkthroughMode && <Footer onOpenConnect={() => setConnectModalOpen(true)} />}
 
       {/* Modals & Overlays */}
       <ExperienceModal

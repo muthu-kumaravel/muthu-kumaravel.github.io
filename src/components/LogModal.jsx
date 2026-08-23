@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from './ui/Modal';
-import { Activity, Calendar } from 'lucide-react';
+import { Activity, Calendar, ArrowRightLeft } from 'lucide-react';
 import { ArchitectureDiagram } from './ui/ArchitectureDiagram';
 
 export function LogModal({ log, onClose }) {
@@ -12,11 +12,11 @@ export function LogModal({ log, onClose }) {
       onClose={onClose}
       maxWidth="max-w-4xl"
     >
-      <div className="space-y-6 pr-6 sm:pr-8">
+      <div className="space-y-6 pr-2 sm:pr-6">
         {/* Header Block */}
         <div className="pb-6 border-b border-white/10">
           <div className="flex items-center gap-3 mb-3">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <span className="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/15 text-blue-400 border border-blue-500/30">
               {log.tag}
             </span>
             <span className="text-zinc-400 font-mono text-xs flex items-center gap-1">
@@ -27,7 +27,7 @@ export function LogModal({ log, onClose }) {
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">
             {log.title}
           </h2>
-          <p className="text-zinc-300 text-sm leading-relaxed">
+          <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
             {log.summary}
           </p>
         </div>
@@ -40,33 +40,38 @@ export function LogModal({ log, onClose }) {
         {/* Training Log Empirical Table (if available, e.g. Log-01) */}
         {log.trainingData && (
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 flex items-center gap-2 font-semibold">
                 <Activity size={14} /> Empirical Hardware Telemetry & MFU Convergence
               </h4>
-              <span className="text-[11px] font-mono text-zinc-400">TPU v7-1024 Slice</span>
+              <div className="flex items-center gap-2">
+                <span className="sm:hidden text-[10px] font-mono text-zinc-400 flex items-center gap-1 bg-white/5 px-2 py-0.5 rounded-full">
+                  <ArrowRightLeft size={10} /> Scroll table
+                </span>
+                <span className="text-[11px] font-mono text-zinc-400">TPU v7-1024 Slice</span>
+              </div>
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-zinc-950/80 shadow-inner">
-              <table className="w-full text-xs font-mono text-left">
+            <div className="relative overflow-x-auto rounded-2xl border border-white/10 bg-zinc-950/80 shadow-inner">
+              <table className="w-full text-xs font-mono text-left border-collapse">
                 <thead className="bg-white/5 text-zinc-400 border-b border-white/10">
                   <tr>
-                    <th className="p-3">Step</th>
+                    <th className="p-3 sticky left-0 bg-zinc-950/95 z-10">Step</th>
                     <th className="p-3">Epoch</th>
                     <th className="p-3">Loss</th>
                     <th className="p-3">LR</th>
                     <th className="p-3">Time (ms)</th>
                     <th className="p-3">TFLOPS</th>
                     <th className="p-3">MFU</th>
-                    <th className="p-3">Optimization State</th>
+                    <th className="p-3 min-w-[160px]">Optimization State</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 text-zinc-300">
                   {log.trainingData.map((row, rIdx) => (
-                    <tr key={rIdx} className="hover:bg-white/[0.02] transition-colors">
-                      <td className="p-3 font-semibold text-white">{row.step}</td>
+                    <tr key={rIdx} className="hover:bg-white/[0.03] transition-colors">
+                      <td className="p-3 font-semibold text-white sticky left-0 bg-zinc-950/95 z-10">{row.step}</td>
                       <td className="p-3 text-zinc-400">{row.epoch}</td>
-                      <td className="p-3 text-blue-400">{row.loss}</td>
+                      <td className="p-3 text-blue-400 font-semibold">{row.loss}</td>
                       <td className="p-3 text-zinc-400">{row.lr}</td>
                       <td className="p-3 text-zinc-300">{row.timeMs}</td>
                       <td className="p-3 text-purple-400">{row.tflops}</td>
@@ -99,7 +104,7 @@ export function LogModal({ log, onClose }) {
               return (
                 <ul key={pIdx} className="space-y-2 pl-2">
                   {items.map((item, iIdx) => (
-                    <li key={iIdx} className="flex items-start gap-2 text-sm text-zinc-300">
+                    <li key={iIdx} className="flex items-start gap-2.5 text-sm text-zinc-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
                       <span>{item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '$1')}</span>
                     </li>

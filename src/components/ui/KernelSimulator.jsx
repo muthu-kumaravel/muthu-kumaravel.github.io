@@ -60,7 +60,7 @@ export function KernelSimulator() {
     };
   }, [model, hardware, kernelMode, batchSize, seqLength]);
 
-  // Live Canvas Waveform Render
+  // Live Canvas Waveform Render with Retina High-DPI support
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -69,8 +69,22 @@ export function KernelSimulator() {
 
     let frameId;
     let t = 0;
-    const w = (canvas.width = canvas.offsetWidth);
-    const h = (canvas.height = canvas.offsetHeight);
+    let w = 0;
+    let h = 0;
+
+    const handleResize = () => {
+      if (!canvas) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.offsetWidth;
+      h = canvas.offsetHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.resetTransform?.();
+      ctx.scale(dpr, dpr);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
@@ -105,11 +119,14 @@ export function KernelSimulator() {
     };
 
     draw();
-    return () => cancelAnimationFrame(frameId);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [stats]);
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950/90 border border-white/15 shadow-2xl relative overflow-hidden my-8">
+    <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950/90 border border-white/15 shadow-2xl relative overflow-hidden my-8 backdrop-blur-xl">
       {/* Specular Unibody Line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
